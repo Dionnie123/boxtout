@@ -16,7 +16,7 @@ dependencies:
   stacked: ^3.4.1
   stacked_services: ^1.2.0
   stacked_themes: ^0.3.12
-  reactive_forms: ^16.0.0
+  reactive_forms: ^16.0.2
   reactive_date_time_picker: ^3.0.0
   reactive_forms_annotations: ^4.0.0
   hive: ^2.2.3

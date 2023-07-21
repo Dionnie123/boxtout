@@ -3,14 +3,14 @@
 // ignore_for_file: type=lint
 // ignore_for_file:
 
-part of 'registerDTO.dart';
+part of 'register_form.dart';
 
 // **************************************************************************
 // ReactiveFormsGenerator
 // **************************************************************************
 
-class ReactiveRegisterDTOFormConsumer extends StatelessWidget {
-  const ReactiveRegisterDTOFormConsumer({
+class ReactiveRegisterFormFormConsumer extends StatelessWidget {
+  const ReactiveRegisterFormFormConsumer({
     Key? key,
     required this.builder,
     this.child,
@@ -19,21 +19,21 @@ class ReactiveRegisterDTOFormConsumer extends StatelessWidget {
   final Widget? child;
 
   final Widget Function(
-      BuildContext context, RegisterDTOForm formModel, Widget? child) builder;
+      BuildContext context, RegisterFormForm formModel, Widget? child) builder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveRegisterDTOForm.of(context);
+    final formModel = ReactiveRegisterFormForm.of(context);
 
-    if (formModel is! RegisterDTOForm) {
+    if (formModel is! RegisterFormForm) {
       throw FormControlParentNotFoundException(this);
     }
     return builder(context, formModel, child);
   }
 }
 
-class RegisterDTOFormInheritedStreamer extends InheritedStreamer<dynamic> {
-  const RegisterDTOFormInheritedStreamer({
+class RegisterFormFormInheritedStreamer extends InheritedStreamer<dynamic> {
+  const RegisterFormFormInheritedStreamer({
     Key? key,
     required this.form,
     required Stream<dynamic> stream,
@@ -44,11 +44,11 @@ class RegisterDTOFormInheritedStreamer extends InheritedStreamer<dynamic> {
           key: key,
         );
 
-  final RegisterDTOForm form;
+  final RegisterFormForm form;
 }
 
-class ReactiveRegisterDTOForm extends StatelessWidget {
-  const ReactiveRegisterDTOForm({
+class ReactiveRegisterFormForm extends StatelessWidget {
+  const ReactiveRegisterFormForm({
     Key? key,
     required this.form,
     required this.child,
@@ -57,31 +57,31 @@ class ReactiveRegisterDTOForm extends StatelessWidget {
 
   final Widget child;
 
-  final RegisterDTOForm form;
+  final RegisterFormForm form;
 
   final WillPopCallback? onWillPop;
 
-  static RegisterDTOForm? of(
+  static RegisterFormForm? of(
     BuildContext context, {
     bool listen = true,
   }) {
     if (listen) {
       return context
           .dependOnInheritedWidgetOfExactType<
-              RegisterDTOFormInheritedStreamer>()
+              RegisterFormFormInheritedStreamer>()
           ?.form;
     }
 
     final element = context.getElementForInheritedWidgetOfExactType<
-        RegisterDTOFormInheritedStreamer>();
+        RegisterFormFormInheritedStreamer>();
     return element == null
         ? null
-        : (element.widget as RegisterDTOFormInheritedStreamer).form;
+        : (element.widget as RegisterFormFormInheritedStreamer).form;
   }
 
   @override
   Widget build(BuildContext context) {
-    return RegisterDTOFormInheritedStreamer(
+    return RegisterFormFormInheritedStreamer(
       form: form,
       stream: form.form.statusChanged,
       child: WillPopScope(
@@ -92,8 +92,8 @@ class ReactiveRegisterDTOForm extends StatelessWidget {
   }
 }
 
-class RegisterDTOFormBuilder extends StatefulWidget {
-  const RegisterDTOFormBuilder({
+class RegisterFormFormBuilder extends StatefulWidget {
+  const RegisterFormFormBuilder({
     Key? key,
     this.model,
     this.child,
@@ -102,29 +102,30 @@ class RegisterDTOFormBuilder extends StatefulWidget {
     this.initState,
   }) : super(key: key);
 
-  final RegisterDTO? model;
+  final RegisterForm? model;
 
   final Widget? child;
 
   final WillPopCallback? onWillPop;
 
   final Widget Function(
-      BuildContext context, RegisterDTOForm formModel, Widget? child) builder;
+      BuildContext context, RegisterFormForm formModel, Widget? child) builder;
 
-  final void Function(BuildContext context, RegisterDTOForm formModel)?
+  final void Function(BuildContext context, RegisterFormForm formModel)?
       initState;
 
   @override
-  _RegisterDTOFormBuilderState createState() => _RegisterDTOFormBuilderState();
+  _RegisterFormFormBuilderState createState() =>
+      _RegisterFormFormBuilderState();
 }
 
-class _RegisterDTOFormBuilderState extends State<RegisterDTOFormBuilder> {
-  late RegisterDTOForm _formModel;
+class _RegisterFormFormBuilderState extends State<RegisterFormFormBuilder> {
+  late RegisterFormForm _formModel;
 
   @override
   void initState() {
     _formModel =
-        RegisterDTOForm(RegisterDTOForm.formElements(widget.model), null);
+        RegisterFormForm(RegisterFormForm.formElements(widget.model), null);
 
     if (_formModel.form.disabled) {
       _formModel.form.markAsDisabled();
@@ -136,10 +137,10 @@ class _RegisterDTOFormBuilderState extends State<RegisterDTOFormBuilder> {
   }
 
   @override
-  void didUpdateWidget(covariant RegisterDTOFormBuilder oldWidget) {
+  void didUpdateWidget(covariant RegisterFormFormBuilder oldWidget) {
     if (widget.model != oldWidget.model) {
       _formModel =
-          RegisterDTOForm(RegisterDTOForm.formElements(widget.model), null);
+          RegisterFormForm(RegisterFormForm.formElements(widget.model), null);
 
       if (_formModel.form.disabled) {
         _formModel.form.markAsDisabled();
@@ -159,7 +160,7 @@ class _RegisterDTOFormBuilderState extends State<RegisterDTOFormBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return ReactiveRegisterDTOForm(
+    return ReactiveRegisterFormForm(
       key: ObjectKey(_formModel),
       form: _formModel,
       onWillPop: widget.onWillPop,
@@ -174,42 +175,40 @@ class _RegisterDTOFormBuilderState extends State<RegisterDTOFormBuilder> {
   }
 }
 
-class RegisterDTOForm implements FormModel<RegisterDTO> {
-  RegisterDTOForm(
+class RegisterFormForm implements FormModel<RegisterForm> {
+  RegisterFormForm(
     this.form,
     this.path,
   );
 
-  static const String full_nameControlName = "full_name";
+  static const String fullNameControlName = "fullName";
 
   static const String emailControlName = "email";
 
   static const String passwordControlName = "password";
 
-  static const String password_confirmationControlName =
-      "password_confirmation";
+  static const String passwordConfirmationControlName = "passwordConfirmation";
 
-  static const String is_agreeControlName = "is_agree";
+  static const String acceptLicenseControlName = "acceptLicense";
 
   final FormGroup form;
 
   final String? path;
 
-  String full_nameControlPath() => pathBuilder(full_nameControlName);
+  String fullNameControlPath() => pathBuilder(fullNameControlName);
   String emailControlPath() => pathBuilder(emailControlName);
   String passwordControlPath() => pathBuilder(passwordControlName);
-  String password_confirmationControlPath() =>
-      pathBuilder(password_confirmationControlName);
-  String is_agreeControlPath() => pathBuilder(is_agreeControlName);
-  String? get _full_nameValue => full_nameControl?.value;
+  String passwordConfirmationControlPath() =>
+      pathBuilder(passwordConfirmationControlName);
+  String acceptLicenseControlPath() => pathBuilder(acceptLicenseControlName);
+  String? get _fullNameValue => fullNameControl?.value;
   String? get _emailValue => emailControl?.value;
   String? get _passwordValue => passwordControl?.value;
-  String? get _password_confirmationValue =>
-      password_confirmationControl?.value;
-  bool? get _is_agreeValue => is_agreeControl?.value;
+  String? get _passwordConfirmationValue => passwordConfirmationControl?.value;
+  bool? get _acceptLicenseValue => acceptLicenseControl?.value;
   bool get containsFullName {
     try {
-      form.control(full_nameControlPath());
+      form.control(fullNameControlPath());
       return true;
     } catch (e) {
       return false;
@@ -236,35 +235,34 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
 
   bool get containsPasswordConfirmation {
     try {
-      form.control(password_confirmationControlPath());
+      form.control(passwordConfirmationControlPath());
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  bool get containsIsAgree {
+  bool get containsAcceptLicense {
     try {
-      form.control(is_agreeControlPath());
+      form.control(acceptLicenseControlPath());
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  Object? get full_nameErrors => full_nameControl?.errors;
+  Object? get fullNameErrors => fullNameControl?.errors;
   Object? get emailErrors => emailControl?.errors;
   Object? get passwordErrors => passwordControl?.errors;
-  Object? get password_confirmationErrors =>
-      password_confirmationControl?.errors;
-  Object? get is_agreeErrors => is_agreeControl?.errors;
-  void get full_nameFocus => form.focus(full_nameControlPath());
+  Object? get passwordConfirmationErrors => passwordConfirmationControl?.errors;
+  Object? get acceptLicenseErrors => acceptLicenseControl?.errors;
+  void get fullNameFocus => form.focus(fullNameControlPath());
   void get emailFocus => form.focus(emailControlPath());
   void get passwordFocus => form.focus(passwordControlPath());
-  void get password_confirmationFocus =>
-      form.focus(password_confirmationControlPath());
-  void get is_agreeFocus => form.focus(is_agreeControlPath());
-  void full_nameRemove({
+  void get passwordConfirmationFocus =>
+      form.focus(passwordConfirmationControlPath());
+  void get acceptLicenseFocus => form.focus(acceptLicenseControlPath());
+  void fullNameRemove({
     bool updateParent = true,
     bool emitEvent = true,
   }) {
@@ -272,7 +270,7 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
       final controlPath = path;
       if (controlPath == null) {
         form.removeControl(
-          full_nameControlName,
+          fullNameControlName,
           updateParent: updateParent,
           emitEvent: emitEvent,
         );
@@ -281,7 +279,7 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
 
         if (formGroup is FormGroup) {
           formGroup.removeControl(
-            full_nameControlName,
+            fullNameControlName,
             updateParent: updateParent,
             emitEvent: emitEvent,
           );
@@ -342,7 +340,7 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
     }
   }
 
-  void password_confirmationRemove({
+  void passwordConfirmationRemove({
     bool updateParent = true,
     bool emitEvent = true,
   }) {
@@ -350,7 +348,7 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
       final controlPath = path;
       if (controlPath == null) {
         form.removeControl(
-          password_confirmationControlName,
+          passwordConfirmationControlName,
           updateParent: updateParent,
           emitEvent: emitEvent,
         );
@@ -359,7 +357,7 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
 
         if (formGroup is FormGroup) {
           formGroup.removeControl(
-            password_confirmationControlName,
+            passwordConfirmationControlName,
             updateParent: updateParent,
             emitEvent: emitEvent,
           );
@@ -368,15 +366,15 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
     }
   }
 
-  void is_agreeRemove({
+  void acceptLicenseRemove({
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    if (containsIsAgree) {
+    if (containsAcceptLicense) {
       final controlPath = path;
       if (controlPath == null) {
         form.removeControl(
-          is_agreeControlName,
+          acceptLicenseControlName,
           updateParent: updateParent,
           emitEvent: emitEvent,
         );
@@ -385,7 +383,7 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
 
         if (formGroup is FormGroup) {
           formGroup.removeControl(
-            is_agreeControlName,
+            acceptLicenseControlName,
             updateParent: updateParent,
             emitEvent: emitEvent,
           );
@@ -394,12 +392,12 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
     }
   }
 
-  void full_nameValueUpdate(
+  void fullNameValueUpdate(
     String? value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    full_nameControl?.updateValue(value,
+    fullNameControl?.updateValue(value,
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
@@ -421,30 +419,30 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
-  void password_confirmationValueUpdate(
+  void passwordConfirmationValueUpdate(
     String? value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    password_confirmationControl?.updateValue(value,
+    passwordConfirmationControl?.updateValue(value,
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
-  void is_agreeValueUpdate(
+  void acceptLicenseValueUpdate(
     bool? value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    is_agreeControl?.updateValue(value,
+    acceptLicenseControl?.updateValue(value,
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
-  void full_nameValuePatch(
+  void fullNameValuePatch(
     String? value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    full_nameControl?.patchValue(value,
+    fullNameControl?.patchValue(value,
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
@@ -466,32 +464,32 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
-  void password_confirmationValuePatch(
+  void passwordConfirmationValuePatch(
     String? value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    password_confirmationControl?.patchValue(value,
+    passwordConfirmationControl?.patchValue(value,
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
-  void is_agreeValuePatch(
+  void acceptLicenseValuePatch(
     bool? value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
-    is_agreeControl?.patchValue(value,
+    acceptLicenseControl?.patchValue(value,
         updateParent: updateParent, emitEvent: emitEvent);
   }
 
-  void full_nameValueReset(
+  void fullNameValueReset(
     String? value, {
     bool updateParent = true,
     bool emitEvent = true,
     bool removeFocus = false,
     bool? disabled,
   }) =>
-      full_nameControl?.reset(
+      fullNameControl?.reset(
           value: value, updateParent: updateParent, emitEvent: emitEvent);
   void emailValueReset(
     String? value, {
@@ -511,26 +509,26 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
   }) =>
       passwordControl?.reset(
           value: value, updateParent: updateParent, emitEvent: emitEvent);
-  void password_confirmationValueReset(
+  void passwordConfirmationValueReset(
     String? value, {
     bool updateParent = true,
     bool emitEvent = true,
     bool removeFocus = false,
     bool? disabled,
   }) =>
-      password_confirmationControl?.reset(
+      passwordConfirmationControl?.reset(
           value: value, updateParent: updateParent, emitEvent: emitEvent);
-  void is_agreeValueReset(
+  void acceptLicenseValueReset(
     bool? value, {
     bool updateParent = true,
     bool emitEvent = true,
     bool removeFocus = false,
     bool? disabled,
   }) =>
-      is_agreeControl?.reset(
+      acceptLicenseControl?.reset(
           value: value, updateParent: updateParent, emitEvent: emitEvent);
-  FormControl<String>? get full_nameControl => containsFullName
-      ? form.control(full_nameControlPath()) as FormControl<String>?
+  FormControl<String>? get fullNameControl => containsFullName
+      ? form.control(fullNameControlPath()) as FormControl<String>?
       : null;
   FormControl<String>? get emailControl => containsEmail
       ? form.control(emailControlPath()) as FormControl<String>?
@@ -538,26 +536,26 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
   FormControl<String>? get passwordControl => containsPassword
       ? form.control(passwordControlPath()) as FormControl<String>?
       : null;
-  FormControl<String>? get password_confirmationControl =>
+  FormControl<String>? get passwordConfirmationControl =>
       containsPasswordConfirmation
-          ? form.control(password_confirmationControlPath())
+          ? form.control(passwordConfirmationControlPath())
               as FormControl<String>?
           : null;
-  FormControl<bool>? get is_agreeControl => containsIsAgree
-      ? form.control(is_agreeControlPath()) as FormControl<bool>?
+  FormControl<bool>? get acceptLicenseControl => containsAcceptLicense
+      ? form.control(acceptLicenseControlPath()) as FormControl<bool>?
       : null;
-  void full_nameSetDisabled(
+  void fullNameSetDisabled(
     bool disabled, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
     if (disabled) {
-      full_nameControl?.markAsDisabled(
+      fullNameControl?.markAsDisabled(
         updateParent: updateParent,
         emitEvent: emitEvent,
       );
     } else {
-      full_nameControl?.markAsEnabled(
+      fullNameControl?.markAsEnabled(
         updateParent: updateParent,
         emitEvent: emitEvent,
       );
@@ -600,36 +598,36 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
     }
   }
 
-  void password_confirmationSetDisabled(
+  void passwordConfirmationSetDisabled(
     bool disabled, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
     if (disabled) {
-      password_confirmationControl?.markAsDisabled(
+      passwordConfirmationControl?.markAsDisabled(
         updateParent: updateParent,
         emitEvent: emitEvent,
       );
     } else {
-      password_confirmationControl?.markAsEnabled(
+      passwordConfirmationControl?.markAsEnabled(
         updateParent: updateParent,
         emitEvent: emitEvent,
       );
     }
   }
 
-  void is_agreeSetDisabled(
+  void acceptLicenseSetDisabled(
     bool disabled, {
     bool updateParent = true,
     bool emitEvent = true,
   }) {
     if (disabled) {
-      is_agreeControl?.markAsDisabled(
+      acceptLicenseControl?.markAsDisabled(
         updateParent: updateParent,
         emitEvent: emitEvent,
       );
     } else {
-      is_agreeControl?.markAsEnabled(
+      acceptLicenseControl?.markAsEnabled(
         updateParent: updateParent,
         emitEvent: emitEvent,
       );
@@ -637,23 +635,23 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
   }
 
   @override
-  RegisterDTO get model {
+  RegisterForm get model {
     final currentForm = path == null ? form : form.control(path!);
 
     if (!currentForm.valid) {
       debugPrint(
-          '[${path ?? 'RegisterDTOForm'}]\n┗━ Avoid calling `model` on invalid form. Possible exceptions for non-nullable fields which should be guarded by `required` validator.');
+          '[${path ?? 'RegisterFormForm'}]\n┗━ Avoid calling `model` on invalid form. Possible exceptions for non-nullable fields which should be guarded by `required` validator.');
     }
-    return RegisterDTO(
-        full_name: _full_nameValue,
+    return RegisterForm(
+        fullName: _fullNameValue,
         email: _emailValue,
         password: _passwordValue,
-        password_confirmation: _password_confirmationValue,
-        is_agree: _is_agreeValue);
+        passwordConfirmation: _passwordConfirmationValue,
+        acceptLicense: _acceptLicenseValue);
   }
 
   void submit({
-    required void Function(RegisterDTO model) onValid,
+    required void Function(RegisterForm model) onValid,
     void Function()? onNotValid,
   }) {
     form.markAllAsTouched();
@@ -666,15 +664,15 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
 
   @override
   void updateValue(
-    RegisterDTO value, {
+    RegisterForm value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) =>
-      form.updateValue(RegisterDTOForm.formElements(value).rawValue,
+      form.updateValue(RegisterFormForm.formElements(value).rawValue,
           updateParent: updateParent, emitEvent: emitEvent);
   @override
   void reset({
-    RegisterDTO? value,
+    RegisterForm? value,
     bool updateParent = true,
     bool emitEvent = true,
   }) =>
@@ -684,38 +682,40 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
           emitEvent: emitEvent);
   String pathBuilder(String? pathItem) =>
       [path, pathItem].whereType<String>().join(".");
-  static FormGroup formElements(RegisterDTO? registerDTO) => FormGroup({
-        full_nameControlName: FormControl<String>(
-            value: registerDTO?.full_name,
-            validators: [],
+  static FormGroup formElements(RegisterForm? registerForm) => FormGroup({
+        fullNameControlName: FormControl<String>(
+            value: registerForm?.fullName,
+            validators: [RequiredValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         emailControlName: FormControl<String>(
-            value: registerDTO?.email,
-            validators: [],
+            value: registerForm?.email,
+            validators: [RequiredValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         passwordControlName: FormControl<String>(
-            value: registerDTO?.password,
-            validators: [],
+            value: registerForm?.password,
+            validators: [RequiredValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
-        password_confirmationControlName: FormControl<String>(
-            value: registerDTO?.password_confirmation,
-            validators: [],
+        passwordConfirmationControlName: FormControl<String>(
+            value: registerForm?.passwordConfirmation,
+            validators: [
+              MustMatchValidator('password_confirmation', 'password', true)
+            ],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
-        is_agreeControlName: FormControl<bool>(
-            value: registerDTO?.is_agree,
-            validators: [],
+        acceptLicenseControlName: FormControl<bool>(
+            value: registerForm?.acceptLicense,
+            validators: [RequiredTrueValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
@@ -727,8 +727,8 @@ class RegisterDTOForm implements FormModel<RegisterDTO> {
           disabled: false);
 }
 
-class ReactiveRegisterDTOFormArrayBuilder<T> extends StatelessWidget {
-  const ReactiveRegisterDTOFormArrayBuilder({
+class ReactiveRegisterFormFormArrayBuilder<T> extends StatelessWidget {
+  const ReactiveRegisterFormFormArrayBuilder({
     Key? key,
     this.control,
     this.formControl,
@@ -740,18 +740,18 @@ class ReactiveRegisterDTOFormArrayBuilder<T> extends StatelessWidget {
 
   final FormArray<T>? formControl;
 
-  final FormArray<T>? Function(RegisterDTOForm formModel)? control;
+  final FormArray<T>? Function(RegisterFormForm formModel)? control;
 
   final Widget Function(BuildContext context, List<Widget> itemList,
-      RegisterDTOForm formModel)? builder;
+      RegisterFormForm formModel)? builder;
 
   final Widget Function(
-          BuildContext context, int i, T? item, RegisterDTOForm formModel)
+          BuildContext context, int i, T? item, RegisterFormForm formModel)
       itemBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveRegisterDTOForm.of(context);
+    final formModel = ReactiveRegisterFormForm.of(context);
 
     if (formModel == null) {
       throw FormControlParentNotFoundException(this);
@@ -787,8 +787,8 @@ class ReactiveRegisterDTOFormArrayBuilder<T> extends StatelessWidget {
   }
 }
 
-class ReactiveRegisterDTOFormFormGroupArrayBuilder<V> extends StatelessWidget {
-  const ReactiveRegisterDTOFormFormGroupArrayBuilder({
+class ReactiveRegisterFormFormFormGroupArrayBuilder<V> extends StatelessWidget {
+  const ReactiveRegisterFormFormFormGroupArrayBuilder({
     Key? key,
     this.extended,
     this.getExtended,
@@ -801,18 +801,18 @@ class ReactiveRegisterDTOFormFormGroupArrayBuilder<V> extends StatelessWidget {
   final ExtendedControl<List<Map<String, Object?>?>, List<V>>? extended;
 
   final ExtendedControl<List<Map<String, Object?>?>, List<V>> Function(
-      RegisterDTOForm formModel)? getExtended;
+      RegisterFormForm formModel)? getExtended;
 
   final Widget Function(BuildContext context, List<Widget> itemList,
-      RegisterDTOForm formModel)? builder;
+      RegisterFormForm formModel)? builder;
 
   final Widget Function(
-          BuildContext context, int i, V? item, RegisterDTOForm formModel)
+          BuildContext context, int i, V? item, RegisterFormForm formModel)
       itemBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveRegisterDTOForm.of(context);
+    final formModel = ReactiveRegisterFormForm.of(context);
 
     if (formModel == null) {
       throw FormControlParentNotFoundException(this);
