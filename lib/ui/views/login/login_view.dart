@@ -15,9 +15,8 @@ class LoginView extends StackedView<LoginViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+        padding: const EdgeInsets.all(15),
         child: LoginFormFormBuilder(builder: (x, f, c) {
           return Column(
             children: [
