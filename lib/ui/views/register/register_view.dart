@@ -55,7 +55,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                                 validationMessages: {
                                   ValidationMessage.required: (_) => 'Required',
                                 },
-                                textInputAction: TextInputAction.done,
+                                textInputAction: TextInputAction.next,
                                 decoration: const InputDecoration(
                                   labelText: "Fullname",
                                   helperText: '',
@@ -69,6 +69,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                                 validationMessages: {
                                   ValidationMessage.required: (_) => 'Required'
                                 },
+                                textInputAction: TextInputAction.next,
                                 decoration: const InputDecoration(
                                   labelText: 'Email',
                                   helperText: '',
@@ -79,11 +80,11 @@ class RegisterView extends StackedView<RegisterViewModel> {
                               const SizedBox(height: 8.0),
                               ReactiveTextField<String>(
                                 formControl: f.passwordControl,
-                                //   obscureText: true,
+                                obscureText: true,
                                 validationMessages: {
                                   ValidationMessage.required: (_) => 'Required'
                                 },
-                                textInputAction: TextInputAction.done,
+                                textInputAction: TextInputAction.next,
                                 decoration: const InputDecoration(
                                   labelText: "Password",
                                   helperText: '',
@@ -94,14 +95,13 @@ class RegisterView extends StackedView<RegisterViewModel> {
                               const SizedBox(height: 8.0),
                               ReactiveTextField<String>(
                                 formControl: f.passwordConfirmationControl,
-                                //   obscureText: true,
-
+                                obscureText: true,
                                 validationMessages: {
                                   ValidationMessage.required: (_) => 'Required',
                                   ValidationMessage.mustMatch: (_) =>
-                                      "Not match",
+                                      "Password must match",
                                 },
-                                textInputAction: TextInputAction.done,
+                                textInputAction: TextInputAction.next,
                                 decoration: const InputDecoration(
                                   labelText: "Confirm Password",
                                   helperText: '',
@@ -112,6 +112,9 @@ class RegisterView extends StackedView<RegisterViewModel> {
                               Row(
                                 children: [
                                   ReactiveCheckbox(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
                                       formControl: f.acceptLicenseControl,
                                       fillColor: const MaterialStatePropertyAll(
                                         kcPrimaryColor,
