@@ -15,34 +15,56 @@ class RequiredTrueValidator extends Validator<dynamic> {
   }
 }
 
+class MustMatchValidator extends Validator<dynamic> {
+  final String controlName;
+  final String matchingControlName;
+  final bool markAsDirty;
+
+  /// Constructs an instance of [MustMatchValidator]
+  const MustMatchValidator(
+      this.controlName, this.matchingControlName, this.markAsDirty)
+      : super();
+
+  @override
+  Map<String, dynamic>? validate(AbstractControl<dynamic> control) {
+    final error = {ValidationMessage.mustMatch: true};
+
+    if (control is! FormGroup) {
+      return error;
+    }
+
+    final formControl = control.control(controlName);
+    final matchingFormControl = control.control(matchingControlName);
+
+    if (formControl.value != matchingFormControl.value) {
+      matchingFormControl.setErrors(error, markAsDirty: markAsDirty);
+      matchingFormControl.markAsTouched();
+    } else {
+      matchingFormControl.removeError(ValidationMessage.mustMatch);
+    }
+
+    return null;
+  }
+}
+
 @freezed
 @Rf()
 class RegisterForm with _$RegisterForm {
   // ignore: invalid_annotation_target
-  @JsonSerializable(
-    fieldRename: FieldRename.snake,
-  )
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory RegisterForm({
+    @RfControl(validators: [RequiredValidator()]) String? fullName,
+    @RfControl(validators: [RequiredValidator()]) String? email,
+    @RfControl(validators: [RequiredValidator()]) String? password,
     @RfControl(validators: [
-      RequiredValidator(),
-    ])
-    String? fullName,
-    @RfControl(validators: [
-      RequiredValidator(),
-    ])
-    String? email,
-    @RfControl(validators: [
-      RequiredValidator(),
-    ])
-    String? password,
-    @RfControl(validators: [
-      MustMatchValidator('password_confirmation', 'password', true)
+      MustMatchValidator(
+        'password',
+        'passwordConfirmation',
+        false,
+      )
     ])
     String? passwordConfirmation,
-    @RfControl(validators: [
-      RequiredTrueValidator(),
-    ])
-    bool? acceptLicense,
+    @RfControl(validators: [RequiredTrueValidator()]) bool? acceptLicense,
   }) = _RegisterForm;
 
   factory RegisterForm.fromJson(Map<String, dynamic> json) =>
