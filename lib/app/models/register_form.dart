@@ -53,7 +53,8 @@ class RegisterForm with _$RegisterForm {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory RegisterForm({
     @RfControl(validators: [RequiredValidator()]) String? fullName,
-    @RfControl(validators: [RequiredValidator()]) String? email,
+    @RfControl(validators: [RequiredValidator(), EmailValidator()])
+    String? email,
     @RfControl(validators: [
       RequiredValidator(),
     ])

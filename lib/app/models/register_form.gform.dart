@@ -692,7 +692,7 @@ class RegisterFormForm implements FormModel<RegisterForm> {
             touched: false),
         emailControlName: FormControl<String>(
             value: registerForm?.email,
-            validators: [RequiredValidator()],
+            validators: [RequiredValidator(), EmailValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,

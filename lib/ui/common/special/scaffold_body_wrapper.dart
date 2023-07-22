@@ -60,7 +60,7 @@ class ScaffoldBodyWrapper extends StatelessWidget {
                     : const AlwaysScrollableScrollPhysics(),
                 padding: isFullWidth
                     ? padding
-                    : Dimens.sliverPadding800(constraints),
+                    : Dimens.sliverPadding1000(constraints),
                 child: builder(context, constraints));
       }
 

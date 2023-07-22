@@ -31,8 +31,9 @@ class RegisterView extends StackedView<RegisterViewModel> {
                   children: [
                     Expanded(
                       child: Container(
-                        height: 800,
+                        height: size.maxHeight * 0.8,
                         width: double.infinity,
+                        constraints: const BoxConstraints(minHeight: 600),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(25)),
                             image: DecorationImage(

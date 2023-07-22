@@ -33,8 +33,9 @@ class LoginView extends StackedView<LoginViewModel> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 600,
+                      height: size.maxHeight * 0.8,
                       width: double.infinity,
+                      constraints: const BoxConstraints(minHeight: 600),
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                           image: DecorationImage(

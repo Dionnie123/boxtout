@@ -22,7 +22,7 @@ RegisterForm _$RegisterFormFromJson(Map<String, dynamic> json) {
 mixin _$RegisterForm {
   @RfControl(validators: [RequiredValidator()])
   String? get fullName => throw _privateConstructorUsedError;
-  @RfControl(validators: [RequiredValidator()])
+  @RfControl(validators: [RequiredValidator(), EmailValidator()])
   String? get email => throw _privateConstructorUsedError;
   @RfControl(validators: [RequiredValidator()])
   String? get password => throw _privateConstructorUsedError;
@@ -48,7 +48,8 @@ abstract class $RegisterFormCopyWith<$Res> {
   @useResult
   $Res call(
       {@RfControl(validators: [RequiredValidator()]) String? fullName,
-      @RfControl(validators: [RequiredValidator()]) String? email,
+      @RfControl(validators: [RequiredValidator(), EmailValidator()])
+      String? email,
       @RfControl(validators: [RequiredValidator()]) String? password,
       @RfControl(validators: [
         RequiredValidator(),
@@ -112,7 +113,8 @@ abstract class _$$_RegisterFormCopyWith<$Res>
   @useResult
   $Res call(
       {@RfControl(validators: [RequiredValidator()]) String? fullName,
-      @RfControl(validators: [RequiredValidator()]) String? email,
+      @RfControl(validators: [RequiredValidator(), EmailValidator()])
+      String? email,
       @RfControl(validators: [RequiredValidator()]) String? password,
       @RfControl(validators: [
         RequiredValidator(),
@@ -170,7 +172,8 @@ class __$$_RegisterFormCopyWithImpl<$Res>
 class _$_RegisterForm implements _RegisterForm {
   _$_RegisterForm(
       {@RfControl(validators: [RequiredValidator()]) this.fullName,
-      @RfControl(validators: [RequiredValidator()]) this.email,
+      @RfControl(validators: [RequiredValidator(), EmailValidator()])
+      this.email,
       @RfControl(validators: [RequiredValidator()]) this.password,
       @RfControl(validators: [
         RequiredValidator(),
@@ -186,7 +189,7 @@ class _$_RegisterForm implements _RegisterForm {
   @RfControl(validators: [RequiredValidator()])
   final String? fullName;
   @override
-  @RfControl(validators: [RequiredValidator()])
+  @RfControl(validators: [RequiredValidator(), EmailValidator()])
   final String? email;
   @override
   @RfControl(validators: [RequiredValidator()])
@@ -244,7 +247,8 @@ class _$_RegisterForm implements _RegisterForm {
 abstract class _RegisterForm implements RegisterForm {
   factory _RegisterForm(
       {@RfControl(validators: [RequiredValidator()]) final String? fullName,
-      @RfControl(validators: [RequiredValidator()]) final String? email,
+      @RfControl(validators: [RequiredValidator(), EmailValidator()])
+      final String? email,
       @RfControl(validators: [RequiredValidator()]) final String? password,
       @RfControl(validators: [
         RequiredValidator(),
@@ -261,7 +265,7 @@ abstract class _RegisterForm implements RegisterForm {
   @RfControl(validators: [RequiredValidator()])
   String? get fullName;
   @override
-  @RfControl(validators: [RequiredValidator()])
+  @RfControl(validators: [RequiredValidator(), EmailValidator()])
   String? get email;
   @override
   @RfControl(validators: [RequiredValidator()])
