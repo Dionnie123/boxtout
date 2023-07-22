@@ -31,7 +31,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                   children: [
                     Expanded(
                       child: Container(
-                        height: 600,
+                        height: 800,
                         width: double.infinity,
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -116,7 +116,9 @@ class RegisterView extends StackedView<RegisterViewModel> {
                                       fillColor: const MaterialStatePropertyAll(
                                         kcPrimaryColor,
                                       )),
-                                  const Text("Accept Privacy and Policy")
+                                  const Expanded(
+                                      child: Text(
+                                          "I accept terms and conditions & privacy policy"))
                                 ],
                               ),
                               verticalSpaceMedium,

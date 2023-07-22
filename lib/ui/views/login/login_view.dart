@@ -95,7 +95,10 @@ class LoginView extends StackedView<LoginViewModel> {
                                   locator<NavigationService>()
                                       .navigateToRegisterView();
                                 },
-                                child: const Text("REGISTER HERE"))
+                                child: const Text(
+                                  "REGISTER HERE",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ))
                           ],
                         ),
                       );

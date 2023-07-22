@@ -26,10 +26,17 @@ class MainApp extends StatelessWidget {
 
     return MaterialApp(
       theme: ThemeData(
+          textButtonTheme: const TextButtonThemeData(
+              style: ButtonStyle(
+                  foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
             brightness: Brightness.dark,
           ),
-          useMaterial3: true,
+          //useMaterial3: true,
           brightness: Brightness.dark,
           fontFamily: GoogleFonts.nunito().fontFamily,
           inputDecorationTheme: InputDecorationTheme(
@@ -41,7 +48,7 @@ class MainApp extends StatelessWidget {
               borderSide: const BorderSide(color: kcLightGreyColor),
             ),
             errorBorder: circularBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.pink),
+              borderSide: const BorderSide(color: Colors.red),
             ),
             focusedBorder: circularBorder.copyWith(
               borderSide: const BorderSide(color: kcPrimaryColor),
