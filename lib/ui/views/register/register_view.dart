@@ -79,7 +79,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                               const SizedBox(height: 8.0),
                               ReactiveTextField<String>(
                                 formControl: f.passwordControl,
-                                obscureText: true,
+                                //   obscureText: true,
                                 validationMessages: {
                                   ValidationMessage.required: (_) => 'Required'
                                 },
@@ -94,10 +94,12 @@ class RegisterView extends StackedView<RegisterViewModel> {
                               const SizedBox(height: 8.0),
                               ReactiveTextField<String>(
                                 formControl: f.passwordConfirmationControl,
-                                obscureText: true,
+                                //   obscureText: true,
+
                                 validationMessages: {
                                   ValidationMessage.required: (_) => 'Required',
-                                  ValidationMessage.mustMatch: (c) => "$c",
+                                  ValidationMessage.mustMatch: (_) =>
+                                      "Not match",
                                 },
                                 textInputAction: TextInputAction.done,
                                 decoration: const InputDecoration(
@@ -110,8 +112,10 @@ class RegisterView extends StackedView<RegisterViewModel> {
                               Row(
                                 children: [
                                   ReactiveCheckbox(
-                                    formControl: f.acceptLicenseControl,
-                                  ),
+                                      formControl: f.acceptLicenseControl,
+                                      fillColor: const MaterialStatePropertyAll(
+                                        kcPrimaryColor,
+                                      )),
                                   const Text("Accept Privacy and Policy")
                                 ],
                               ),

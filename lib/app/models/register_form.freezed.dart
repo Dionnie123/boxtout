@@ -27,7 +27,8 @@ mixin _$RegisterForm {
   @RfControl(validators: [RequiredValidator()])
   String? get password => throw _privateConstructorUsedError;
   @RfControl(validators: [
-    MustMatchValidator('password', 'passwordConfirmation', false)
+    RequiredValidator(),
+    MustMatchValidatorZ('password', 'passwordConfirmation', true)
   ])
   String? get passwordConfirmation => throw _privateConstructorUsedError;
   @RfControl(validators: [RequiredTrueValidator()])
@@ -50,7 +51,8 @@ abstract class $RegisterFormCopyWith<$Res> {
       @RfControl(validators: [RequiredValidator()]) String? email,
       @RfControl(validators: [RequiredValidator()]) String? password,
       @RfControl(validators: [
-        MustMatchValidator('password', 'passwordConfirmation', false)
+        RequiredValidator(),
+        MustMatchValidatorZ('password', 'passwordConfirmation', true)
       ])
       String? passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()]) bool? acceptLicense});
@@ -113,7 +115,8 @@ abstract class _$$_RegisterFormCopyWith<$Res>
       @RfControl(validators: [RequiredValidator()]) String? email,
       @RfControl(validators: [RequiredValidator()]) String? password,
       @RfControl(validators: [
-        MustMatchValidator('password', 'passwordConfirmation', false)
+        RequiredValidator(),
+        MustMatchValidatorZ('password', 'passwordConfirmation', true)
       ])
       String? passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()]) bool? acceptLicense});
@@ -170,7 +173,8 @@ class _$_RegisterForm implements _RegisterForm {
       @RfControl(validators: [RequiredValidator()]) this.email,
       @RfControl(validators: [RequiredValidator()]) this.password,
       @RfControl(validators: [
-        MustMatchValidator('password', 'passwordConfirmation', false)
+        RequiredValidator(),
+        MustMatchValidatorZ('password', 'passwordConfirmation', true)
       ])
       this.passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()]) this.acceptLicense});
@@ -189,7 +193,8 @@ class _$_RegisterForm implements _RegisterForm {
   final String? password;
   @override
   @RfControl(validators: [
-    MustMatchValidator('password', 'passwordConfirmation', false)
+    RequiredValidator(),
+    MustMatchValidatorZ('password', 'passwordConfirmation', true)
   ])
   final String? passwordConfirmation;
   @override
@@ -242,7 +247,8 @@ abstract class _RegisterForm implements RegisterForm {
       @RfControl(validators: [RequiredValidator()]) final String? email,
       @RfControl(validators: [RequiredValidator()]) final String? password,
       @RfControl(validators: [
-        MustMatchValidator('password', 'passwordConfirmation', false)
+        RequiredValidator(),
+        MustMatchValidatorZ('password', 'passwordConfirmation', true)
       ])
       final String? passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()])
@@ -262,7 +268,8 @@ abstract class _RegisterForm implements RegisterForm {
   String? get password;
   @override
   @RfControl(validators: [
-    MustMatchValidator('password', 'passwordConfirmation', false)
+    RequiredValidator(),
+    MustMatchValidatorZ('password', 'passwordConfirmation', true)
   ])
   String? get passwordConfirmation;
   @override

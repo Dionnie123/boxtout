@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
           ),
           useMaterial3: true,
           brightness: Brightness.dark,
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: GoogleFonts.nunito().fontFamily,
           inputDecorationTheme: InputDecorationTheme(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -41,8 +41,7 @@ class MainApp extends StatelessWidget {
               borderSide: const BorderSide(color: kcLightGreyColor),
             ),
             errorBorder: circularBorder.copyWith(
-              borderSide:
-                  const BorderSide(color: Color.fromARGB(255, 255, 17, 0)),
+              borderSide: const BorderSide(color: Colors.pink),
             ),
             focusedBorder: circularBorder.copyWith(
               borderSide: const BorderSide(color: kcPrimaryColor),

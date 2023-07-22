@@ -707,7 +707,8 @@ class RegisterFormForm implements FormModel<RegisterForm> {
         passwordConfirmationControlName: FormControl<String>(
             value: registerForm?.passwordConfirmation,
             validators: [
-              MustMatchValidator('password', 'passwordConfirmation', false)
+              RequiredValidator(),
+              MustMatchValidatorZ('password', 'passwordConfirmation', true)
             ],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,

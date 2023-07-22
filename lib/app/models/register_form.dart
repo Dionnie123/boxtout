@@ -15,34 +15,33 @@ class RequiredTrueValidator extends Validator<dynamic> {
   }
 }
 
-class MustMatchValidator extends Validator<dynamic> {
+class MustMatchValidatorZ extends Validator<dynamic> {
   final String controlName;
   final String matchingControlName;
   final bool markAsDirty;
-
-  /// Constructs an instance of [MustMatchValidator]
-  const MustMatchValidator(
+  const MustMatchValidatorZ(
       this.controlName, this.matchingControlName, this.markAsDirty)
       : super();
 
   @override
   Map<String, dynamic>? validate(AbstractControl<dynamic> control) {
-    final error = {ValidationMessage.mustMatch: true};
-
-    if (control is! FormGroup) {
-      return error;
+    try {
+      final error = {ValidationMessage.mustMatch: true};
+      var form = <dynamic, dynamic>{};
+      control.parent?.valueChanges.listen((event) {
+        if (event != null) {
+          form = event as Map;
+          if (form[controlName] != form[matchingControlName]) {
+            control.setErrors(error, markAsDirty: markAsDirty);
+            control.markAsTouched();
+          } else {
+            control.removeError(ValidationMessage.mustMatch);
+          }
+        }
+      });
+    } catch (e) {
+      return null;
     }
-
-    final formControl = control.control(controlName);
-    final matchingFormControl = control.control(matchingControlName);
-
-    if (formControl.value != matchingFormControl.value) {
-      matchingFormControl.setErrors(error, markAsDirty: markAsDirty);
-      matchingFormControl.markAsTouched();
-    } else {
-      matchingFormControl.removeError(ValidationMessage.mustMatch);
-    }
-
     return null;
   }
 }
@@ -55,12 +54,16 @@ class RegisterForm with _$RegisterForm {
   factory RegisterForm({
     @RfControl(validators: [RequiredValidator()]) String? fullName,
     @RfControl(validators: [RequiredValidator()]) String? email,
-    @RfControl(validators: [RequiredValidator()]) String? password,
     @RfControl(validators: [
-      MustMatchValidator(
+      RequiredValidator(),
+    ])
+    String? password,
+    @RfControl(validators: [
+      RequiredValidator(),
+      MustMatchValidatorZ(
         'password',
         'passwordConfirmation',
-        false,
+        true,
       )
     ])
     String? passwordConfirmation,
