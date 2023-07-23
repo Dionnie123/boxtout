@@ -1,7 +1,10 @@
+import 'package:boxtout/app/app.locator.dart';
+import 'package:boxtout/app/app.router.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import 'home_viewmodel.dart';
 
@@ -26,6 +29,16 @@ class HomeView extends StackedView<HomeViewModel> {
                 verticalSpaceLarge,
                 Column(
                   children: [
+                    TextButton(
+                        onPressed: () {
+                          locator<NavigationService>().navigateToLoginView();
+                        },
+                        child: const Text("LOGIN")),
+                    TextButton(
+                        onPressed: () {
+                          locator<NavigationService>().navigateToRegisterView();
+                        },
+                        child: const Text("REGISTER")),
                     const Text(
                       'Hello, STACKED!',
                       style: TextStyle(

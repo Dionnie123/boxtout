@@ -37,16 +37,18 @@ class LoginView extends StackedView<LoginViewModel> {
                       width: double.infinity,
                       constraints: const BoxConstraints(minHeight: 600),
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(25),
+                              bottomLeft: Radius.circular(25)),
                           image: DecorationImage(
-                              image: AssetImage('login_bg.jpg'),
+                              image: AssetImage('assets/login_bg.jpg'),
                               fit: BoxFit.cover)),
                     ),
                   ),
                   Expanded(
                     child: LoginFormFormBuilder(builder: (x, f, c) {
                       return Padding(
-                        padding: const EdgeInsets.all(25.0),
+                        padding: const EdgeInsets.all(30.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -93,6 +95,8 @@ class LoginView extends StackedView<LoginViewModel> {
                             const SizedBox(height: 8.0),
                             TextButton(
                                 onPressed: () {
+                                  f.form.reset();
+
                                   locator<NavigationService>()
                                       .navigateToRegisterView();
                                 },
