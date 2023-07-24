@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'register_form.dart';
+part of 'register_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RegisterForm _$$_RegisterFormFromJson(Map<String, dynamic> json) =>
-    _$_RegisterForm(
+_$_RegisterDto _$$_RegisterDtoFromJson(Map<String, dynamic> json) =>
+    _$_RegisterDto(
       fullName: json['full_name'] as String?,
       email: json['email'] as String?,
       password: json['password'] as String?,
@@ -15,7 +15,7 @@ _$_RegisterForm _$$_RegisterFormFromJson(Map<String, dynamic> json) =>
       acceptLicense: json['accept_license'] as bool?,
     );
 
-Map<String, dynamic> _$$_RegisterFormToJson(_$_RegisterForm instance) =>
+Map<String, dynamic> _$$_RegisterDtoToJson(_$_RegisterDto instance) =>
     <String, dynamic>{
       'full_name': instance.fullName,
       'email': instance.email,

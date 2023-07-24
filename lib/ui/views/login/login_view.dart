@@ -1,7 +1,7 @@
 import 'package:box_ui/box_ui.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
-import 'package:boxtout/app/models/login_form.dart';
+import 'package:boxtout/app/models/login_dto.dart';
 import 'package:boxtout/ui/common/dimensions.dart';
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
@@ -21,7 +21,7 @@ class LoginView extends StackedView<LoginViewModel> {
     LoginViewModel viewModel,
     Widget? child,
   ) {
-    return LoginFormFormBuilder(builder: (contect, formModel, _) {
+    return LoginDtoFormBuilder(builder: (contect, formModel, _) {
       Widget logo() {
         return Card(
             margin: EdgeInsets.zero,
@@ -74,7 +74,7 @@ class LoginView extends StackedView<LoginViewModel> {
               ),
             ),
             const SizedBox(height: 8.0),
-            ReactiveLoginFormFormConsumer(builder: (context, formModel, child) {
+            ReactiveLoginDtoFormConsumer(builder: (context, formModel, child) {
               return BoxButton(
                 title: 'SIGN IN',
                 disabled: formModel.form.hasErrors ? true : false,

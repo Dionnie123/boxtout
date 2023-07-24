@@ -3,14 +3,14 @@
 // ignore_for_file: type=lint
 // ignore_for_file:
 
-part of 'register_form.dart';
+part of 'register_dto.dart';
 
 // **************************************************************************
 // ReactiveFormsGenerator
 // **************************************************************************
 
-class ReactiveRegisterFormFormConsumer extends StatelessWidget {
-  const ReactiveRegisterFormFormConsumer({
+class ReactiveRegisterDtoFormConsumer extends StatelessWidget {
+  const ReactiveRegisterDtoFormConsumer({
     Key? key,
     required this.builder,
     this.child,
@@ -19,21 +19,21 @@ class ReactiveRegisterFormFormConsumer extends StatelessWidget {
   final Widget? child;
 
   final Widget Function(
-      BuildContext context, RegisterFormForm formModel, Widget? child) builder;
+      BuildContext context, RegisterDtoForm formModel, Widget? child) builder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveRegisterFormForm.of(context);
+    final formModel = ReactiveRegisterDtoForm.of(context);
 
-    if (formModel is! RegisterFormForm) {
+    if (formModel is! RegisterDtoForm) {
       throw FormControlParentNotFoundException(this);
     }
     return builder(context, formModel, child);
   }
 }
 
-class RegisterFormFormInheritedStreamer extends InheritedStreamer<dynamic> {
-  const RegisterFormFormInheritedStreamer({
+class RegisterDtoFormInheritedStreamer extends InheritedStreamer<dynamic> {
+  const RegisterDtoFormInheritedStreamer({
     Key? key,
     required this.form,
     required Stream<dynamic> stream,
@@ -44,11 +44,11 @@ class RegisterFormFormInheritedStreamer extends InheritedStreamer<dynamic> {
           key: key,
         );
 
-  final RegisterFormForm form;
+  final RegisterDtoForm form;
 }
 
-class ReactiveRegisterFormForm extends StatelessWidget {
-  const ReactiveRegisterFormForm({
+class ReactiveRegisterDtoForm extends StatelessWidget {
+  const ReactiveRegisterDtoForm({
     Key? key,
     required this.form,
     required this.child,
@@ -57,31 +57,31 @@ class ReactiveRegisterFormForm extends StatelessWidget {
 
   final Widget child;
 
-  final RegisterFormForm form;
+  final RegisterDtoForm form;
 
   final WillPopCallback? onWillPop;
 
-  static RegisterFormForm? of(
+  static RegisterDtoForm? of(
     BuildContext context, {
     bool listen = true,
   }) {
     if (listen) {
       return context
           .dependOnInheritedWidgetOfExactType<
-              RegisterFormFormInheritedStreamer>()
+              RegisterDtoFormInheritedStreamer>()
           ?.form;
     }
 
     final element = context.getElementForInheritedWidgetOfExactType<
-        RegisterFormFormInheritedStreamer>();
+        RegisterDtoFormInheritedStreamer>();
     return element == null
         ? null
-        : (element.widget as RegisterFormFormInheritedStreamer).form;
+        : (element.widget as RegisterDtoFormInheritedStreamer).form;
   }
 
   @override
   Widget build(BuildContext context) {
-    return RegisterFormFormInheritedStreamer(
+    return RegisterDtoFormInheritedStreamer(
       form: form,
       stream: form.form.statusChanged,
       child: WillPopScope(
@@ -92,8 +92,8 @@ class ReactiveRegisterFormForm extends StatelessWidget {
   }
 }
 
-class RegisterFormFormBuilder extends StatefulWidget {
-  const RegisterFormFormBuilder({
+class RegisterDtoFormBuilder extends StatefulWidget {
+  const RegisterDtoFormBuilder({
     Key? key,
     this.model,
     this.child,
@@ -102,30 +102,29 @@ class RegisterFormFormBuilder extends StatefulWidget {
     this.initState,
   }) : super(key: key);
 
-  final RegisterForm? model;
+  final RegisterDto? model;
 
   final Widget? child;
 
   final WillPopCallback? onWillPop;
 
   final Widget Function(
-      BuildContext context, RegisterFormForm formModel, Widget? child) builder;
+      BuildContext context, RegisterDtoForm formModel, Widget? child) builder;
 
-  final void Function(BuildContext context, RegisterFormForm formModel)?
+  final void Function(BuildContext context, RegisterDtoForm formModel)?
       initState;
 
   @override
-  _RegisterFormFormBuilderState createState() =>
-      _RegisterFormFormBuilderState();
+  _RegisterDtoFormBuilderState createState() => _RegisterDtoFormBuilderState();
 }
 
-class _RegisterFormFormBuilderState extends State<RegisterFormFormBuilder> {
-  late RegisterFormForm _formModel;
+class _RegisterDtoFormBuilderState extends State<RegisterDtoFormBuilder> {
+  late RegisterDtoForm _formModel;
 
   @override
   void initState() {
     _formModel =
-        RegisterFormForm(RegisterFormForm.formElements(widget.model), null);
+        RegisterDtoForm(RegisterDtoForm.formElements(widget.model), null);
 
     if (_formModel.form.disabled) {
       _formModel.form.markAsDisabled();
@@ -137,10 +136,10 @@ class _RegisterFormFormBuilderState extends State<RegisterFormFormBuilder> {
   }
 
   @override
-  void didUpdateWidget(covariant RegisterFormFormBuilder oldWidget) {
+  void didUpdateWidget(covariant RegisterDtoFormBuilder oldWidget) {
     if (widget.model != oldWidget.model) {
       _formModel =
-          RegisterFormForm(RegisterFormForm.formElements(widget.model), null);
+          RegisterDtoForm(RegisterDtoForm.formElements(widget.model), null);
 
       if (_formModel.form.disabled) {
         _formModel.form.markAsDisabled();
@@ -160,7 +159,7 @@ class _RegisterFormFormBuilderState extends State<RegisterFormFormBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return ReactiveRegisterFormForm(
+    return ReactiveRegisterDtoForm(
       key: ObjectKey(_formModel),
       form: _formModel,
       onWillPop: widget.onWillPop,
@@ -175,8 +174,8 @@ class _RegisterFormFormBuilderState extends State<RegisterFormFormBuilder> {
   }
 }
 
-class RegisterFormForm implements FormModel<RegisterForm> {
-  RegisterFormForm(
+class RegisterDtoForm implements FormModel<RegisterDto> {
+  RegisterDtoForm(
     this.form,
     this.path,
   );
@@ -635,14 +634,14 @@ class RegisterFormForm implements FormModel<RegisterForm> {
   }
 
   @override
-  RegisterForm get model {
+  RegisterDto get model {
     final currentForm = path == null ? form : form.control(path!);
 
     if (!currentForm.valid) {
       debugPrint(
-          '[${path ?? 'RegisterFormForm'}]\n┗━ Avoid calling `model` on invalid form. Possible exceptions for non-nullable fields which should be guarded by `required` validator.');
+          '[${path ?? 'RegisterDtoForm'}]\n┗━ Avoid calling `model` on invalid form. Possible exceptions for non-nullable fields which should be guarded by `required` validator.');
     }
-    return RegisterForm(
+    return RegisterDto(
         fullName: _fullNameValue,
         email: _emailValue,
         password: _passwordValue,
@@ -651,7 +650,7 @@ class RegisterFormForm implements FormModel<RegisterForm> {
   }
 
   void submit({
-    required void Function(RegisterForm model) onValid,
+    required void Function(RegisterDto model) onValid,
     void Function()? onNotValid,
   }) {
     form.markAllAsTouched();
@@ -664,15 +663,15 @@ class RegisterFormForm implements FormModel<RegisterForm> {
 
   @override
   void updateValue(
-    RegisterForm value, {
+    RegisterDto value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) =>
-      form.updateValue(RegisterFormForm.formElements(value).rawValue,
+      form.updateValue(RegisterDtoForm.formElements(value).rawValue,
           updateParent: updateParent, emitEvent: emitEvent);
   @override
   void reset({
-    RegisterForm? value,
+    RegisterDto? value,
     bool updateParent = true,
     bool emitEvent = true,
   }) =>
@@ -682,40 +681,40 @@ class RegisterFormForm implements FormModel<RegisterForm> {
           emitEvent: emitEvent);
   String pathBuilder(String? pathItem) =>
       [path, pathItem].whereType<String>().join(".");
-  static FormGroup formElements(RegisterForm? registerForm) => FormGroup({
+  static FormGroup formElements(RegisterDto? registerDto) => FormGroup({
         fullNameControlName: FormControl<String>(
-            value: registerForm?.fullName,
+            value: registerDto?.fullName,
             validators: [RequiredValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         emailControlName: FormControl<String>(
-            value: registerForm?.email,
+            value: registerDto?.email,
             validators: [RequiredValidator(), EmailValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         passwordControlName: FormControl<String>(
-            value: registerForm?.password,
+            value: registerDto?.password,
             validators: [RequiredValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         passwordConfirmationControlName: FormControl<String>(
-            value: registerForm?.passwordConfirmation,
+            value: registerDto?.passwordConfirmation,
             validators: [
               RequiredValidator(),
-              MustMatchValidatorZ('password', 'passwordConfirmation', true)
+              MustMatchValidatorCustom('password', 'passwordConfirmation', true)
             ],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         acceptLicenseControlName: FormControl<bool>(
-            value: registerForm?.acceptLicense,
+            value: registerDto?.acceptLicense,
             validators: [RequiredTrueValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
@@ -728,8 +727,8 @@ class RegisterFormForm implements FormModel<RegisterForm> {
           disabled: false);
 }
 
-class ReactiveRegisterFormFormArrayBuilder<T> extends StatelessWidget {
-  const ReactiveRegisterFormFormArrayBuilder({
+class ReactiveRegisterDtoFormArrayBuilder<T> extends StatelessWidget {
+  const ReactiveRegisterDtoFormArrayBuilder({
     Key? key,
     this.control,
     this.formControl,
@@ -741,18 +740,18 @@ class ReactiveRegisterFormFormArrayBuilder<T> extends StatelessWidget {
 
   final FormArray<T>? formControl;
 
-  final FormArray<T>? Function(RegisterFormForm formModel)? control;
+  final FormArray<T>? Function(RegisterDtoForm formModel)? control;
 
   final Widget Function(BuildContext context, List<Widget> itemList,
-      RegisterFormForm formModel)? builder;
+      RegisterDtoForm formModel)? builder;
 
   final Widget Function(
-          BuildContext context, int i, T? item, RegisterFormForm formModel)
+          BuildContext context, int i, T? item, RegisterDtoForm formModel)
       itemBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveRegisterFormForm.of(context);
+    final formModel = ReactiveRegisterDtoForm.of(context);
 
     if (formModel == null) {
       throw FormControlParentNotFoundException(this);
@@ -788,8 +787,8 @@ class ReactiveRegisterFormFormArrayBuilder<T> extends StatelessWidget {
   }
 }
 
-class ReactiveRegisterFormFormFormGroupArrayBuilder<V> extends StatelessWidget {
-  const ReactiveRegisterFormFormFormGroupArrayBuilder({
+class ReactiveRegisterDtoFormFormGroupArrayBuilder<V> extends StatelessWidget {
+  const ReactiveRegisterDtoFormFormGroupArrayBuilder({
     Key? key,
     this.extended,
     this.getExtended,
@@ -802,18 +801,18 @@ class ReactiveRegisterFormFormFormGroupArrayBuilder<V> extends StatelessWidget {
   final ExtendedControl<List<Map<String, Object?>?>, List<V>>? extended;
 
   final ExtendedControl<List<Map<String, Object?>?>, List<V>> Function(
-      RegisterFormForm formModel)? getExtended;
+      RegisterDtoForm formModel)? getExtended;
 
   final Widget Function(BuildContext context, List<Widget> itemList,
-      RegisterFormForm formModel)? builder;
+      RegisterDtoForm formModel)? builder;
 
   final Widget Function(
-          BuildContext context, int i, V? item, RegisterFormForm formModel)
+          BuildContext context, int i, V? item, RegisterDtoForm formModel)
       itemBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveRegisterFormForm.of(context);
+    final formModel = ReactiveRegisterDtoForm.of(context);
 
     if (formModel == null) {
       throw FormControlParentNotFoundException(this);

@@ -1,17 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reactive_forms_annotations/reactive_forms_annotations.dart';
-part 'login_form.freezed.dart';
-part 'login_form.g.dart';
-part 'login_form.gform.dart';
+
+part 'login_dto.freezed.dart';
+part 'login_dto.g.dart';
+part 'login_dto.gform.dart';
 
 @freezed
 @Rf()
-class LoginForm with _$LoginForm {
+class LoginDto with _$LoginDto {
   // ignore: invalid_annotation_target
   @JsonSerializable(
     fieldRename: FieldRename.snake,
   )
-  factory LoginForm({
+  factory LoginDto({
     @RfControl(validators: [
       RequiredValidator(),
       EmailValidator(),
@@ -21,8 +22,8 @@ class LoginForm with _$LoginForm {
       RequiredValidator(),
     ])
     String? password,
-  }) = _LoginForm;
+  }) = _LoginDto;
 
-  factory LoginForm.fromJson(Map<String, dynamic> json) =>
-      _$LoginFormFromJson(json);
+  factory LoginDto.fromJson(Map<String, dynamic> json) =>
+      _$LoginDtoFromJson(json);
 }

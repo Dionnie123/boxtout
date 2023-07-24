@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reactive_forms_annotations/reactive_forms_annotations.dart';
-part 'register_form.freezed.dart';
-part 'register_form.g.dart';
-part 'register_form.gform.dart';
+part 'register_dto.freezed.dart';
+part 'register_dto.g.dart';
+part 'register_dto.gform.dart';
 
 class RequiredTrueValidator extends Validator<dynamic> {
   const RequiredTrueValidator() : super();
@@ -15,11 +15,11 @@ class RequiredTrueValidator extends Validator<dynamic> {
   }
 }
 
-class MustMatchValidatorZ extends Validator<dynamic> {
+class MustMatchValidatorCustom extends Validator<dynamic> {
   final String controlName;
   final String matchingControlName;
   final bool markAsDirty;
-  const MustMatchValidatorZ(
+  const MustMatchValidatorCustom(
       this.controlName, this.matchingControlName, this.markAsDirty)
       : super();
 
@@ -27,11 +27,11 @@ class MustMatchValidatorZ extends Validator<dynamic> {
   Map<String, dynamic>? validate(AbstractControl<dynamic> control) {
     try {
       final error = {ValidationMessage.mustMatch: true};
-      var form = <dynamic, dynamic>{};
+      var dto = <dynamic, dynamic>{};
       control.parent?.valueChanges.listen((event) {
         if (event != null) {
-          form = event as Map;
-          if (form[controlName] != form[matchingControlName]) {
+          dto = event as Map;
+          if (dto[controlName] != dto[matchingControlName]) {
             control.setErrors(error, markAsDirty: markAsDirty);
             control.markAsTouched();
           } else {
@@ -48,10 +48,10 @@ class MustMatchValidatorZ extends Validator<dynamic> {
 
 @freezed
 @Rf()
-class RegisterForm with _$RegisterForm {
+class RegisterDto with _$RegisterDto {
   // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake)
-  factory RegisterForm({
+  factory RegisterDto({
     @RfControl(validators: [RequiredValidator()]) String? fullName,
     @RfControl(validators: [RequiredValidator(), EmailValidator()])
     String? email,
@@ -61,7 +61,7 @@ class RegisterForm with _$RegisterForm {
     String? password,
     @RfControl(validators: [
       RequiredValidator(),
-      MustMatchValidatorZ(
+      MustMatchValidatorCustom(
         'password',
         'passwordConfirmation',
         true,
@@ -69,8 +69,8 @@ class RegisterForm with _$RegisterForm {
     ])
     String? passwordConfirmation,
     @RfControl(validators: [RequiredTrueValidator()]) bool? acceptLicense,
-  }) = _RegisterForm;
+  }) = _RegisterDto;
 
-  factory RegisterForm.fromJson(Map<String, dynamic> json) =>
-      _$RegisterFormFromJson(json);
+  factory RegisterDto.fromJson(Map<String, dynamic> json) =>
+      _$RegisterDtoFromJson(json);
 }

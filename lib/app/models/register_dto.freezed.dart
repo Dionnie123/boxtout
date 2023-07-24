@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'register_form.dart';
+part of 'register_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-RegisterForm _$RegisterFormFromJson(Map<String, dynamic> json) {
-  return _RegisterForm.fromJson(json);
+RegisterDto _$RegisterDtoFromJson(Map<String, dynamic> json) {
+  return _RegisterDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RegisterForm {
+mixin _$RegisterDto {
   @RfControl(validators: [RequiredValidator()])
   String? get fullName => throw _privateConstructorUsedError;
   @RfControl(validators: [RequiredValidator(), EmailValidator()])
@@ -28,7 +28,7 @@ mixin _$RegisterForm {
   String? get password => throw _privateConstructorUsedError;
   @RfControl(validators: [
     RequiredValidator(),
-    MustMatchValidatorZ('password', 'passwordConfirmation', true)
+    MustMatchValidatorCustom('password', 'passwordConfirmation', true)
   ])
   String? get passwordConfirmation => throw _privateConstructorUsedError;
   @RfControl(validators: [RequiredTrueValidator()])
@@ -36,15 +36,15 @@ mixin _$RegisterForm {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RegisterFormCopyWith<RegisterForm> get copyWith =>
+  $RegisterDtoCopyWith<RegisterDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterFormCopyWith<$Res> {
-  factory $RegisterFormCopyWith(
-          RegisterForm value, $Res Function(RegisterForm) then) =
-      _$RegisterFormCopyWithImpl<$Res, RegisterForm>;
+abstract class $RegisterDtoCopyWith<$Res> {
+  factory $RegisterDtoCopyWith(
+          RegisterDto value, $Res Function(RegisterDto) then) =
+      _$RegisterDtoCopyWithImpl<$Res, RegisterDto>;
   @useResult
   $Res call(
       {@RfControl(validators: [RequiredValidator()]) String? fullName,
@@ -53,16 +53,16 @@ abstract class $RegisterFormCopyWith<$Res> {
       @RfControl(validators: [RequiredValidator()]) String? password,
       @RfControl(validators: [
         RequiredValidator(),
-        MustMatchValidatorZ('password', 'passwordConfirmation', true)
+        MustMatchValidatorCustom('password', 'passwordConfirmation', true)
       ])
       String? passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()]) bool? acceptLicense});
 }
 
 /// @nodoc
-class _$RegisterFormCopyWithImpl<$Res, $Val extends RegisterForm>
-    implements $RegisterFormCopyWith<$Res> {
-  _$RegisterFormCopyWithImpl(this._value, this._then);
+class _$RegisterDtoCopyWithImpl<$Res, $Val extends RegisterDto>
+    implements $RegisterDtoCopyWith<$Res> {
+  _$RegisterDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -104,11 +104,11 @@ class _$RegisterFormCopyWithImpl<$Res, $Val extends RegisterForm>
 }
 
 /// @nodoc
-abstract class _$$_RegisterFormCopyWith<$Res>
-    implements $RegisterFormCopyWith<$Res> {
-  factory _$$_RegisterFormCopyWith(
-          _$_RegisterForm value, $Res Function(_$_RegisterForm) then) =
-      __$$_RegisterFormCopyWithImpl<$Res>;
+abstract class _$$_RegisterDtoCopyWith<$Res>
+    implements $RegisterDtoCopyWith<$Res> {
+  factory _$$_RegisterDtoCopyWith(
+          _$_RegisterDto value, $Res Function(_$_RegisterDto) then) =
+      __$$_RegisterDtoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -118,18 +118,18 @@ abstract class _$$_RegisterFormCopyWith<$Res>
       @RfControl(validators: [RequiredValidator()]) String? password,
       @RfControl(validators: [
         RequiredValidator(),
-        MustMatchValidatorZ('password', 'passwordConfirmation', true)
+        MustMatchValidatorCustom('password', 'passwordConfirmation', true)
       ])
       String? passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()]) bool? acceptLicense});
 }
 
 /// @nodoc
-class __$$_RegisterFormCopyWithImpl<$Res>
-    extends _$RegisterFormCopyWithImpl<$Res, _$_RegisterForm>
-    implements _$$_RegisterFormCopyWith<$Res> {
-  __$$_RegisterFormCopyWithImpl(
-      _$_RegisterForm _value, $Res Function(_$_RegisterForm) _then)
+class __$$_RegisterDtoCopyWithImpl<$Res>
+    extends _$RegisterDtoCopyWithImpl<$Res, _$_RegisterDto>
+    implements _$$_RegisterDtoCopyWith<$Res> {
+  __$$_RegisterDtoCopyWithImpl(
+      _$_RegisterDto _value, $Res Function(_$_RegisterDto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -141,7 +141,7 @@ class __$$_RegisterFormCopyWithImpl<$Res>
     Object? passwordConfirmation = freezed,
     Object? acceptLicense = freezed,
   }) {
-    return _then(_$_RegisterForm(
+    return _then(_$_RegisterDto(
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -169,21 +169,21 @@ class __$$_RegisterFormCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$_RegisterForm implements _RegisterForm {
-  _$_RegisterForm(
+class _$_RegisterDto implements _RegisterDto {
+  _$_RegisterDto(
       {@RfControl(validators: [RequiredValidator()]) this.fullName,
       @RfControl(validators: [RequiredValidator(), EmailValidator()])
       this.email,
       @RfControl(validators: [RequiredValidator()]) this.password,
       @RfControl(validators: [
         RequiredValidator(),
-        MustMatchValidatorZ('password', 'passwordConfirmation', true)
+        MustMatchValidatorCustom('password', 'passwordConfirmation', true)
       ])
       this.passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()]) this.acceptLicense});
 
-  factory _$_RegisterForm.fromJson(Map<String, dynamic> json) =>
-      _$$_RegisterFormFromJson(json);
+  factory _$_RegisterDto.fromJson(Map<String, dynamic> json) =>
+      _$$_RegisterDtoFromJson(json);
 
   @override
   @RfControl(validators: [RequiredValidator()])
@@ -197,7 +197,7 @@ class _$_RegisterForm implements _RegisterForm {
   @override
   @RfControl(validators: [
     RequiredValidator(),
-    MustMatchValidatorZ('password', 'passwordConfirmation', true)
+    MustMatchValidatorCustom('password', 'passwordConfirmation', true)
   ])
   final String? passwordConfirmation;
   @override
@@ -206,14 +206,14 @@ class _$_RegisterForm implements _RegisterForm {
 
   @override
   String toString() {
-    return 'RegisterForm(fullName: $fullName, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, acceptLicense: $acceptLicense)';
+    return 'RegisterDto(fullName: $fullName, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, acceptLicense: $acceptLicense)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RegisterForm &&
+            other is _$_RegisterDto &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
@@ -233,33 +233,33 @@ class _$_RegisterForm implements _RegisterForm {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RegisterFormCopyWith<_$_RegisterForm> get copyWith =>
-      __$$_RegisterFormCopyWithImpl<_$_RegisterForm>(this, _$identity);
+  _$$_RegisterDtoCopyWith<_$_RegisterDto> get copyWith =>
+      __$$_RegisterDtoCopyWithImpl<_$_RegisterDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RegisterFormToJson(
+    return _$$_RegisterDtoToJson(
       this,
     );
   }
 }
 
-abstract class _RegisterForm implements RegisterForm {
-  factory _RegisterForm(
+abstract class _RegisterDto implements RegisterDto {
+  factory _RegisterDto(
       {@RfControl(validators: [RequiredValidator()]) final String? fullName,
       @RfControl(validators: [RequiredValidator(), EmailValidator()])
       final String? email,
       @RfControl(validators: [RequiredValidator()]) final String? password,
       @RfControl(validators: [
         RequiredValidator(),
-        MustMatchValidatorZ('password', 'passwordConfirmation', true)
+        MustMatchValidatorCustom('password', 'passwordConfirmation', true)
       ])
       final String? passwordConfirmation,
       @RfControl(validators: [RequiredTrueValidator()])
-      final bool? acceptLicense}) = _$_RegisterForm;
+      final bool? acceptLicense}) = _$_RegisterDto;
 
-  factory _RegisterForm.fromJson(Map<String, dynamic> json) =
-      _$_RegisterForm.fromJson;
+  factory _RegisterDto.fromJson(Map<String, dynamic> json) =
+      _$_RegisterDto.fromJson;
 
   @override
   @RfControl(validators: [RequiredValidator()])
@@ -273,7 +273,7 @@ abstract class _RegisterForm implements RegisterForm {
   @override
   @RfControl(validators: [
     RequiredValidator(),
-    MustMatchValidatorZ('password', 'passwordConfirmation', true)
+    MustMatchValidatorCustom('password', 'passwordConfirmation', true)
   ])
   String? get passwordConfirmation;
   @override
@@ -281,6 +281,6 @@ abstract class _RegisterForm implements RegisterForm {
   bool? get acceptLicense;
   @override
   @JsonKey(ignore: true)
-  _$$_RegisterFormCopyWith<_$_RegisterForm> get copyWith =>
+  _$$_RegisterDtoCopyWith<_$_RegisterDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

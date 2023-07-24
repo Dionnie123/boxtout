@@ -3,14 +3,14 @@
 // ignore_for_file: type=lint
 // ignore_for_file:
 
-part of 'login_form.dart';
+part of 'login_dto.dart';
 
 // **************************************************************************
 // ReactiveFormsGenerator
 // **************************************************************************
 
-class ReactiveLoginFormFormConsumer extends StatelessWidget {
-  const ReactiveLoginFormFormConsumer({
+class ReactiveLoginDtoFormConsumer extends StatelessWidget {
+  const ReactiveLoginDtoFormConsumer({
     Key? key,
     required this.builder,
     this.child,
@@ -19,21 +19,21 @@ class ReactiveLoginFormFormConsumer extends StatelessWidget {
   final Widget? child;
 
   final Widget Function(
-      BuildContext context, LoginFormForm formModel, Widget? child) builder;
+      BuildContext context, LoginDtoForm formModel, Widget? child) builder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveLoginFormForm.of(context);
+    final formModel = ReactiveLoginDtoForm.of(context);
 
-    if (formModel is! LoginFormForm) {
+    if (formModel is! LoginDtoForm) {
       throw FormControlParentNotFoundException(this);
     }
     return builder(context, formModel, child);
   }
 }
 
-class LoginFormFormInheritedStreamer extends InheritedStreamer<dynamic> {
-  const LoginFormFormInheritedStreamer({
+class LoginDtoFormInheritedStreamer extends InheritedStreamer<dynamic> {
+  const LoginDtoFormInheritedStreamer({
     Key? key,
     required this.form,
     required Stream<dynamic> stream,
@@ -44,11 +44,11 @@ class LoginFormFormInheritedStreamer extends InheritedStreamer<dynamic> {
           key: key,
         );
 
-  final LoginFormForm form;
+  final LoginDtoForm form;
 }
 
-class ReactiveLoginFormForm extends StatelessWidget {
-  const ReactiveLoginFormForm({
+class ReactiveLoginDtoForm extends StatelessWidget {
+  const ReactiveLoginDtoForm({
     Key? key,
     required this.form,
     required this.child,
@@ -57,30 +57,30 @@ class ReactiveLoginFormForm extends StatelessWidget {
 
   final Widget child;
 
-  final LoginFormForm form;
+  final LoginDtoForm form;
 
   final WillPopCallback? onWillPop;
 
-  static LoginFormForm? of(
+  static LoginDtoForm? of(
     BuildContext context, {
     bool listen = true,
   }) {
     if (listen) {
       return context
-          .dependOnInheritedWidgetOfExactType<LoginFormFormInheritedStreamer>()
+          .dependOnInheritedWidgetOfExactType<LoginDtoFormInheritedStreamer>()
           ?.form;
     }
 
     final element = context.getElementForInheritedWidgetOfExactType<
-        LoginFormFormInheritedStreamer>();
+        LoginDtoFormInheritedStreamer>();
     return element == null
         ? null
-        : (element.widget as LoginFormFormInheritedStreamer).form;
+        : (element.widget as LoginDtoFormInheritedStreamer).form;
   }
 
   @override
   Widget build(BuildContext context) {
-    return LoginFormFormInheritedStreamer(
+    return LoginDtoFormInheritedStreamer(
       form: form,
       stream: form.form.statusChanged,
       child: WillPopScope(
@@ -91,8 +91,8 @@ class ReactiveLoginFormForm extends StatelessWidget {
   }
 }
 
-class LoginFormFormBuilder extends StatefulWidget {
-  const LoginFormFormBuilder({
+class LoginDtoFormBuilder extends StatefulWidget {
+  const LoginDtoFormBuilder({
     Key? key,
     this.model,
     this.child,
@@ -101,27 +101,27 @@ class LoginFormFormBuilder extends StatefulWidget {
     this.initState,
   }) : super(key: key);
 
-  final LoginForm? model;
+  final LoginDto? model;
 
   final Widget? child;
 
   final WillPopCallback? onWillPop;
 
   final Widget Function(
-      BuildContext context, LoginFormForm formModel, Widget? child) builder;
+      BuildContext context, LoginDtoForm formModel, Widget? child) builder;
 
-  final void Function(BuildContext context, LoginFormForm formModel)? initState;
+  final void Function(BuildContext context, LoginDtoForm formModel)? initState;
 
   @override
-  _LoginFormFormBuilderState createState() => _LoginFormFormBuilderState();
+  _LoginDtoFormBuilderState createState() => _LoginDtoFormBuilderState();
 }
 
-class _LoginFormFormBuilderState extends State<LoginFormFormBuilder> {
-  late LoginFormForm _formModel;
+class _LoginDtoFormBuilderState extends State<LoginDtoFormBuilder> {
+  late LoginDtoForm _formModel;
 
   @override
   void initState() {
-    _formModel = LoginFormForm(LoginFormForm.formElements(widget.model), null);
+    _formModel = LoginDtoForm(LoginDtoForm.formElements(widget.model), null);
 
     if (_formModel.form.disabled) {
       _formModel.form.markAsDisabled();
@@ -133,10 +133,9 @@ class _LoginFormFormBuilderState extends State<LoginFormFormBuilder> {
   }
 
   @override
-  void didUpdateWidget(covariant LoginFormFormBuilder oldWidget) {
+  void didUpdateWidget(covariant LoginDtoFormBuilder oldWidget) {
     if (widget.model != oldWidget.model) {
-      _formModel =
-          LoginFormForm(LoginFormForm.formElements(widget.model), null);
+      _formModel = LoginDtoForm(LoginDtoForm.formElements(widget.model), null);
 
       if (_formModel.form.disabled) {
         _formModel.form.markAsDisabled();
@@ -156,7 +155,7 @@ class _LoginFormFormBuilderState extends State<LoginFormFormBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return ReactiveLoginFormForm(
+    return ReactiveLoginDtoForm(
       key: ObjectKey(_formModel),
       form: _formModel,
       onWillPop: widget.onWillPop,
@@ -171,8 +170,8 @@ class _LoginFormFormBuilderState extends State<LoginFormFormBuilder> {
   }
 }
 
-class LoginFormForm implements FormModel<LoginForm> {
-  LoginFormForm(
+class LoginDtoForm implements FormModel<LoginDto> {
+  LoginDtoForm(
     this.form,
     this.path,
   );
@@ -360,18 +359,18 @@ class LoginFormForm implements FormModel<LoginForm> {
   }
 
   @override
-  LoginForm get model {
+  LoginDto get model {
     final currentForm = path == null ? form : form.control(path!);
 
     if (!currentForm.valid) {
       debugPrint(
-          '[${path ?? 'LoginFormForm'}]\n┗━ Avoid calling `model` on invalid form. Possible exceptions for non-nullable fields which should be guarded by `required` validator.');
+          '[${path ?? 'LoginDtoForm'}]\n┗━ Avoid calling `model` on invalid form. Possible exceptions for non-nullable fields which should be guarded by `required` validator.');
     }
-    return LoginForm(email: _emailValue, password: _passwordValue);
+    return LoginDto(email: _emailValue, password: _passwordValue);
   }
 
   void submit({
-    required void Function(LoginForm model) onValid,
+    required void Function(LoginDto model) onValid,
     void Function()? onNotValid,
   }) {
     form.markAllAsTouched();
@@ -384,15 +383,15 @@ class LoginFormForm implements FormModel<LoginForm> {
 
   @override
   void updateValue(
-    LoginForm value, {
+    LoginDto value, {
     bool updateParent = true,
     bool emitEvent = true,
   }) =>
-      form.updateValue(LoginFormForm.formElements(value).rawValue,
+      form.updateValue(LoginDtoForm.formElements(value).rawValue,
           updateParent: updateParent, emitEvent: emitEvent);
   @override
   void reset({
-    LoginForm? value,
+    LoginDto? value,
     bool updateParent = true,
     bool emitEvent = true,
   }) =>
@@ -402,16 +401,16 @@ class LoginFormForm implements FormModel<LoginForm> {
           emitEvent: emitEvent);
   String pathBuilder(String? pathItem) =>
       [path, pathItem].whereType<String>().join(".");
-  static FormGroup formElements(LoginForm? loginForm) => FormGroup({
+  static FormGroup formElements(LoginDto? loginDto) => FormGroup({
         emailControlName: FormControl<String>(
-            value: loginForm?.email,
+            value: loginDto?.email,
             validators: [RequiredValidator(), EmailValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
             disabled: false,
             touched: false),
         passwordControlName: FormControl<String>(
-            value: loginForm?.password,
+            value: loginDto?.password,
             validators: [RequiredValidator()],
             asyncValidators: [],
             asyncValidatorsDebounceTime: 250,
@@ -424,8 +423,8 @@ class LoginFormForm implements FormModel<LoginForm> {
           disabled: false);
 }
 
-class ReactiveLoginFormFormArrayBuilder<T> extends StatelessWidget {
-  const ReactiveLoginFormFormArrayBuilder({
+class ReactiveLoginDtoFormArrayBuilder<T> extends StatelessWidget {
+  const ReactiveLoginDtoFormArrayBuilder({
     Key? key,
     this.control,
     this.formControl,
@@ -437,19 +436,18 @@ class ReactiveLoginFormFormArrayBuilder<T> extends StatelessWidget {
 
   final FormArray<T>? formControl;
 
-  final FormArray<T>? Function(LoginFormForm formModel)? control;
+  final FormArray<T>? Function(LoginDtoForm formModel)? control;
 
   final Widget Function(
-          BuildContext context, List<Widget> itemList, LoginFormForm formModel)?
+          BuildContext context, List<Widget> itemList, LoginDtoForm formModel)?
       builder;
 
   final Widget Function(
-          BuildContext context, int i, T? item, LoginFormForm formModel)
-      itemBuilder;
+      BuildContext context, int i, T? item, LoginDtoForm formModel) itemBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveLoginFormForm.of(context);
+    final formModel = ReactiveLoginDtoForm.of(context);
 
     if (formModel == null) {
       throw FormControlParentNotFoundException(this);
@@ -485,8 +483,8 @@ class ReactiveLoginFormFormArrayBuilder<T> extends StatelessWidget {
   }
 }
 
-class ReactiveLoginFormFormFormGroupArrayBuilder<V> extends StatelessWidget {
-  const ReactiveLoginFormFormFormGroupArrayBuilder({
+class ReactiveLoginDtoFormFormGroupArrayBuilder<V> extends StatelessWidget {
+  const ReactiveLoginDtoFormFormGroupArrayBuilder({
     Key? key,
     this.extended,
     this.getExtended,
@@ -499,19 +497,18 @@ class ReactiveLoginFormFormFormGroupArrayBuilder<V> extends StatelessWidget {
   final ExtendedControl<List<Map<String, Object?>?>, List<V>>? extended;
 
   final ExtendedControl<List<Map<String, Object?>?>, List<V>> Function(
-      LoginFormForm formModel)? getExtended;
+      LoginDtoForm formModel)? getExtended;
 
   final Widget Function(
-          BuildContext context, List<Widget> itemList, LoginFormForm formModel)?
+          BuildContext context, List<Widget> itemList, LoginDtoForm formModel)?
       builder;
 
   final Widget Function(
-          BuildContext context, int i, V? item, LoginFormForm formModel)
-      itemBuilder;
+      BuildContext context, int i, V? item, LoginDtoForm formModel) itemBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final formModel = ReactiveLoginFormForm.of(context);
+    final formModel = ReactiveLoginDtoForm.of(context);
 
     if (formModel == null) {
       throw FormControlParentNotFoundException(this);

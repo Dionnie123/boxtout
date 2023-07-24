@@ -1,7 +1,7 @@
 import 'package:box_ui/box_ui.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
-import 'package:boxtout/app/models/register_form.dart';
+import 'package:boxtout/app/models/register_dto.dart';
 import 'package:boxtout/ui/common/dimensions.dart';
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
@@ -21,7 +21,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
     RegisterViewModel viewModel,
     Widget? child,
   ) {
-    return RegisterFormFormBuilder(builder: (contect, formModel, _) {
+    return RegisterDtoFormBuilder(builder: (contect, formModel, _) {
       Widget logo() {
         return Card(
             margin: EdgeInsets.zero,
@@ -118,7 +118,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
               ],
             ),
             const SizedBox(height: 24.0),
-            ReactiveRegisterFormFormConsumer(
+            ReactiveRegisterDtoFormConsumer(
               builder: (context, formModel, child) {
                 return BoxButton(
                   title: 'SIGN UP',

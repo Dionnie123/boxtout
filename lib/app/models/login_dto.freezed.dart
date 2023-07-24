@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_form.dart';
+part of 'login_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LoginForm _$LoginFormFromJson(Map<String, dynamic> json) {
-  return _LoginForm.fromJson(json);
+LoginDto _$LoginDtoFromJson(Map<String, dynamic> json) {
+  return _LoginDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LoginForm {
+mixin _$LoginDto {
   @RfControl(validators: [RequiredValidator(), EmailValidator()])
   String? get email => throw _privateConstructorUsedError;
   @RfControl(validators: [RequiredValidator()])
@@ -27,14 +27,14 @@ mixin _$LoginForm {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LoginFormCopyWith<LoginForm> get copyWith =>
+  $LoginDtoCopyWith<LoginDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginFormCopyWith<$Res> {
-  factory $LoginFormCopyWith(LoginForm value, $Res Function(LoginForm) then) =
-      _$LoginFormCopyWithImpl<$Res, LoginForm>;
+abstract class $LoginDtoCopyWith<$Res> {
+  factory $LoginDtoCopyWith(LoginDto value, $Res Function(LoginDto) then) =
+      _$LoginDtoCopyWithImpl<$Res, LoginDto>;
   @useResult
   $Res call(
       {@RfControl(validators: [RequiredValidator(), EmailValidator()])
@@ -43,9 +43,9 @@ abstract class $LoginFormCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginFormCopyWithImpl<$Res, $Val extends LoginForm>
-    implements $LoginFormCopyWith<$Res> {
-  _$LoginFormCopyWithImpl(this._value, this._then);
+class _$LoginDtoCopyWithImpl<$Res, $Val extends LoginDto>
+    implements $LoginDtoCopyWith<$Res> {
+  _$LoginDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -72,10 +72,10 @@ class _$LoginFormCopyWithImpl<$Res, $Val extends LoginForm>
 }
 
 /// @nodoc
-abstract class _$$_LoginFormCopyWith<$Res> implements $LoginFormCopyWith<$Res> {
-  factory _$$_LoginFormCopyWith(
-          _$_LoginForm value, $Res Function(_$_LoginForm) then) =
-      __$$_LoginFormCopyWithImpl<$Res>;
+abstract class _$$_LoginDtoCopyWith<$Res> implements $LoginDtoCopyWith<$Res> {
+  factory _$$_LoginDtoCopyWith(
+          _$_LoginDto value, $Res Function(_$_LoginDto) then) =
+      __$$_LoginDtoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -85,11 +85,11 @@ abstract class _$$_LoginFormCopyWith<$Res> implements $LoginFormCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoginFormCopyWithImpl<$Res>
-    extends _$LoginFormCopyWithImpl<$Res, _$_LoginForm>
-    implements _$$_LoginFormCopyWith<$Res> {
-  __$$_LoginFormCopyWithImpl(
-      _$_LoginForm _value, $Res Function(_$_LoginForm) _then)
+class __$$_LoginDtoCopyWithImpl<$Res>
+    extends _$LoginDtoCopyWithImpl<$Res, _$_LoginDto>
+    implements _$$_LoginDtoCopyWith<$Res> {
+  __$$_LoginDtoCopyWithImpl(
+      _$_LoginDto _value, $Res Function(_$_LoginDto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +98,7 @@ class __$$_LoginFormCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_$_LoginForm(
+    return _then(_$_LoginDto(
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -114,14 +114,14 @@ class __$$_LoginFormCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$_LoginForm implements _LoginForm {
-  _$_LoginForm(
+class _$_LoginDto implements _LoginDto {
+  _$_LoginDto(
       {@RfControl(validators: [RequiredValidator(), EmailValidator()])
       this.email,
       @RfControl(validators: [RequiredValidator()]) this.password});
 
-  factory _$_LoginForm.fromJson(Map<String, dynamic> json) =>
-      _$$_LoginFormFromJson(json);
+  factory _$_LoginDto.fromJson(Map<String, dynamic> json) =>
+      _$$_LoginDtoFromJson(json);
 
   @override
   @RfControl(validators: [RequiredValidator(), EmailValidator()])
@@ -132,14 +132,14 @@ class _$_LoginForm implements _LoginForm {
 
   @override
   String toString() {
-    return 'LoginForm(email: $email, password: $password)';
+    return 'LoginDto(email: $email, password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoginForm &&
+            other is _$_LoginDto &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -152,26 +152,25 @@ class _$_LoginForm implements _LoginForm {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginFormCopyWith<_$_LoginForm> get copyWith =>
-      __$$_LoginFormCopyWithImpl<_$_LoginForm>(this, _$identity);
+  _$$_LoginDtoCopyWith<_$_LoginDto> get copyWith =>
+      __$$_LoginDtoCopyWithImpl<_$_LoginDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoginFormToJson(
+    return _$$_LoginDtoToJson(
       this,
     );
   }
 }
 
-abstract class _LoginForm implements LoginForm {
-  factory _LoginForm(
+abstract class _LoginDto implements LoginDto {
+  factory _LoginDto(
       {@RfControl(validators: [RequiredValidator(), EmailValidator()])
       final String? email,
       @RfControl(validators: [RequiredValidator()])
-      final String? password}) = _$_LoginForm;
+      final String? password}) = _$_LoginDto;
 
-  factory _LoginForm.fromJson(Map<String, dynamic> json) =
-      _$_LoginForm.fromJson;
+  factory _LoginDto.fromJson(Map<String, dynamic> json) = _$_LoginDto.fromJson;
 
   @override
   @RfControl(validators: [RequiredValidator(), EmailValidator()])
@@ -181,6 +180,6 @@ abstract class _LoginForm implements LoginForm {
   String? get password;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginFormCopyWith<_$_LoginForm> get copyWith =>
+  _$$_LoginDtoCopyWith<_$_LoginDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
