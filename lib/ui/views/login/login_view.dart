@@ -148,7 +148,7 @@ class LoginView extends StackedView<LoginViewModel> {
                     ),
                     child: !isMobile(context)
                         ? SizedBox(
-                            height: 600,
+                            height: 750,
                             width: double.infinity,
                             child: LayoutBuilder(builder: (context, size) {
                               return Row(

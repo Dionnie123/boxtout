@@ -35,6 +35,6 @@ const TextStyle subheadingStyle = TextStyle(
 );
 
 const TextStyle captionStyle = TextStyle(
-  fontSize: 12,
+  fontSize: 14,
   fontWeight: FontWeight.w400,
 );

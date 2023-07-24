@@ -13,7 +13,7 @@ import 'package:boxtout/ui/views/login/login_view.dart';
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
     MaterialRoute(page: RegisterView),
-    CustomRoute(page: LoginView),
+    MaterialRoute(page: LoginView),
 // @stacked-route
   ],
   dependencies: [

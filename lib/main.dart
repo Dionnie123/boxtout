@@ -30,6 +30,7 @@ class MainApp extends StatelessWidget {
     );
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           textButtonTheme: const TextButtonThemeData(
               style: ButtonStyle(
@@ -41,7 +42,8 @@ class MainApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
             brightness: Brightness.dark,
           ),
-          //useMaterial3: true,
+          // useMaterial3: true,
+
           brightness: Brightness.dark,
           fontFamily: GoogleFonts.nunito().fontFamily,
           inputDecorationTheme: InputDecorationTheme(
