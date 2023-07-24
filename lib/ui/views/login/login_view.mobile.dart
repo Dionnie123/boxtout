@@ -10,7 +10,6 @@ import 'login_viewmodel.dart';
 
 class LoginViewMobile extends ViewModelWidget<LoginViewModel> {
   final BoxConstraints size;
-
   const LoginViewMobile(this.size, {super.key});
 
   @override

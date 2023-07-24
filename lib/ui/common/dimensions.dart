@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class Dimens {
   Dimens._();
 
-  static computedWidth(
-      {required BoxConstraints screenSize,
-      required double targetWidth,
-      double hPadding = 0.0,
-      double vPadding = 0.0}) {
-    final width = (screenSize.maxWidth - targetWidth) / 2;
+  static computedWidth({
+    required BoxConstraints size,
+    required double targetWidth,
+    double hPadding = 0.0,
+  }) {
+    final width = (size.maxWidth - targetWidth) / 2;
     return EdgeInsets.symmetric(
-        vertical: vPadding, horizontal: width > 0 ? width : hPadding);
+        horizontal: (size.maxWidth >= targetWidth) ? width : hPadding);
   }
 
   static EdgeInsets sliverHeaderPadding(BoxConstraints constraints) {

@@ -34,57 +34,67 @@ class LoginViewDesktop extends ViewModelWidget<LoginViewModel> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BoxText.headline('SIGN IN'),
-                  const BoxText.caption('Enter your details below'),
-                  const SizedBox(height: 24.0),
-                  ReactiveTextField<String>(
-                    formControl: formModel.emailControl,
-                    validationMessages: {
-                      ValidationMessage.required: (_) => 'Required'
-                    },
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      helperText: '',
-                      helperStyle: TextStyle(height: 0.8),
-                      errorStyle: TextStyle(height: 0.8),
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  ReactiveTextField<String>(
-                    formControl: formModel.passwordControl,
-                    obscureText: true,
-                    validationMessages: {
-                      ValidationMessage.required: (_) => 'Required',
-                      'mustMatch': (_) => "Not match",
-                    },
-                    textInputAction: TextInputAction.done,
-                    decoration: const InputDecoration(
-                      labelText: "Password",
-                      helperText: '',
-                      helperStyle: TextStyle(height: 0.8),
-                      errorStyle: TextStyle(height: 0.8),
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  BoxButton(
-                    title: 'SIGN IN',
-                    disabled: formModel.form.hasErrors ? true : false,
-                  ),
-                  const SizedBox(height: 8.0),
-                  TextButton(
-                      onPressed: () {
-                        formModel.form.reset();
+              child: SizedBox(
+                height: 600,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        const BoxText.headline('SIGN IN'),
+                        const BoxText.caption('Enter your details below'),
+                        const SizedBox(height: 24.0),
+                        ReactiveTextField<String>(
+                          formControl: formModel.emailControl,
+                          validationMessages: {
+                            ValidationMessage.required: (_) => 'Required'
+                          },
+                          decoration: const InputDecoration(
+                            labelText: 'Email',
+                            helperText: '',
+                            helperStyle: TextStyle(height: 0.8),
+                            errorStyle: TextStyle(height: 0.8),
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        ReactiveTextField<String>(
+                          formControl: formModel.passwordControl,
+                          obscureText: true,
+                          validationMessages: {
+                            ValidationMessage.required: (_) => 'Required',
+                            'mustMatch': (_) => "Not match",
+                          },
+                          textInputAction: TextInputAction.done,
+                          decoration: const InputDecoration(
+                            labelText: "Password",
+                            helperText: '',
+                            helperStyle: TextStyle(height: 0.8),
+                            errorStyle: TextStyle(height: 0.8),
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        BoxButton(
+                          title: 'SIGN IN',
+                          disabled: formModel.form.hasErrors ? true : false,
+                        ),
+                        const SizedBox(height: 8.0),
+                        TextButton(
+                            onPressed: () {
+                              formModel.form.reset();
 
-                        locator<NavigationService>().navigateToRegisterView();
-                      },
-                      child: const Text(
-                        "REGISTER HERE",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ))
-                ],
+                              locator<NavigationService>()
+                                  .navigateToRegisterView();
+                            },
+                            child: const Text(
+                              "REGISTER HERE",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
