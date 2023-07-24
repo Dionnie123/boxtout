@@ -39,9 +39,10 @@ class MainApp extends StatelessWidget {
             elevation: 0,
           ),
           colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
-              // brightness: Brightness.dark,
-              ),
-          useMaterial3: true,
+            brightness: Brightness.dark,
+          ),
+          //useMaterial3: true,
+          brightness: Brightness.dark,
           fontFamily: GoogleFonts.nunito().fontFamily,
           inputDecorationTheme: InputDecorationTheme(
             contentPadding:

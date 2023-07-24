@@ -23,13 +23,15 @@ class LoginView extends StackedView<LoginViewModel> {
   ) {
     return LoginFormFormBuilder(builder: (contect, formModel, _) {
       Widget logo() {
-        return const Card(
+        return Card(
             margin: EdgeInsets.zero,
             color: kcPrimaryColor,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: BoxText.headline('NESCOFFEE'),
-            ));
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  "NESCOFFEE",
+                  style: headlineStyle.copyWith(color: Colors.white),
+                )));
       }
 
       Widget copyright() {
@@ -86,7 +88,7 @@ class LoginView extends StackedView<LoginViewModel> {
                   locator<NavigationService>().navigateToRegisterView();
                 },
                 child: const Text(
-                  "REGISTER HERE",
+                  "Don't have an account? Sign up",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )),
           ],
@@ -140,6 +142,7 @@ class LoginView extends StackedView<LoginViewModel> {
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Card(
                     margin: EdgeInsets.zero,
+                    elevation: 10,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),

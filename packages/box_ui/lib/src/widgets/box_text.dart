@@ -9,7 +9,7 @@ class BoxText extends StatelessWidget {
   const BoxText.headingOne(this.text, {super.key}) : style = heading1Style;
   const BoxText.headingTwo(this.text, {super.key}) : style = heading2Style;
   const BoxText.headingThree(this.text, {super.key}) : style = heading3Style;
-  const BoxText.headline(this.text, {super.key}) : style = headlineStyle;
+  const BoxText.headline(this.text, {color, super.key}) : style = headlineStyle;
   const BoxText.subheading(this.text, {super.key}) : style = subheadingStyle;
   const BoxText.caption(this.text, {super.key}) : style = captionStyle;
 
