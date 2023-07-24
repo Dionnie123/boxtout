@@ -4,43 +4,44 @@ import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/app/models/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class LoginSmView extends StatelessWidget {
-  const LoginSmView({super.key});
+import 'login_viewmodel.dart';
+
+class LoginViewDesktop extends ViewModelWidget<LoginViewModel> {
+  const LoginViewDesktop({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ReactiveLoginFormFormConsumer(builder: (context, f, child) {
-      return LayoutBuilder(builder: (context, size) {
-        return Column(
-          children: [
-            Container(
+  Widget build(BuildContext context, LoginViewModel viewModel) {
+    return ReactiveLoginFormFormConsumer(builder: (context, formModel, child) {
+      return Row(
+        children: [
+          Expanded(
+            child: Container(
+              //height: size.maxHeight * 0.8,
               width: double.infinity,
-              constraints: BoxConstraints(
-                maxHeight: size.maxHeight * 0.3,
-              ),
+              constraints: const BoxConstraints(minHeight: 600),
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25)),
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20)),
                   image: DecorationImage(
                       image: AssetImage('assets/login_bg.jpg'),
                       fit: BoxFit.cover)),
             ),
-            Container(
-              constraints: BoxConstraints(
-                minHeight: (size.maxHeight * 0.7) - 60,
-              ),
+          ),
+          Expanded(
+            child: Padding(
               padding: const EdgeInsets.all(30.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const BoxText.headline('SIGN IN'),
                   const BoxText.caption('Enter your details below'),
-                  verticalSpaceMedium,
+                  const SizedBox(height: 24.0),
                   ReactiveTextField<String>(
-                    formControl: f.emailControl,
+                    formControl: formModel.emailControl,
                     validationMessages: {
                       ValidationMessage.required: (_) => 'Required'
                     },
@@ -53,7 +54,7 @@ class LoginSmView extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   ReactiveTextField<String>(
-                    formControl: f.passwordControl,
+                    formControl: formModel.passwordControl,
                     obscureText: true,
                     validationMessages: {
                       ValidationMessage.required: (_) => 'Required',
@@ -68,18 +69,14 @@ class LoginSmView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8.0),
-                  ReactiveLoginFormFormConsumer(
-                    builder: (context, formModel, child) {
-                      return BoxButton(
-                        title: 'SIGN IN',
-                        disabled: f.form.hasErrors ? true : false,
-                      );
-                    },
+                  BoxButton(
+                    title: 'SIGN IN',
+                    disabled: formModel.form.hasErrors ? true : false,
                   ),
                   const SizedBox(height: 8.0),
                   TextButton(
                       onPressed: () {
-                        f.form.reset();
+                        formModel.form.reset();
 
                         locator<NavigationService>().navigateToRegisterView();
                       },
@@ -89,10 +86,10 @@ class LoginSmView extends StatelessWidget {
                       ))
                 ],
               ),
-            )
-          ],
-        );
-      });
+            ),
+          ),
+        ],
+      );
     });
   }
 }

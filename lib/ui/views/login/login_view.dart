@@ -1,18 +1,15 @@
-import 'package:box_ui/box_ui.dart';
-import 'package:boxtout/app/app.locator.dart';
-import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/app/models/login_form.dart';
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
-import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
+import 'login_view.desktop.dart';
+import 'login_view.mobile.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StackedView<LoginViewModel> {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   Widget builder(
@@ -22,179 +19,18 @@ class LoginView extends StackedView<LoginViewModel> {
   ) {
     return LoginFormFormBuilder(builder: (x, f, c) {
       return Scaffold(
-        //   backgroundColor: kcVeryLightGrey,
+        appBar: AppBar(),
         body: ScaffoldBodyWrapper(
             centered: true,
             builder: (context, size) {
               return Card(
-                elevation: 10,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                child: ScreenTypeLayout.builder(
+                  mobile: (context) => LoginViewMobile(size),
+                  tablet: (context) => const LoginViewDesktop(),
+                  desktop: (context) => const LoginViewDesktop(),
                 ),
-                child: isDesktop(context)
-                    ? Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: size.maxHeight * 0.8,
-                              width: double.infinity,
-                              constraints: const BoxConstraints(minHeight: 600),
-                              decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(25),
-                                      bottomLeft: Radius.circular(25)),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/login_bg.jpg'),
-                                      fit: BoxFit.cover)),
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const BoxText.headline('SIGN INN'),
-                                  const BoxText.caption(
-                                      'Enter your details below'),
-                                  ReactiveTextField<String>(
-                                    formControl: f.emailControl,
-                                    validationMessages: {
-                                      ValidationMessage.required: (_) =>
-                                          'Required'
-                                    },
-                                    decoration: const InputDecoration(
-                                      labelText: 'Email',
-                                      helperText: '',
-                                      helperStyle: TextStyle(height: 0.8),
-                                      errorStyle: TextStyle(height: 0.8),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  ReactiveTextField<String>(
-                                    formControl: f.passwordControl,
-                                    obscureText: true,
-                                    validationMessages: {
-                                      ValidationMessage.required: (_) =>
-                                          'Required',
-                                      'mustMatch': (_) => "Not match",
-                                    },
-                                    textInputAction: TextInputAction.done,
-                                    decoration: const InputDecoration(
-                                      labelText: "Password",
-                                      helperText: '',
-                                      helperStyle: TextStyle(height: 0.8),
-                                      errorStyle: TextStyle(height: 0.8),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  ReactiveLoginFormFormConsumer(
-                                    builder: (context, formModel, child) {
-                                      return BoxButton(
-                                        title: 'SIGN IN',
-                                        disabled:
-                                            f.form.hasErrors ? true : false,
-                                      );
-                                    },
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  TextButton(
-                                      onPressed: () {
-                                        f.form.reset();
-
-                                        locator<NavigationService>()
-                                            .navigateToRegisterView();
-                                      },
-                                      child: const Text(
-                                        "REGISTER HERE",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    : Column(
-          children: [
-            Container(
-              width: double.infinity,
-              constraints: BoxConstraints(
-                maxHeight: size.maxHeight * 0.3,
-              ),
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25)),
-                  image: DecorationImage(
-                      image: AssetImage('assets/login_bg.jpg'),
-                      fit: BoxFit.cover)),
-            ),
-            Container(
-              constraints: BoxConstraints(
-                minHeight: (size.maxHeight * 0.7) - 60,
-              ),
-              padding: const EdgeInsets.all(30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BoxText.headline('SIGN IN'),
-                  const BoxText.caption('Enter your details below'),
-             
-                  ReactiveTextField<String>(
-                    formControl: f.emailControl,
-                    validationMessages: {
-                      ValidationMessage.required: (_) => 'Required'
-                    },
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      helperText: '',
-                      helperStyle: TextStyle(height: 0.8),
-                      errorStyle: TextStyle(height: 0.8),
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  ReactiveTextField<String>(
-                    formControl: f.passwordControl,
-                    obscureText: true,
-                    validationMessages: {
-                      ValidationMessage.required: (_) => 'Required',
-                      'mustMatch': (_) => "Not match",
-                    },
-                    textInputAction: TextInputAction.done,
-                    decoration: const InputDecoration(
-                      labelText: "Password",
-                      helperText: '',
-                      helperStyle: TextStyle(height: 0.8),
-                      errorStyle: TextStyle(height: 0.8),
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  ReactiveLoginFormFormConsumer(
-                    builder: (context, formModel, child) {
-                      return BoxButton(
-                        title: 'SIGN IN',
-                        disabled: f.form.hasErrors ? true : false,
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 8.0),
-                  TextButton(
-                      onPressed: () {
-                        f.form.reset();
-
-                        locator<NavigationService>().navigateToRegisterView();
-                      },
-                      child: const Text(
-                        "REGISTER HERE",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ))
-                ],
-              ),
-            )
-          ],
-        )
               );
             }),
       );

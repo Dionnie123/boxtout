@@ -5,13 +5,18 @@ import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  ResponsiveSizingConfig.instance.setCustomBreakpoints(
+    const ScreenBreakpoints(desktop: 800, tablet: 550, watch: 200),
+  );
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
+
   runApp(const MainApp());
 }
 
