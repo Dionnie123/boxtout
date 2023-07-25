@@ -43,7 +43,6 @@ class MainApp extends StatelessWidget {
             brightness: Brightness.dark,
           ),
           // useMaterial3: true,
-
           brightness: Brightness.dark,
           fontFamily: GoogleFonts.nunito().fontFamily,
           inputDecorationTheme: InputDecorationTheme(

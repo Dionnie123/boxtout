@@ -29,7 +29,7 @@ class LoginView extends StackedView<LoginViewModel> {
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text(
-                  "NESCOFFEE",
+                  "NESCOFFEEX",
                   style: headlineStyle.copyWith(color: Colors.white),
                 )));
       }
@@ -118,71 +118,74 @@ class LoginView extends StackedView<LoginViewModel> {
                         fit: BoxFit.cover)),
               )
             : Container(
+                width: double.infinity,
                 decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
                     image: DecorationImage(
                         image: AssetImage('assets/login_bg.jpg'),
                         fit: BoxFit.cover)),
               );
       }
 
-      return Scaffold(
-        appBar: AppBar(),
-        extendBodyBehindAppBar: true,
-        body: LayoutBuilder(builder: (context, size) {
-          return ScaffoldBodyWrapper(
-              centered: true,
-              isFullWidth: true,
-              padding: Dimens.computedWidth(
-                  size: size, targetWidth: 1000, hPadding: 8.0),
-              builder: (context, size) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Card(
-                    margin: EdgeInsets.zero,
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+      return SafeArea(
+        top: false,
+        child: Scaffold(
+          appBar: AppBar(),
+          extendBodyBehindAppBar: true,
+          body: LayoutBuilder(builder: (context, size) {
+            return ScaffoldBodyWrapper(
+                centered: true,
+                isFullWidth: true,
+                padding: Dimens.computedWidth(
+                    size: size, targetWidth: 1000, hPadding: 0.0),
+                builder: (context, size) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: !isMobile(context)
-                        ? SizedBox(
-                            height: 750,
-                            width: double.infinity,
-                            child: LayoutBuilder(builder: (context, size) {
-                              return Row(
-                                children: [
-                                  Expanded(child: bg()),
-                                  Expanded(
-                                      child: Padding(
-                                    padding: const EdgeInsets.all(25.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        logo(),
-                                        form(),
-                                        copyright(),
-                                      ],
-                                    ),
-                                  )),
-                                ],
-                              );
-                            }),
+                        ? Card(
+                            margin: EdgeInsets.zero,
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: SizedBox(
+                              height: 750,
+                              width: double.infinity,
+                              child: LayoutBuilder(builder: (context, size) {
+                                return Row(
+                                  children: [
+                                    Expanded(child: bg()),
+                                    Expanded(
+                                        child: Padding(
+                                      padding: const EdgeInsets.all(25.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          logo(),
+                                          form(),
+                                          copyright(),
+                                        ],
+                                      ),
+                                    )),
+                                  ],
+                                );
+                              }),
+                            ),
                           )
                         : Column(
                             children: [
                               SizedBox(
-                                  height: size.maxHeight * 0.3, child: bg()),
+                                  width: double.infinity,
+                                  height: size.maxHeight * 0.2,
+                                  child: bg()),
                               Container(
                                   constraints: BoxConstraints(
                                     minHeight: size.maxHeight * 0.7,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(25.0),
+                                    padding: const EdgeInsets.all(15.0),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -199,10 +202,10 @@ class LoginView extends StackedView<LoginViewModel> {
                                   )),
                             ],
                           ),
-                  ),
-                );
-              });
-        }),
+                  );
+                });
+          }),
+        ),
       );
     });
   }
