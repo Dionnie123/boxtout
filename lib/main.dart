@@ -4,7 +4,6 @@ import 'package:boxtout/app/app.bottomsheets.dart';
 import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -32,6 +31,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          elevatedButtonTheme: const ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
+          buttonTheme: const ButtonThemeData(),
           textButtonTheme: const TextButtonThemeData(
               style: ButtonStyle(
                   foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
@@ -44,7 +47,7 @@ class MainApp extends StatelessWidget {
           ),
           // useMaterial3: true,
           brightness: Brightness.dark,
-          fontFamily: GoogleFonts.nunito().fontFamily,
+          //   fontFamily: GoogleFonts.nunito().fontFamily,
           inputDecorationTheme: InputDecorationTheme(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),

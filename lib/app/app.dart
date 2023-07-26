@@ -6,6 +6,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:boxtout/ui/views/login/login_view.dart';
 import 'package:boxtout/ui/views/register/register_view.dart';
+import 'package:boxtout/services/authentication_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -21,6 +22,7 @@ import 'package:boxtout/ui/views/register/register_view.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
 
+    LazySingleton(classType: AuthenticationService),
 // @stacked-service
   ],
   bottomsheets: [

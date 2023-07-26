@@ -1,6 +1,6 @@
 import 'package:boxtout/ui/common/dimensions.dart';
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
-import 'package:boxtout/ui/views/login/widgets/login_form.dart';
+import 'package:boxtout/ui/views/login/widgets/k.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -61,7 +61,7 @@ class LoginViewDesktop extends ViewModelWidget<LoginViewModel> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [LoginForm()],
+                                    children: [SupabaseAuthForm()],
                                   ),
                                 )),
                               ],

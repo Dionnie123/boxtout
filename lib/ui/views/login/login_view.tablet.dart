@@ -1,9 +1,9 @@
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
-import 'package:boxtout/ui/views/login/widgets/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import 'login_viewmodel.dart';
+import 'widgets/k.dart';
 import 'widgets/logo.dart';
 
 class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
@@ -46,7 +46,7 @@ class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [LoginForm()],
+                        children: [SupabaseAuthForm()],
                       ),
                     )),
                   ],
