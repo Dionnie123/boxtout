@@ -32,6 +32,7 @@ class LoginViewMobile extends ViewModelWidget<LoginViewModel> {
                           padding: EdgeInsets.all(15.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Logo(),
                             ],
