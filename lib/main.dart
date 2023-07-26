@@ -11,7 +11,7 @@ import 'package:stacked_services/stacked_services.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
-    const ScreenBreakpoints(desktop: 800, tablet: 550, watch: 200),
+    const ScreenBreakpoints(desktop: 1369, tablet: 768, watch: 200),
   );
   await setupLocator();
   setupDialogUi();
