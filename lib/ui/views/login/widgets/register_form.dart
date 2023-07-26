@@ -100,7 +100,7 @@ class RegisterForm extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 24.0),
           TextButton(
               onPressed: () {
                 formModel.form.reset();
