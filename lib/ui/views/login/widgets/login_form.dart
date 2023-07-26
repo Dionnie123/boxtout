@@ -12,6 +12,10 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReactiveLoginDtoFormConsumer(builder: (context, formModel, _) {
+      formModel.form.updateValue({
+        'email': 'bulingitmarkdionnie@gmail.com',
+        'password': 'qweqwe123',
+      });
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,

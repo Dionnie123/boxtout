@@ -12,11 +12,17 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReactiveRegisterDtoFormConsumer(builder: (context, formModel, _) {
+      formModel.form.updateValue({
+        'fullName': 'Mark Dionnie Bulingit',
+        'email': 'bulingitmarkdionnie@gmail.com',
+        'password': 'qweqwe123',
+        'passwordConfirmation': 'qweqwe123',
+        'acceptLicense': true
+      });
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const BoxText.headline('SIGN UP'),
-          const BoxText.caption('Enter your details below'),
           const SizedBox(height: 24.0),
           ReactiveTextField<String>(
             formControl: formModel.fullNameControl,
