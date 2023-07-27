@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import 'login_viewmodel.dart';
-import 'widgets/k.dart';
+import 'widgets/login_form.dart';
 import 'widgets/logo.dart';
 
 class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
@@ -46,7 +46,7 @@ class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [SupabaseAuthForm()],
+                        children: [LoginForm()],
                       ),
                     )),
                   ],

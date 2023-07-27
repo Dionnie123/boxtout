@@ -6,7 +6,8 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:boxtout/ui/views/login/login_view.dart';
 import 'package:boxtout/ui/views/register/register_view.dart';
-import 'package:boxtout/services/authentication_service.dart';
+import 'package:boxtout/ui/views/dashboard/dashboard_view.dart';
+import 'package:boxtout/services/auth_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -15,6 +16,7 @@ import 'package:boxtout/services/authentication_service.dart';
     MaterialRoute(page: StartupView),
     CustomRoute(page: LoginView),
     CustomRoute(page: RegisterView),
+    MaterialRoute(page: DashboardView),
 // @stacked-route
   ],
   dependencies: [
@@ -22,7 +24,7 @@ import 'package:boxtout/services/authentication_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
 
-    LazySingleton(classType: AuthenticationService),
+    InitializableSingleton(classType: AuthService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -19,7 +19,6 @@ class LoginView extends StackedView<LoginViewModel> {
   ) {
     return LoginDtoFormBuilder(builder: (contect, formModel, _) {
       return ScreenTypeLayout.builder(
-        key: UniqueKey(),
         mobile: (_) => const LoginViewMobile(),
         tablet: (_) => const LoginViewTablet(),
         desktop: (_) => const LoginViewDesktop(),

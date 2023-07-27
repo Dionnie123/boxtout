@@ -2,8 +2,10 @@ import 'package:box_ui/box_ui.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/app/models/login_dto.dart';
+import 'package:boxtout/ui/views/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class LoginForm extends StatelessWidget {
@@ -11,11 +13,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = getParentViewModel<LoginViewModel>(context);
     return ReactiveLoginDtoFormConsumer(builder: (context, formModel, _) {
-      formModel.form.updateValue({
-        'email': 'bulingitmarkdionnie@gmail.com',
-        'password': 'qweqwe123',
-      });
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,6 +52,13 @@ class LoginForm extends StatelessWidget {
             return BoxButton(
               title: 'SIGN IN',
               disabled: formModel.form.hasErrors ? true : false,
+              onTap: formModel.form.hasErrors
+                  ? null
+                  : () async {
+                      await viewModel.signIn(
+                          email: formModel.emailControl?.value,
+                          password: formModel.passwordControl?.value);
+                    },
             );
           }),
           const SizedBox(height: 24.0),

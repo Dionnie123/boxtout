@@ -2,8 +2,10 @@ import 'package:box_ui/box_ui.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/app/models/register_dto.dart';
+import 'package:boxtout/ui/views/register/register_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class RegisterForm extends StatelessWidget {
@@ -11,14 +13,15 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = getParentViewModel<RegisterViewModel>(context);
     return ReactiveRegisterDtoFormConsumer(builder: (context, formModel, _) {
-      formModel.form.updateValue({
+      /*    formModel.form.updateValue({
         'fullName': 'Mark Dionnie Bulingit',
         'email': 'bulingitmarkdionnie@gmail.com',
         'password': 'qweqwe123',
         'passwordConfirmation': 'qweqwe123',
         'acceptLicense': true
-      });
+      }); */
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -97,6 +100,13 @@ class RegisterForm extends StatelessWidget {
               return BoxButton(
                 title: 'SIGN UP',
                 disabled: formModel.form.hasErrors ? true : false,
+                onTap: formModel.form.hasErrors
+                    ? null
+                    : () async {
+                        await viewModel.signUp(
+                            email: formModel.emailControl?.value,
+                            password: formModel.passwordControl?.value);
+                      },
               );
             },
           ),

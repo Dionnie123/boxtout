@@ -4,7 +4,7 @@ import 'package:boxtout/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('AuthenticationServiceTest -', () {
+  group('DashboardViewModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });
