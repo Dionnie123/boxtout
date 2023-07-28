@@ -20,6 +20,8 @@ class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
               height: size.maxHeight,
               width: size.maxWidth,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Container(
@@ -40,10 +42,11 @@ class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
                   ),
                   const Expanded(
                       child: SingleChildScrollView(
-                    padding: EdgeInsets.all(15.0),
+                    padding: EdgeInsets.all(30.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [SizedBox(height: 80), LoginForm()],
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [SizedBox(height: 60), LoginForm()],
                     ),
                   )),
                 ],
