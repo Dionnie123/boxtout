@@ -73,25 +73,15 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i4.LoginView: (data) {
-      return _i7.PageRouteBuilder<dynamic>(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const _i4.LoginView(),
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.LoginView(),
         settings: data,
-        transitionsBuilder: data.transition ??
-            (context, animation, secondaryAnimation, child) {
-              return child;
-            },
       );
     },
     _i5.RegisterView: (data) {
-      return _i7.PageRouteBuilder<dynamic>(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const _i5.RegisterView(),
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i5.RegisterView(),
         settings: data,
-        transitionsBuilder: data.transition ??
-            (context, animation, secondaryAnimation, child) {
-              return child;
-            },
       );
     },
     _i6.DashboardView: (data) {

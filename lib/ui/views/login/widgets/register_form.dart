@@ -98,6 +98,7 @@ class RegisterForm extends StatelessWidget {
           ReactiveRegisterDtoFormConsumer(
             builder: (context, formModel, child) {
               return BoxButton(
+                busy: viewModel.isBusy,
                 title: 'SIGN UP',
                 disabled: formModel.form.hasErrors ? true : false,
                 onTap: formModel.form.hasErrors

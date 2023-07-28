@@ -55,8 +55,10 @@ class RegisterViewDesktop extends ViewModelWidget<RegisterViewModel> {
                               padding: EdgeInsets.all(25.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [RegisterForm()],
+                                children: [
+                                  SizedBox(height: 80),
+                                  RegisterForm()
+                                ],
                               ),
                             )),
                           ],

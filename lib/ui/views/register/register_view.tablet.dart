@@ -13,45 +13,41 @@ class RegisterViewTablet extends ViewModelWidget<RegisterViewModel> {
   Widget build(BuildContext context, RegisterViewModel viewModel) {
     return Scaffold(
         body: ScaffoldBodyWrapper(
-            centered: true,
             isFullWidth: true,
             padding: EdgeInsets.zero,
             builder: (context, size) {
               return SizedBox(
                 height: size.maxHeight,
                 width: size.maxWidth,
-                child: LayoutBuilder(builder: (context, size) {
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                            width: double.infinity,
-                            height: double.infinity,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('assets/register_bg.jpg'),
-                                  fit: BoxFit.cover),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                          height: size.maxHeight,
+                          width: size.maxWidth,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/register_bg.jpg'),
+                                fit: BoxFit.cover),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(25.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [Logo()],
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(25.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [Logo()],
-                              ),
-                            )),
+                          )),
+                    ),
+                    const Expanded(
+                        child: SingleChildScrollView(
+                      padding: EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [SizedBox(height: 80), RegisterForm()],
                       ),
-                      const Expanded(
-                          child: Padding(
-                        padding: EdgeInsets.all(25.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [RegisterForm()],
-                        ),
-                      )),
-                    ],
-                  );
-                }),
+                    )),
+                  ],
+                ),
               );
             }));
   }

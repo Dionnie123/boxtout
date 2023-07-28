@@ -60,8 +60,10 @@ class LoginViewDesktop extends ViewModelWidget<LoginViewModel> {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [LoginForm()],
+                                    children: [
+                                      SizedBox(height: 80),
+                                      LoginForm()
+                                    ],
                                   ),
                                 )),
                               ],

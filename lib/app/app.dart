@@ -14,8 +14,8 @@ import 'package:boxtout/services/auth_service.dart';
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    CustomRoute(page: LoginView),
-    CustomRoute(page: RegisterView),
+    MaterialRoute(page: LoginView),
+    MaterialRoute(page: RegisterView),
     MaterialRoute(page: DashboardView),
 // @stacked-route
   ],
