@@ -55,9 +55,12 @@ class AuthService with Initialisable {
       if ((res.user?.identities ?? []).isEmpty) {
         return await Future.error("User already exists.");
       }
-      if (res.session == null) {
+      if (res.user != null && res.session == null) {
         return await Future.error(
             "Please verify your email address.Check your email.");
+      }
+      if (res.user != null && res.session != null) {
+        // Go to dashboard page
       }
     } catch (e) {
       return await Future.error(errorDefinition(e.toString()));

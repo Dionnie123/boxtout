@@ -4,6 +4,7 @@ import 'package:boxtout/app/app.bottomsheets.dart';
 import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -31,41 +32,42 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          elevatedButtonTheme: const ElevatedButtonThemeData(
-              style: ButtonStyle(
-                  minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
-          buttonTheme: const ButtonThemeData(),
-          textButtonTheme: const TextButtonThemeData(
-              style: ButtonStyle(
-                  foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
+        elevatedButtonTheme: const ElevatedButtonThemeData(
+            style: ButtonStyle(
+                minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
+        buttonTheme: const ButtonThemeData(),
+        textButtonTheme: const TextButtonThemeData(
+            style: ButtonStyle(
+                foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
+            // brightness: Brightness.dark,
+            ),
+        useMaterial3: true,
+        // brightness: Brightness.dark,
+        fontFamily: GoogleFonts.nunito().fontFamily,
+        inputDecorationTheme: InputDecorationTheme(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          filled: true,
+          //fillColor: kcVeryLightGreyColor,
+          border: circularBorder.copyWith(
+            borderSide: const BorderSide(color: kcLightGreyColor),
           ),
-          colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
-            brightness: Brightness.dark,
+          errorBorder: circularBorder.copyWith(
+            borderSide: const BorderSide(color: Colors.red),
           ),
-          // useMaterial3: true,
-          brightness: Brightness.dark,
-          //   fontFamily: GoogleFonts.nunito().fontFamily,
-          inputDecorationTheme: InputDecorationTheme(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-            filled: true,
-            //fillColor: kcVeryLightGreyColor,
-            border: circularBorder.copyWith(
-              borderSide: const BorderSide(color: kcLightGreyColor),
-            ),
-            errorBorder: circularBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.red),
-            ),
-            focusedBorder: circularBorder.copyWith(
-              borderSide: const BorderSide(color: kcPrimaryColor),
-            ),
-            enabledBorder: circularBorder.copyWith(
-              borderSide: const BorderSide(color: kcLightGreyColor),
-            ),
-          )),
+          focusedBorder: circularBorder.copyWith(
+            borderSide: const BorderSide(color: kcPrimaryColor),
+          ),
+          enabledBorder: circularBorder.copyWith(
+            borderSide: const BorderSide(color: kcLightGreyColor),
+          ),
+        ),
+      ),
       initialRoute: Routes.startupView,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,
