@@ -3,10 +3,11 @@ import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/services/auth_service.dart';
 import 'package:boxtout/ui/common/app_strings.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class HomeViewModel extends BaseViewModel {
+class HomeViewModel extends BaseViewModel with WidgetsBindingObserver {
   final _dialogService = locator<DialogService>();
   final _bottomSheetService = locator<BottomSheetService>();
   final _authService = locator<AuthService>();
@@ -14,6 +15,17 @@ class HomeViewModel extends BaseViewModel {
   String get counterLabel => 'Counter is: $_counter';
 
   int _counter = 0;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state.toString());
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   void incrementCounter() {
     _counter++;
