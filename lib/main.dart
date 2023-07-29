@@ -6,6 +6,7 @@ import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -76,6 +77,31 @@ class MainApp extends StatelessWidget {
       navigatorObservers: [
         StackedService.routeObserver,
       ],
+      builder: (context, child) {
+        return Scaffold(
+          body: Column(
+            children: [
+              Expanded(child: child ?? const SizedBox()),
+              Container(
+                width: double.infinity,
+                color: Colors.black,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Made with 💖 by Mark Dionnie Bulingit ⓒ Coffeeco ${DateFormat.y().format(DateTime.now())}",
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

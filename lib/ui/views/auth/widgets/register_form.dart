@@ -32,7 +32,7 @@ class RegisterForm extends StatelessWidget {
         children: [
           const BoxText.headline('SIGN UP'),
           const SizedBox(height: 24.0),
-          /*    ReactiveTextField<String>(
+          ReactiveTextField<String>(
             formControl: formModel.fullNameControl,
             validationMessages: {
               ValidationMessage.required: (_) => 'Required',
@@ -44,11 +44,14 @@ class RegisterForm extends StatelessWidget {
               helperStyle: TextStyle(height: 0.8),
               errorStyle: TextStyle(height: 0.8),
             ),
-          ), */
+          ),
           const SizedBox(height: 8.0),
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
-            validationMessages: {ValidationMessage.required: (_) => 'Required'},
+            validationMessages: {
+              ValidationMessage.required: (_) => 'Required',
+              ValidationMessage.email: (_) => 'Invalid email'
+            },
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
               labelText: 'Email',
@@ -76,7 +79,7 @@ class RegisterForm extends StatelessWidget {
             obscureText: true,
             validationMessages: {
               ValidationMessage.required: (_) => 'Required',
-              ValidationMessage.mustMatch: (_) => "Password must match",
+              ValidationMessage.mustMatch: (_) => "Password do not match",
             },
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(

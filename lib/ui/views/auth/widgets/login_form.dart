@@ -21,7 +21,10 @@ class LoginForm extends StatelessWidget {
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
             textInputAction: TextInputAction.next,
-            validationMessages: {ValidationMessage.required: (_) => 'Required'},
+            validationMessages: {
+              ValidationMessage.required: (_) => 'Required',
+              ValidationMessage.email: (_) => 'Invalid email'
+            },
             decoration: const InputDecoration(
               labelText: 'Email',
               helperText: '',
@@ -35,7 +38,6 @@ class LoginForm extends StatelessWidget {
             obscureText: true,
             validationMessages: {
               ValidationMessage.required: (_) => 'Required',
-              'mustMatch': (_) => "Not match",
             },
             textInputAction: TextInputAction.done,
             decoration: const InputDecoration(
