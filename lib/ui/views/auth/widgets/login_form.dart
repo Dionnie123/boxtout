@@ -1,12 +1,9 @@
 import 'package:box_ui/box_ui.dart';
-import 'package:boxtout/app/app.locator.dart';
-import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/app/models/login_dto.dart';
 import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -57,9 +54,9 @@ class LoginForm extends StatelessWidget {
               onTap: formModel.form.hasErrors
                   ? null
                   : () async {
-                      /*    await viewModel.signIn(
+                      await viewModel.signIn(
                           email: formModel.emailControl?.value,
-                          password: formModel.passwordControl?.value); */
+                          password: formModel.passwordControl?.value);
                     },
             );
           }),
@@ -68,7 +65,7 @@ class LoginForm extends StatelessWidget {
               onPressed: () {
                 formModel.form.reset();
 
-                locator<NavigationService>().navigateToRegisterView();
+                viewModel.authType = AuthType.signUp;
               },
               child: const Text(
                 "Don't have an account? Sign up",

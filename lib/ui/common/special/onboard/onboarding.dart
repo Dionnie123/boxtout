@@ -1,7 +1,7 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:boxtout/ui/common/special/onboard/buildin_transformers.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
-import 'package:boxtout/ui/views/login/widgets/logo.dart';
+import 'package:boxtout/ui/views/auth/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -31,14 +31,14 @@ class _OnboardingState extends State<Onboarding> {
   final list = [
     OnboaringItem(
         testimonial:
-            "As the CEO of a busy tech company, I rely on the CoffeeCo app to fuel my day. The convenience of ordering my favorite cappuccino and having it ready when I arrive is a game-changer. This app is a lifesaver!",
+            "The convenience of ordering my favorite cappuccino and having it ready when I arrive is a game-changer. This app is a lifesaver!",
         color: Colors.orange,
         image: 'assets/login_bg.jpg',
         personName: "John Smith",
         personTitle: "CEO"),
     OnboaringItem(
       testimonial:
-          "The CoffeeCo app has revolutionized my coffee routine! As a barista myself, I appreciate how easy it is to explore their diverse coffee menu and place orders. It's a must-have for all coffee enthusiasts!",
+          "The CoffeeCo app has revolutionized my coffee routine! As a barista myself, I appreciate how easy it is to explore their diverse coffee menu and place orders.",
       color: Colors.red,
       image: 'assets/register_bg.jpg',
       personName: "Emily Johnson",
@@ -46,7 +46,7 @@ class _OnboardingState extends State<Onboarding> {
     ),
     OnboaringItem(
       testimonial:
-          "I've tried many coffee apps, but CoffeeCo stands out with its user-friendly interface and lightning-fast order processing. It's the only app I trust to get my coffee just right",
+          "I've tried many coffee apps, but CoffeeCo stands out with its user-friendly interface and lightning-fast order processing.",
       color: Colors.green,
       image: 'assets/login_bg.jpg',
       personName: "Mark Dionnie",

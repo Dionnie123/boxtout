@@ -1,19 +1,16 @@
 import 'package:box_ui/box_ui.dart';
-import 'package:boxtout/app/app.locator.dart';
-import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/app/models/register_dto.dart';
-import 'package:boxtout/ui/views/register/register_viewmodel.dart';
+import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = getParentViewModel<RegisterViewModel>(context);
+    final viewModel = getParentViewModel<AuthViewModel>(context);
 
     removeFocus() {
       FocusScopeNode currentFocus = FocusScope.of(context);
@@ -126,7 +123,7 @@ class RegisterForm extends StatelessWidget {
               onPressed: () {
                 formModel.form.reset();
 
-                locator<NavigationService>().navigateToLoginView();
+                viewModel.authType = AuthType.signIn;
               },
               child: const Text(
                 "Already have an account? Sign in",

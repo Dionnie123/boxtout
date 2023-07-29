@@ -1,9 +1,10 @@
 import 'package:boxtout/app/models/login_dto.dart';
+import 'package:boxtout/app/models/register_dto.dart';
 import 'package:boxtout/ui/common/special/onboard/onboarding.dart';
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
-import 'package:boxtout/ui/views/login/widgets/login_form.dart';
+import 'package:boxtout/ui/views/auth/widgets/login_form.dart';
+import 'package:boxtout/ui/views/auth/widgets/register_form.dart';
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 import 'package:stacked/stacked.dart';
 
 import 'auth_viewmodel.dart';
@@ -33,22 +34,22 @@ class AuthViewDesktop extends ViewModelWidget<AuthViewModel> {
                   ),
                   Expanded(
                       child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(40.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 60),
-                        ReactiveLoginDtoForm(
-                          key: ObjectKey(viewModel.loginFormModel),
-                          form: viewModel.loginFormModel,
-                          child: ReactiveFormBuilder(
-                              form: () => viewModel.loginFormModel.form,
-                              onWillPop: null,
-                              builder: (context, formGroup, child) {
-                                return const LoginForm();
-                              }),
-                        )
+                        (viewModel.authType == AuthType.signIn)
+                            ? ReactiveLoginDtoForm(
+                                key: ObjectKey(viewModel.loginFormModel),
+                                form: viewModel.loginFormModel,
+                                child: const LoginForm(),
+                              )
+                            : ReactiveRegisterDtoForm(
+                                key: ObjectKey(viewModel.registerFormModel),
+                                form: viewModel.registerFormModel,
+                                child: const RegisterForm(),
+                              ),
                       ],
                     ),
                   )),

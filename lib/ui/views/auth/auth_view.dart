@@ -3,7 +3,6 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
 import 'auth_view.desktop.dart';
-import 'auth_view.tablet.dart';
 import 'auth_view.mobile.dart';
 import 'auth_viewmodel.dart';
 
@@ -18,7 +17,7 @@ class AuthView extends StackedView<AuthViewModel> {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => const AuthViewMobile(),
-      tablet: (_) => const AuthViewTablet(),
+      tablet: (_) => const AuthViewDesktop(),
       desktop: (_) => const AuthViewDesktop(),
     );
   }
