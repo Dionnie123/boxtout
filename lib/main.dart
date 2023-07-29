@@ -9,6 +9,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final supabase = Supabase.instance.client;
     final circularBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
     );
@@ -71,7 +73,11 @@ class MainApp extends StatelessWidget {
           ),
         ),
       ),
-      routerDelegate: stackedRouter.delegate(),
+      routerDelegate: stackedRouter.delegate(initialRoutes: [
+        supabase.auth.currentUser != null
+            ? const HomeViewRoute()
+            : const AuthViewRoute()
+      ]),
       routeInformationParser: stackedRouter.defaultRouteParser(),
       builder: (context, child) {
         return Scaffold(

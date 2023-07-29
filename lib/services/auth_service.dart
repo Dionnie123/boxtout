@@ -35,10 +35,10 @@ class AuthService with Initialisable {
     try {
       final res = await _supabase.auth
           .signInWithPassword(email: email, password: password);
-      if (res.session != null) {
+      /*    if (res.session != null) {
         return await Future.error(
             "Please verify your email address.Check your email.");
-      }
+      } */
     } catch (e) {
       return await Future.error(errorDefinition(e.toString()));
     }

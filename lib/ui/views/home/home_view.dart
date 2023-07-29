@@ -34,6 +34,12 @@ class HomeView extends StackedView<HomeViewModel> {
                           locator<RouterService>().navigateToAuthView();
                         },
                         child: const Text("LOGIN")),
+                    TextButton(
+                        onPressed: () async {
+                          await viewModel.signOut();
+                          locator<RouterService>().navigateToAuthView();
+                        },
+                        child: const Text("LOGOUT")),
                     const Text(
                       'Hello, STACKED!',
                       style: TextStyle(

@@ -11,9 +11,13 @@ import 'package:boxtout/ui/views/auth/auth_view.dart';
 @StackedApp(
   logger: StackedLogger(),
   routes: [
-    MaterialRoute(page: HomeView),
-    MaterialRoute(page: StartupView),
-    CustomRoute(page: AuthView),
+    CustomRoute(
+      path: '',
+      page: StartupView,
+      initial: true,
+    ),
+    CustomRoute(path: '', page: AuthView),
+    CustomRoute(path: '', page: HomeView),
 // @stacked-route
   ],
   dependencies: [
