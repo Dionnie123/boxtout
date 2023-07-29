@@ -18,10 +18,18 @@ class RegisterView extends StackedView<RegisterViewModel> {
     Widget? child,
   ) {
     return RegisterDtoFormBuilder(builder: (contect, formModel, _) {
-      return ScreenTypeLayout.builder(
-        mobile: (_) => const RegisterViewMobile(),
-        tablet: (_) => const RegisterViewTablet(),
-        desktop: (_) => const RegisterViewDesktop(),
+      return GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.focusedChild?.unfocus();
+          }
+        },
+        child: ScreenTypeLayout.builder(
+          mobile: (_) => const RegisterViewMobile(),
+          tablet: (_) => const RegisterViewTablet(),
+          desktop: (_) => const RegisterViewDesktop(),
+        ),
       );
     });
   }

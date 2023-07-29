@@ -1,4 +1,5 @@
 import 'package:boxtout/app/app.locator.dart';
+import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/services/auth_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
@@ -7,6 +8,7 @@ import 'package:stacked_services/stacked_services.dart';
 class LoginViewModel extends BaseViewModel {
   final _authService = locator<AuthService>();
   final _dialogService = locator<DialogService>();
+  final _navService = locator<NavigationService>();
 
   @override
   void onFutureError(error, Object? key) {
@@ -22,7 +24,10 @@ class LoginViewModel extends BaseViewModel {
 
   Future signIn({required email, required password}) async {
     await runBusyFuture(
-        _authService.signInWithEmail(email: email, password: password),
-        throwException: true);
+            _authService.signInWithEmail(email: email, password: password),
+            throwException: true)
+        .then((value) {
+      _navService.navigateToHomeView();
+    });
   }
 }

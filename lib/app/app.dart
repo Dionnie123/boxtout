@@ -6,7 +6,6 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:boxtout/ui/views/login/login_view.dart';
 import 'package:boxtout/ui/views/register/register_view.dart';
-import 'package:boxtout/ui/views/dashboard/dashboard_view.dart';
 import 'package:boxtout/services/auth_service.dart';
 // @stacked-import
 
@@ -16,7 +15,6 @@ import 'package:boxtout/services/auth_service.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: RegisterView),
-    MaterialRoute(page: DashboardView),
 // @stacked-route
   ],
   dependencies: [

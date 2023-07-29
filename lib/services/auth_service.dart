@@ -1,4 +1,3 @@
-import 'dart:js_interop';
 import 'package:boxtout/app/helpers/error_definitions.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -36,7 +35,7 @@ class AuthService with Initialisable {
     try {
       final res = await _supabase.auth
           .signInWithPassword(email: email, password: password);
-      if (res.session.isNull) {
+      if (res.session != null) {
         return await Future.error(
             "Please verify your email address.Check your email.");
       }
@@ -57,7 +56,7 @@ class AuthService with Initialisable {
       }
       if (res.user != null && res.session == null) {
         return await Future.error(
-            "Please verify your email address.Check your email.");
+            "Please verify your email address.\nCheck your email.");
       }
       if (res.user != null && res.session != null) {
         // Go to dashboard page

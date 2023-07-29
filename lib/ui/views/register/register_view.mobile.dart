@@ -21,7 +21,7 @@ class RegisterViewMobile extends ViewModelWidget<RegisterViewModel> {
                 children: [
                   SizedBox(
                       width: double.infinity,
-                      height: size.maxHeight * 0.25,
+                      height: size.maxHeight * 0.20,
                       child: Container(
                         width: double.infinity,
                         decoration: const BoxDecoration(
@@ -41,7 +41,7 @@ class RegisterViewMobile extends ViewModelWidget<RegisterViewModel> {
                       )),
                   Container(
                       constraints: BoxConstraints(
-                        minHeight: size.maxHeight * 0.75,
+                        minHeight: size.maxHeight * 0.80,
                       ),
                       child: const Padding(
                         padding: EdgeInsets.symmetric(

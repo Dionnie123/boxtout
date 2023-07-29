@@ -23,6 +23,7 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 24.0),
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
+            textInputAction: TextInputAction.next,
             validationMessages: {ValidationMessage.required: (_) => 'Required'},
             decoration: const InputDecoration(
               labelText: 'Email',
@@ -62,7 +63,7 @@ class LoginForm extends StatelessWidget {
                     },
             );
           }),
-          const SizedBox(height: 24.0),
+          const SizedBox(height: 18.0),
           TextButton(
               onPressed: () {
                 formModel.form.reset();

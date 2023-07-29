@@ -1,4 +1,5 @@
 import 'package:box_ui/box_ui.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:boxtout/app/app.bottomsheets.dart';
 import 'package:boxtout/app/app.dialogs.dart';
@@ -30,6 +31,7 @@ class MainApp extends StatelessWidget {
     );
 
     return MaterialApp(
+      scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         elevatedButtonTheme: const ElevatedButtonThemeData(
@@ -76,4 +78,12 @@ class MainApp extends StatelessWidget {
       ],
     );
   }
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }

@@ -14,6 +14,14 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = getParentViewModel<RegisterViewModel>(context);
+
+    removeFocus() {
+      FocusScopeNode currentFocus = FocusScope.of(context);
+      if (!currentFocus.hasPrimaryFocus) {
+        currentFocus.focusedChild?.unfocus();
+      }
+    }
+
     return ReactiveRegisterDtoFormConsumer(builder: (context, formModel, _) {
       /*    formModel.form.updateValue({
         'fullName': 'Mark Dionnie Bulingit',
@@ -27,7 +35,7 @@ class RegisterForm extends StatelessWidget {
         children: [
           const BoxText.headline('SIGN UP'),
           const SizedBox(height: 24.0),
-          ReactiveTextField<String>(
+          /*    ReactiveTextField<String>(
             formControl: formModel.fullNameControl,
             validationMessages: {
               ValidationMessage.required: (_) => 'Required',
@@ -39,7 +47,7 @@ class RegisterForm extends StatelessWidget {
               helperStyle: TextStyle(height: 0.8),
               errorStyle: TextStyle(height: 0.8),
             ),
-          ),
+          ), */
           const SizedBox(height: 8.0),
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
@@ -84,6 +92,7 @@ class RegisterForm extends StatelessWidget {
           Row(
             children: [
               ReactiveCheckbox(
+                  onChanged: (control) {},
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4)),
                   formControl: formModel.acceptLicenseControl,
@@ -104,6 +113,7 @@ class RegisterForm extends StatelessWidget {
                 onTap: formModel.form.hasErrors
                     ? null
                     : () async {
+                        removeFocus();
                         await viewModel.signUp(
                             email: formModel.emailControl?.value,
                             password: formModel.passwordControl?.value);
@@ -111,7 +121,7 @@ class RegisterForm extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 24.0),
+          const SizedBox(height: 18.0),
           TextButton(
               onPressed: () {
                 formModel.form.reset();

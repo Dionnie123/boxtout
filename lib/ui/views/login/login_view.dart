@@ -1,10 +1,9 @@
 import 'package:boxtout/app/models/login_dto.dart';
+import 'package:boxtout/ui/views/login/login_view.desktop.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
-import 'login_view.desktop.dart';
-import 'login_view.tablet.dart';
 import 'login_view.mobile.dart';
 import 'login_viewmodel.dart';
 
@@ -20,7 +19,7 @@ class LoginView extends StackedView<LoginViewModel> {
     return LoginDtoFormBuilder(builder: (contect, formModel, _) {
       return ScreenTypeLayout.builder(
         mobile: (_) => const LoginViewMobile(),
-        tablet: (_) => const LoginViewTablet(),
+        tablet: (_) => const LoginViewDesktop(),
         desktop: (_) => const LoginViewDesktop(),
       );
     });

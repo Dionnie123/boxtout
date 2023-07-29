@@ -1,3 +1,4 @@
+import 'package:boxtout/ui/common/special/onboard/onboarding.dart';
 import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -32,13 +33,7 @@ class LoginViewTablet extends ViewModelWidget<LoginViewModel> {
                               image: AssetImage('assets/login_bg.jpg'),
                               fit: BoxFit.cover),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(25.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [Logo()],
-                          ),
-                        )),
+                        child: const Onboarding()),
                   ),
                   const Expanded(
                       child: SingleChildScrollView(

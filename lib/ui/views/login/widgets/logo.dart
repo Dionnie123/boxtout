@@ -11,9 +11,20 @@ class Logo extends StatelessWidget {
         color: kcPrimaryColor,
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Text(
-              "KAPE NOW",
-              style: headlineStyle.copyWith(color: Colors.white),
+            child: Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                const Icon(
+                  Icons.coffee,
+                  color: Colors.white,
+                  size: 40,
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  "COFFEECO",
+                  style: headlineStyle.copyWith(color: Colors.white),
+                ),
+              ],
             )));
   }
 }
