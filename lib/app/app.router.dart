@@ -1,162 +1,148 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// StackedNavigatorGenerator
+// StackedRouterGenerator
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:boxtout/ui/views/auth/auth_view.dart' as _i4;
-import 'package:boxtout/ui/views/home/home_view.dart' as _i2;
-import 'package:boxtout/ui/views/startup/startup_view.dart' as _i3;
-import 'package:flutter/material.dart' as _i5;
-import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i6;
+import 'package:flutter/material.dart' as _i6;
+import 'package:stacked/stacked.dart' as _i5;
+import 'package:stacked_services/stacked_services.dart' as _i4;
 
-class Routes {
-  static const homeView = '/home-view';
+import '../ui/views/auth/auth_view.dart' as _i3;
+import '../ui/views/home/home_view.dart' as _i1;
+import '../ui/views/startup/startup_view.dart' as _i2;
 
-  static const startupView = '/startup-view';
+final stackedRouter =
+    StackedRouterWeb(navigatorKey: _i4.StackedService.navigatorKey);
 
-  static const authView = '/auth-view';
+class StackedRouterWeb extends _i5.RootStackRouter {
+  StackedRouterWeb({_i6.GlobalKey<_i6.NavigatorState>? navigatorKey})
+      : super(navigatorKey);
 
-  static const all = <String>{
-    homeView,
-    startupView,
-    authView,
-  };
-}
-
-class StackedRouter extends _i1.RouterBase {
-  final _routes = <_i1.RouteDef>[
-    _i1.RouteDef(
-      Routes.homeView,
-      page: _i2.HomeView,
-    ),
-    _i1.RouteDef(
-      Routes.startupView,
-      page: _i3.StartupView,
-    ),
-    _i1.RouteDef(
-      Routes.authView,
-      page: _i4.AuthView,
-    ),
-  ];
-
-  final _pagesMap = <Type, _i1.StackedRouteFactory>{
-    _i2.HomeView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.HomeView(),
-        settings: data,
+  @override
+  final Map<String, _i5.PageFactory> pagesMap = {
+    HomeViewRoute.name: (routeData) {
+      return _i5.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i1.HomeView(),
       );
     },
-    _i3.StartupView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.StartupView(),
-        settings: data,
+    StartupViewRoute.name: (routeData) {
+      return _i5.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i2.StartupView(),
       );
     },
-    _i4.AuthView: (data) {
-      return _i5.PageRouteBuilder<dynamic>(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const _i4.AuthView(),
-        settings: data,
-        transitionsBuilder: data.transition ??
-            (context, animation, secondaryAnimation, child) {
-              return child;
-            },
+    AuthViewRoute.name: (routeData) {
+      return _i5.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i3.AuthView(),
+        opaque: true,
+        barrierDismissible: false,
       );
     },
   };
 
   @override
-  List<_i1.RouteDef> get routes => _routes;
-  @override
-  Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+  List<_i5.RouteConfig> get routes => [
+        _i5.RouteConfig(
+          HomeViewRoute.name,
+          path: '/home-view',
+        ),
+        _i5.RouteConfig(
+          StartupViewRoute.name,
+          path: '/startup-view',
+        ),
+        _i5.RouteConfig(
+          AuthViewRoute.name,
+          path: '/auth-view',
+        ),
+      ];
 }
 
-extension NavigatorStateExtension on _i6.NavigationService {
-  Future<dynamic> navigateToHomeView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.homeView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+/// generated route for
+/// [_i1.HomeView]
+class HomeViewRoute extends _i5.PageRouteInfo<void> {
+  const HomeViewRoute()
+      : super(
+          HomeViewRoute.name,
+          path: '/home-view',
+        );
+
+  static const String name = 'HomeView';
+}
+
+/// generated route for
+/// [_i2.StartupView]
+class StartupViewRoute extends _i5.PageRouteInfo<void> {
+  const StartupViewRoute()
+      : super(
+          StartupViewRoute.name,
+          path: '/startup-view',
+        );
+
+  static const String name = 'StartupView';
+}
+
+/// generated route for
+/// [_i3.AuthView]
+class AuthViewRoute extends _i5.PageRouteInfo<void> {
+  const AuthViewRoute()
+      : super(
+          AuthViewRoute.name,
+          path: '/auth-view',
+        );
+
+  static const String name = 'AuthView';
+}
+
+extension RouterStateExtension on _i4.RouterService {
+  Future<dynamic> navigateToHomeView(
+      {void Function(_i5.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const HomeViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> navigateToStartupView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.startupView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> navigateToStartupView(
+      {void Function(_i5.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const StartupViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> navigateToAuthView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.authView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> navigateToAuthView(
+      {void Function(_i5.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const AuthViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithHomeView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.homeView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> replaceWithHomeView(
+      {void Function(_i5.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const HomeViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithStartupView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.startupView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> replaceWithStartupView(
+      {void Function(_i5.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const StartupViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithAuthView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.authView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> replaceWithAuthView(
+      {void Function(_i5.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const AuthViewRoute(),
+      onFailure: onFailure,
+    );
   }
 }

@@ -9,6 +9,7 @@ import 'package:boxtout/ui/views/auth/auth_view.dart';
 // @stacked-import
 
 @StackedApp(
+  logger: StackedLogger(),
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
@@ -18,7 +19,7 @@ import 'package:boxtout/ui/views/auth/auth_view.dart';
   dependencies: [
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
-    LazySingleton(classType: NavigationService),
+    LazySingleton(classType: RouterService),
 
     InitializableSingleton(classType: AuthService),
 // @stacked-service

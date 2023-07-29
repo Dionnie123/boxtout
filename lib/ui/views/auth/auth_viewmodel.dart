@@ -13,7 +13,7 @@ enum AuthType { signIn, signUp, passwordResetRequest }
 class AuthViewModel extends BaseViewModel {
   final _authService = locator<AuthService>();
   final _dialogService = locator<DialogService>();
-  final _navService = locator<NavigationService>();
+  final _navService = locator<RouterService>();
 
   @override
   void onFutureError(error, Object? key) {

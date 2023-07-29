@@ -31,7 +31,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          locator<NavigationService>().navigateToAuthView();
+                          locator<RouterService>().navigateToAuthView();
                         },
                         child: const Text("LOGIN")),
                     const Text(

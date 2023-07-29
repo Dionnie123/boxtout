@@ -5,20 +5,20 @@ import 'package:boxtout/app/app.bottomsheets.dart';
 import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
     const ScreenBreakpoints(desktop: 1369, tablet: 768, watch: 200),
   );
-  await setupLocator();
+  await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
-
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MainApp());
 }
 
@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
     );
 
-    return MaterialApp(
+    return MaterialApp.router(
       scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -71,12 +71,8 @@ class MainApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: Routes.startupView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+      routerDelegate: stackedRouter.delegate(),
+      routeInformationParser: stackedRouter.defaultRouteParser(),
       builder: (context, child) {
         return Scaffold(
           body: Column(
@@ -88,7 +84,7 @@ class MainApp extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Made with 💖 by Mark Dionnie Bulingit ⓒ Coffeeco ${DateFormat.y().format(DateTime.now())}",
+                    "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
