@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'showup.dart';
-
 class OnboaringItem {
   final String testimonial;
   final String personName;
@@ -106,50 +104,48 @@ class _OnboardingState extends State<Onboarding> {
                         padding: const EdgeInsets.all(40.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                              width: 800,
-                              child: ShowUp(
-                                delay: 200,
-                                child: Text(
-                                  "\"${item.testimonial}.\"",
+                            const SizedBox(height: 80),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 800,
+                                  child: Text(
+                                    "\"${item.testimonial}.\"",
+                                    style: const TextStyle(
+                                      fontSize: 26.0,
+                                      color: Colors.white,
+                                    ).copyWith(
+                                      fontWeight: FontWeight.w900,
+                                      fontFamily:
+                                          GoogleFonts.nunito().fontFamily,
+                                    ),
+                                  ),
+                                ),
+                                vSpaceMedium,
+                                Text(
+                                  item.personName,
                                   style: const TextStyle(
-                                    fontSize: 30.0,
+                                    fontSize: 24.0,
                                     color: Colors.white,
                                   ).copyWith(
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.w700,
                                     fontFamily: GoogleFonts.nunito().fontFamily,
                                   ),
                                 ),
-                              ),
-                            ),
-                            vSpaceMedium,
-                            ShowUp(
-                              delay: 300,
-                              child: Text(
-                                item.personName,
-                                style: const TextStyle(
-                                  fontSize: 24.0,
-                                  color: Colors.white,
-                                ).copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: GoogleFonts.nunito().fontFamily,
+                                Text(
+                                  item.personTitle,
+                                  style: const TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.white,
+                                  ).copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.nunito().fontFamily,
+                                  ),
                                 ),
-                              ),
-                            ),
-                            ShowUp(
-                              delay: 400,
-                              child: Text(
-                                item.personTitle,
-                                style: const TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.white,
-                                ).copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: GoogleFonts.nunito().fontFamily,
-                                ),
-                              ),
+                              ],
                             ),
                           ],
                         ),

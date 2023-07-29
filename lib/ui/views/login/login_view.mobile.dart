@@ -19,9 +19,12 @@ class LoginViewMobile extends ViewModelWidget<LoginViewModel> {
             builder: (context, size) {
               return Column(
                 children: [
-                  SizedBox(
-                      width: double.infinity,
+                  Container(
                       height: size.maxHeight * 0.20,
+                      width: double.infinity,
+                      constraints: const BoxConstraints(
+                        minHeight: 100,
+                      ),
                       child: Container(
                         width: double.infinity,
                         decoration: const BoxDecoration(
