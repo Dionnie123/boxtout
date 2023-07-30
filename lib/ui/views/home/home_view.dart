@@ -23,6 +23,13 @@ class HomeView extends StackedView<HomeViewModel> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                "Welcome!",
+                style: const TextStyle(fontSize: 18).copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontFamily: GoogleFonts.nunito().fontFamily,
+                ),
+              ),
               Center(
                 child: Card(
                   clipBehavior: Clip.antiAlias,
@@ -43,10 +50,10 @@ class HomeView extends StackedView<HomeViewModel> {
                               margin: EdgeInsets.zero,
                               /*  margin:
                                   const EdgeInsets.symmetric(horizontal: 5.0), */
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/sliders/slide3.png'),
+                                    image: AssetImage(
+                                        'assets/sliders/slide$i.png'),
                                     fit: BoxFit.contain),
                               ),
                             );
@@ -64,6 +71,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   fontFamily: GoogleFonts.nunito().fontFamily,
                 ),
               ),
+              const SizedBox(height: 10),
               SizedBox(
                 //  color: Colors.red,
                 height: 220,
