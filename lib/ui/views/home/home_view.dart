@@ -1,4 +1,6 @@
+import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -17,29 +19,53 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kcPrimaryColor.darken(),
+        automaticallyImplyLeading: false,
+        title: Text(
+          "COFEECO",
+          style: const TextStyle(fontSize: 18).copyWith(
+            fontWeight: FontWeight.w900,
+            fontFamily: GoogleFonts.nunito().fontFamily,
+          ),
+        ),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.logout_rounded))
+        ],
+      ),
       body: ScaffoldBodyWrapper(
+        padding: EdgeInsets.zero,
         onRefresh: () async {},
         isFullWidth: true,
         builder: (context, size) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Welcome!",
-                style: const TextStyle(fontSize: 18).copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontFamily: GoogleFonts.nunito().fontFamily,
+              /*     Padding(
+                padding: vhSpaceSmall,
+                child: Text(
+                  "Welcome!",
+                  style: const TextStyle(fontSize: 18).copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  ),
                 ),
-              ),
+              ), */
               Center(
                 child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0)),
+                  margin: EdgeInsets.zero,
                   clipBehavior: Clip.antiAlias,
                   child: Container(
                     color: kcPrimaryColor,
-                    width: 800,
+                    width: 700,
                     child: CarouselSlider(
                       options: CarouselOptions(
-                        aspectRatio: 3 / 0.72,
+                        autoPlay: true,
+                        aspectRatio: 3 / 0.9,
+                        viewportFraction: 1,
+
                         /* viewportFraction: 0.8,
                         enlargeCenterPage: true, */
                       ),
@@ -65,27 +91,31 @@ class HomeView extends StackedView<HomeViewModel> {
                   ),
                 ),
               ),
-              Text(
-                "Trendy Products",
-                style: const TextStyle(fontSize: 18).copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontFamily: GoogleFonts.nunito().fontFamily,
+              Padding(
+                padding: vhSpaceSmall,
+                child: Text(
+                  "Trendy Products",
+                  style: const TextStyle(fontSize: 18).copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  ),
                 ),
               ),
-              const SizedBox(height: 10),
               SizedBox(
                 //  color: Colors.red,
-                height: 220,
+                height: 270,
                 child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: List.generate(10, (index) {
                     return Stack(
                       clipBehavior: Clip.none,
                       children: [
-                        SizedBox(
-                          width: 200,
-                          height: 220,
+                        Container(
+                          width: 170,
+                          height: 260,
+                          margin: const EdgeInsets.only(right: 8.0),
                           child: Card(
                             clipBehavior: Clip.antiAlias,
                             child: Column(
@@ -106,7 +136,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        "Coffee $index",
+                                        "Espresso Plus Milk $index",
                                         style: const TextStyle(fontSize: 18)
                                             .copyWith(
                                           fontWeight: FontWeight.w900,
@@ -137,8 +167,8 @@ class HomeView extends StackedView<HomeViewModel> {
                           ),
                         ),
                         const Positioned(
-                          right: 10,
-                          bottom: -3,
+                          right: 20,
+                          bottom: 0,
                           child: Card(
                               elevation: 10,
                               color: kcPrimaryColor,

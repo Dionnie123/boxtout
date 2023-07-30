@@ -41,6 +41,7 @@ class MainApp extends StatelessWidget {
       scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        cardTheme: const CardTheme(margin: EdgeInsets.all(0)),
         elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
                 minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
@@ -52,12 +53,12 @@ class MainApp extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        /*   colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: kcPrimaryColor,
           brightness: Brightness.dark,
-        ), */
+        ),
         primaryColor: kcPrimaryColor,
         useMaterial3: true,
-        brightness: Brightness.dark,
         fontFamily: GoogleFonts.nunito().fontFamily,
         inputDecorationTheme: InputDecorationTheme(
           contentPadding:
