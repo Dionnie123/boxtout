@@ -52,11 +52,12 @@ class MainApp extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
-            // brightness: Brightness.dark,
-            ),
+        /*   colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
+          brightness: Brightness.dark,
+        ), */
+        primaryColor: kcPrimaryColor,
         useMaterial3: true,
-        // brightness: Brightness.dark,
+        brightness: Brightness.dark,
         fontFamily: GoogleFonts.nunito().fontFamily,
         inputDecorationTheme: InputDecorationTheme(
           contentPadding:

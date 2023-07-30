@@ -1,10 +1,9 @@
-import 'package:boxtout/app/app.locator.dart';
-import 'package:boxtout/app/app.router.dart';
-import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
-import 'package:boxtout/ui/common/ui_helpers.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
 
@@ -18,75 +17,135 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                verticalSpaceLarge,
-                Column(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          locator<RouterService>().navigateToAuthView();
-                        },
-                        child: const Text("LOGIN")),
-                    TextButton(
-                        onPressed: () async {
-                          await viewModel.signOut();
-                          locator<RouterService>().navigateToAuthView();
-                        },
-                        child: const Text("LOGOUT")),
-                    const Text(
-                      'Hello, STACKED!',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
+      body: ScaffoldBodyWrapper(
+        isFullWidth: true,
+        builder: (context, size) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Container(
+                    color: kcPrimaryColor,
+                    width: 800,
+                    child: CarouselSlider(
+                      options: CarouselOptions(
+                        aspectRatio: 3 / 0.72,
+                        /* viewportFraction: 0.8,
+                        enlargeCenterPage: true, */
                       ),
+                      items: [1, 2, 3].map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.zero,
+                              /*  margin:
+                                  const EdgeInsets.symmetric(horizontal: 5.0), */
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage('assets/sliders/slide3.png'),
+                                    fit: BoxFit.contain),
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
                     ),
-                    verticalSpaceMedium,
-                    MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.incrementCounter,
-                      child: Text(
-                        viewModel.counterLabel,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showDialog,
-                      child: const Text(
-                        'Show Dialog',
-                        style: TextStyle(
-                          color: Colors.white,
+              ),
+              Text(
+                "Trendy Products",
+                style: const TextStyle(fontSize: 18).copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontFamily: GoogleFonts.nunito().fontFamily,
+                ),
+              ),
+              SizedBox(
+                //  color: Colors.red,
+                height: 220,
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  children: List.generate(10, (index) {
+                    return Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        SizedBox(
+                          width: 200,
+                          height: 220,
+                          child: Card(
+                            clipBehavior: Clip.antiAlias,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  'assets/login_bg.jpg',
+                                  height: 100,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Coffee $index",
+                                        style: const TextStyle(fontSize: 18)
+                                            .copyWith(
+                                          fontWeight: FontWeight.w900,
+                                          fontFamily:
+                                              GoogleFonts.nunito().fontFamily,
+                                        ),
+                                      ),
+                                      const Opacity(
+                                        opacity: 0.6,
+                                        child: Text(
+                                            "A strong, bold flavor with high-caffein content.",
+                                            style: TextStyle(fontSize: 14)),
+                                      ),
+                                      Text(
+                                        "\$19.0",
+                                        style: const TextStyle(fontSize: 16)
+                                            .copyWith(
+                                          fontWeight: FontWeight.w900,
+                                          fontFamily:
+                                              GoogleFonts.nunito().fontFamily,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showBottomSheet,
-                      child: const Text(
-                        'Show Bottom Sheet',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
+                        const Positioned(
+                          right: 10,
+                          bottom: -3,
+                          child: Card(
+                              elevation: 10,
+                              color: kcPrimaryColor,
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(Icons.add),
+                              )),
+                        )
+                      ],
+                    );
+                  }),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
