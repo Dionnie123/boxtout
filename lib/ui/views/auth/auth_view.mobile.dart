@@ -15,27 +15,29 @@ class AuthViewMobile extends ViewModelWidget<AuthViewModel> {
 
   @override
   Widget build(BuildContext context, AuthViewModel viewModel) {
-    return Scaffold(body: ScaffoldBodyWrapper(
-      builder: (p0, p1) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Logo(),
-            vSpaceMedium,
-            (viewModel.authType == AuthType.signIn)
-                ? ReactiveLoginDtoForm(
-                    key: ObjectKey(viewModel.loginFormModel),
-                    form: viewModel.loginFormModel,
-                    child: const LoginForm(),
-                  )
-                : ReactiveRegisterDtoForm(
-                    key: ObjectKey(viewModel.registerFormModel),
-                    form: viewModel.registerFormModel,
-                    child: const RegisterForm(),
-                  ),
-          ],
-        );
-      },
-    ));
+    return SafeArea(
+      child: Scaffold(body: ScaffoldBodyWrapper(
+        builder: (p0, p1) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Logo(),
+              vSpaceMedium,
+              (viewModel.authType == AuthType.signIn)
+                  ? ReactiveLoginDtoForm(
+                      key: ObjectKey(viewModel.loginFormModel),
+                      form: viewModel.loginFormModel,
+                      child: const LoginForm(),
+                    )
+                  : ReactiveRegisterDtoForm(
+                      key: ObjectKey(viewModel.registerFormModel),
+                      form: viewModel.registerFormModel,
+                      child: const RegisterForm(),
+                    ),
+            ],
+          );
+        },
+      )),
+    );
   }
 }

@@ -6,6 +6,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:boxtout/services/auth_service.dart';
 import 'package:boxtout/ui/views/auth/auth_view.dart';
+import 'package:boxtout/ui/views/foo/foo_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -18,6 +19,7 @@ import 'package:boxtout/ui/views/auth/auth_view.dart';
     ),
     CustomRoute(path: '', page: AuthView),
     CustomRoute(path: '', page: HomeView),
+    MaterialRoute(page: FooView),
 // @stacked-route
   ],
   dependencies: [

@@ -1,25 +1,29 @@
 import 'package:box_ui/box_ui.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:boxtout/app/app.bottomsheets.dart';
 import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb) FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
     const ScreenBreakpoints(desktop: 1369, tablet: 768, watch: 200),
   );
   await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
-  setUrlStrategy(PathUrlStrategy());
+  setPathUrlStrategy();
   runApp(const MainApp());
 }
 
@@ -80,6 +84,7 @@ class MainApp extends StatelessWidget {
       ]),
       routeInformationParser: stackedRouter.defaultRouteParser(),
       builder: (context, child) {
+        if (!kIsWeb) FlutterNativeSplash.remove();
         return Scaffold(
           body: Column(
             children: [
@@ -94,9 +99,7 @@ class MainApp extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
               )
