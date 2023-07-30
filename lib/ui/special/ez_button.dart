@@ -89,7 +89,7 @@ class EzButton extends StatelessWidget {
       return Text(
         title,
         style:
-            TextStyle(fontSize: 18, color: outline ? background : foreground),
+            TextStyle(fontSize: 16, color: outline ? background : foreground),
       );
     }
 
@@ -134,8 +134,8 @@ class EzButton extends StatelessWidget {
 
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        minHeight: 50,
-        maxHeight: 50,
+        minHeight: 48.0,
+        maxHeight: 48.0,
         minWidth: 120,
         maxWidth: double.infinity,
       ),
