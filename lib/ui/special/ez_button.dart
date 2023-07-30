@@ -98,7 +98,7 @@ class EzButton extends StatelessWidget {
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [const SizedBox.shrink(), loading()],
+              children: [loading()],
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -125,7 +125,6 @@ class EzButton extends StatelessWidget {
       return ElevatedButton(
         style: ButtonStyle(
           backgroundColor: customButtonColor,
-          shape: buttonRadius,
         ),
         onPressed: disabled || busy ? null : onTap,
         onLongPress: disabled || busy ? null : onLongPress,

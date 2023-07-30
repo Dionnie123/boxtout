@@ -1,5 +1,6 @@
-import 'package:box_ui/box_ui.dart';
 import 'package:boxtout/app/models/login_dto.dart';
+import 'package:boxtout/ui/special/ez_button.dart';
+import 'package:boxtout/ui/special/ez_text.dart';
 import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -16,7 +17,7 @@ class LoginForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const BoxText.headline('SIGN IN'),
+          const EzText.headline('SIGN IN'),
           const SizedBox(height: 24.0),
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
@@ -49,7 +50,7 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           ReactiveLoginDtoFormConsumer(builder: (context, formModel, child) {
-            return BoxButton(
+            return EzButton.elevated(
               busy: viewModel.isBusy,
               title: 'SIGN IN',
               disabled: formModel.form.hasErrors ? true : false,

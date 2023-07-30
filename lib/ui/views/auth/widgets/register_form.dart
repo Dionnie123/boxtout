@@ -1,5 +1,7 @@
-import 'package:box_ui/box_ui.dart';
 import 'package:boxtout/app/models/register_dto.dart';
+import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/special/ez_button.dart';
+import 'package:boxtout/ui/special/ez_text.dart';
 import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -30,7 +32,7 @@ class RegisterForm extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const BoxText.headline('SIGN UP'),
+          const EzText.headline('SIGN UP'),
           const SizedBox(height: 24.0),
           ReactiveTextField<String>(
             formControl: formModel.fullNameControl,
@@ -106,7 +108,7 @@ class RegisterForm extends StatelessWidget {
           const SizedBox(height: 24.0),
           ReactiveRegisterDtoFormConsumer(
             builder: (context, formModel, child) {
-              return BoxButton(
+              return EzButton.elevated(
                 busy: viewModel.isBusy,
                 title: 'SIGN UP',
                 disabled: formModel.form.hasErrors ? true : false,
