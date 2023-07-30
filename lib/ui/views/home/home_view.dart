@@ -1,5 +1,5 @@
 import 'package:boxtout/ui/common/app_colors.dart';
-import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
+import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +18,7 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     return Scaffold(
       body: ScaffoldBodyWrapper(
+        onRefresh: () async {},
         isFullWidth: true,
         builder: (context, size) {
           return Column(

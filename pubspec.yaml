@@ -35,8 +35,6 @@ dependencies:
   cached_network_image: ^3.2.0
   flutter_native_splash: ^2.2.19
   dartz: ^0.10.1
-  box_ui: 
-   path: ./packages/box_ui
 
 dev_dependencies:
   build_runner: ^2.4.5

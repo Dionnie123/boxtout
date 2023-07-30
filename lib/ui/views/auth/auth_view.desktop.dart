@@ -1,7 +1,7 @@
 import 'package:boxtout/app/models/login_dto.dart';
 import 'package:boxtout/app/models/register_dto.dart';
-import 'package:boxtout/ui/common/special/onboard/onboarding.dart';
-import 'package:boxtout/ui/common/special/scaffold_body_wrapper.dart';
+import 'package:boxtout/ui/special/onboard/onboarding.dart';
+import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/views/auth/widgets/login_form.dart';
 import 'package:boxtout/ui/views/auth/widgets/register_form.dart';
 import 'package:flutter/material.dart';

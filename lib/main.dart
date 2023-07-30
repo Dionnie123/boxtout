@@ -1,4 +1,4 @@
-import 'package:box_ui/box_ui.dart';
+import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +65,7 @@ class MainApp extends StatelessWidget {
           filled: true,
           //fillColor: kcVeryLightGreyColor,
           border: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcLightGreyColor),
+            borderSide: const BorderSide(color: kcLightGrey),
           ),
           errorBorder: circularBorder.copyWith(
             borderSide: const BorderSide(color: Colors.red),
@@ -74,7 +74,7 @@ class MainApp extends StatelessWidget {
             borderSide: const BorderSide(color: kcPrimaryColor),
           ),
           enabledBorder: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcLightGreyColor),
+            borderSide: const BorderSide(color: kcLightGrey),
           ),
         ),
       ),
