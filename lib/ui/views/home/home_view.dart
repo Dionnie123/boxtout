@@ -121,11 +121,31 @@ class HomeView extends StackedView<HomeViewModel> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.asset(
-                                  'assets/login_bg.jpg',
-                                  height: 100,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
+                                Stack(
+                                  clipBehavior: Clip.antiAlias,
+                                  children: [
+                                    Image.asset(
+                                      'assets/login_bg.jpg',
+                                      height: 100,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Positioned(
+                                      right: 0,
+                                      top: 0,
+                                      child: Container(
+                                          color: Colors.red,
+                                          child: const Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8.0,
+                                                  vertical: 4.0),
+                                              child: Text(
+                                                "NEW!",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ))),
+                                    )
+                                  ],
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -179,7 +199,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                 padding: EdgeInsets.all(8.0),
                                 child: Icon(Icons.add),
                               )),
-                        )
+                        ),
                       ],
                     );
                   }),
