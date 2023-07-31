@@ -55,6 +55,9 @@ class Checkout extends StatelessWidget {
                   ),
                 ],
               ),
+              vSpaceRegular,
+              ElevatedButton(
+                  onPressed: () {}, child: const Text("Go to Checkout"))
             ],
           ),
         ),
@@ -144,7 +147,7 @@ class Checkout extends StatelessWidget {
                                     ),
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           )),
                     ),
