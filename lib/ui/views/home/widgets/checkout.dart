@@ -1,6 +1,7 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
+import 'package:boxtout/ui/special/ez_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -56,8 +57,10 @@ class Checkout extends StatelessWidget {
                 ],
               ),
               vSpaceRegular,
-              ElevatedButton(
-                  onPressed: () {}, child: const Text("Go to Checkout"))
+              EzButton.elevated(
+                  background: kcPrimaryColor,
+                  onTap: () {},
+                  title: "Go to Checkout")
             ],
           ),
         ),
