@@ -88,23 +88,35 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         if (!kIsWeb) FlutterNativeSplash.remove();
         return Scaffold(
-          body: Column(
+          body: Stack(
             children: [
-              Expanded(child: child ?? const SizedBox()),
-              Container(
-                width: double.infinity,
-                color: Colors.black,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
-                  ),
-                ),
-              )
+              Column(
+                children: [
+                  Expanded(child: child ?? const SizedBox()),
+                  Container(
+                    width: double.infinity,
+                    color: Colors.black,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              /*    Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: Image.asset(
+                    "assets/bird.png",
+                    width: 400,
+                  )), */
             ],
           ),
         );
