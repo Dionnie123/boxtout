@@ -113,7 +113,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       clipBehavior: Clip.none,
                       children: [
                         Container(
-                          width: 170,
+                          width: 165,
                           height: 260,
                           margin: const EdgeInsets.only(right: 8.0),
                           child: Card(
@@ -137,7 +137,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                     children: [
                                       Text(
                                         "Espresso Plus Milk $index",
-                                        style: const TextStyle(fontSize: 18)
+                                        style: const TextStyle(fontSize: 16)
                                             .copyWith(
                                           fontWeight: FontWeight.w900,
                                           fontFamily:
@@ -152,7 +152,10 @@ class HomeView extends StackedView<HomeViewModel> {
                                       ),
                                       Text(
                                         "\$19.0",
-                                        style: const TextStyle(fontSize: 16)
+                                        style: TextStyle(
+                                                fontSize: 16,
+                                                color:
+                                                    kcPrimaryColor.lighten(0.3))
                                             .copyWith(
                                           fontWeight: FontWeight.w900,
                                           fontFamily:
