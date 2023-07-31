@@ -70,46 +70,71 @@ class HomeView extends StackedView<HomeViewModel> {
 
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-                      child: Center(
-                        child: Card(
-                          /*            shape: const RoundedRectangleBorder(
-                              //  borderRadius: BorderRadius.circular(0),
-                              ), */
-                          margin: EdgeInsets.zero,
-                          clipBehavior: Clip.antiAlias,
-                          child: Container(
-                            color: kcPrimaryColor,
-                            width: 700,
-                            child: CarouselSlider(
-                              options: CarouselOptions(
-                                autoPlay: true,
-                                aspectRatio: 3 / 0.9,
-                                viewportFraction: 1,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Card(
+                              /*            shape: const RoundedRectangleBorder(
+                                  //  borderRadius: BorderRadius.circular(0),
+                                  ), */
+                              margin: EdgeInsets.zero,
+                              clipBehavior: Clip.antiAlias,
+                              child: Container(
+                                color: kcPrimaryColor,
+                                width: 700,
+                                child: CarouselSlider(
+                                  options: CarouselOptions(
+                                    autoPlay: true,
+                                    aspectRatio: 3 / 0.9,
+                                    viewportFraction: 1,
 
-                                /* viewportFraction: 0.8,
-                                enlargeCenterPage: true, */
-                              ),
-                              items: [1, 2, 3].map((i) {
-                                return Builder(
-                                  builder: (BuildContext context) {
-                                    return Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      margin: EdgeInsets.zero,
-                                      /*  margin:
-                                          const EdgeInsets.symmetric(horizontal: 5.0), */
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/sliders/slide$i.png'),
-                                            fit: BoxFit.contain),
-                                      ),
+                                    /* viewportFraction: 0.8,
+                                    enlargeCenterPage: true, */
+                                  ),
+                                  items: [1, 2, 3].map((i) {
+                                    return Builder(
+                                      builder: (BuildContext context) {
+                                        return Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          margin: EdgeInsets.zero,
+                                          /*  margin:
+                                              const EdgeInsets.symmetric(horizontal: 5.0), */
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    'assets/sliders/slide$i.png'),
+                                                fit: BoxFit.contain),
+                                          ),
+                                        );
+                                      },
                                     );
-                                  },
-                                );
-                              }).toList(),
+                                  }).toList(),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          Expanded(
+                            child: GridView.builder(
+                              padding:
+                                  const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+                              itemCount: 10,
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+                                height: 50,
+                                crossAxisCount: 4,
+                                crossAxisSpacing: 8.0,
+                                mainAxisSpacing: 8.0,
+                              ),
+                              itemBuilder: (context, index) {
+                                return const Card(
+                                  child: Icon(Icons.home_rounded),
+                                );
+                              },
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Padding(
@@ -168,12 +193,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       ),
                     ),
                     GridView.builder(
-                      padding: const EdgeInsets.fromLTRB(
-                        8.0,
-                        0,
-                        8.0,
-                        8.0,
-                      ),
+                      padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
                       itemCount: 10,
                       shrinkWrap: true,
                       gridDelegate:
