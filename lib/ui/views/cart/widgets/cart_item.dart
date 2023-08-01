@@ -20,11 +20,17 @@ class CartItem extends StatelessWidget {
             elevation: 3,
             child: Row(
               children: [
-                Image.network(
-                  'https://picsum.photos/200/300?random=$index',
-                  width: 100,
-                  height: double.infinity,
-                  fit: BoxFit.cover,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      'https://picsum.photos/200/300?random=$index',
+                      width: 80,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: Padding(
@@ -36,7 +42,7 @@ class CartItem extends StatelessWidget {
                         Text(
                           "Espresso Plus Milk Espresso Plus Milk Espresso Plus Milk",
                           maxLines: 2,
-                          style: const TextStyle(fontSize: 16).copyWith(
+                          style: const TextStyle(fontSize: 14).copyWith(
                             fontWeight: FontWeight.w900,
                             fontFamily: GoogleFonts.nunito().fontFamily,
                           ),
@@ -52,7 +58,7 @@ class CartItem extends StatelessWidget {
                           "\$19.0 x 2       ",
                           maxLines: 1,
                           style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: kcPrimaryColor.lighten(0.3))
                               .copyWith(
                             fontWeight: FontWeight.w900,

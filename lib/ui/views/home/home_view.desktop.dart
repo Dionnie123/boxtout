@@ -25,7 +25,8 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
         Container(
           color: Theme.of(context).scaffoldBackgroundColor,
           width: 270,
-          child: Drawer(
+          child: Card(
+            elevation: 2,
             child: Column(
               children: [
                 Padding(
@@ -146,7 +147,8 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
         Container(
           color: Theme.of(context).scaffoldBackgroundColor,
           width: 400,
-          child: Drawer(
+          child: Card(
+            elevation: 1,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),

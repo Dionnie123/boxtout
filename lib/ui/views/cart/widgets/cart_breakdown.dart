@@ -1,3 +1,4 @@
+import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/ez_button.dart';
@@ -9,54 +10,62 @@ class CartBreakdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Subtotal",
-                style: const TextStyle(fontSize: 16).copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontFamily: GoogleFonts.nunito().fontFamily,
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Subtotal",
+                  style: const TextStyle(fontSize: 16).copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  ),
                 ),
-              ),
-              Text(
-                "\$99.9",
-                style: const TextStyle(fontSize: 16).copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontFamily: GoogleFonts.nunito().fontFamily,
+                Text(
+                  "\$99.9",
+                  style: const TextStyle(fontSize: 16).copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          vSpaceRegular,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Total",
-                style: const TextStyle(fontSize: 20).copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontFamily: GoogleFonts.nunito().fontFamily,
+              ],
+            ),
+            vSpaceRegular,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Total",
+                  style: TextStyle(
+                          fontSize: 18, color: kcPrimaryColor.lighten(0.2))
+                      .copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  ),
                 ),
-              ),
-              Text(
-                "\$99.9",
-                style: const TextStyle(fontSize: 20).copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontFamily: GoogleFonts.nunito().fontFamily,
+                Text(
+                  "\$99.9",
+                  style: TextStyle(
+                          fontSize: 18, color: kcPrimaryColor.lighten(0.2))
+                      .copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          vSpaceRegular,
-          EzButton.elevated(
-              background: kcPrimaryColor, onTap: () {}, title: "Go to Checkout")
-        ],
+              ],
+            ),
+            vSpaceRegular,
+            EzButton.elevated(
+                background: kcPrimaryColor,
+                onTap: () {},
+                title: "Go to Checkout")
+          ],
+        ),
       ),
     );
   }
