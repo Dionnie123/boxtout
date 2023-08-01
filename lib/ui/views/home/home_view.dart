@@ -88,25 +88,34 @@ class HomeView extends StackedView<HomeViewModel> {
                       );
                     }),
                     const TitleDivider("Suggested For You"),
-                    Builder(builder: (context) {
+                    LayoutBuilder(builder: (context, size) {
                       const double itemWidth = double.infinity;
                       const double itemHeight = 250;
-                      return GridView.builder(
-                        padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-                        itemCount: 10,
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                          height: itemHeight,
-                          crossAxisCount: 5,
-                          mainAxisSpacing: 8.0,
-                        ),
-                        itemBuilder: (context, index) {
-                          return ProductCard(
-                            index: index,
-                            size: const Size(itemWidth, itemHeight),
-                          );
-                        },
+                      return Column(
+                        children: [
+                          GridView.builder(
+                            padding:
+                                const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+                            itemCount: 10,
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+                              height: itemHeight,
+                              crossAxisCount: size.maxWidth > 800
+                                  ? 5
+                                  : size.maxWidth > 500
+                                      ? 3
+                                      : 2,
+                              mainAxisSpacing: 8.0,
+                            ),
+                            itemBuilder: (context, index) {
+                              return ProductCard(
+                                index: index,
+                                size: const Size(itemWidth, itemHeight),
+                              );
+                            },
+                          ),
+                        ],
                       );
                     })
                   ],
