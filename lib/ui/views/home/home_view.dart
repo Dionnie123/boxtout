@@ -47,7 +47,8 @@ class HomeView extends StackedView<HomeViewModel> {
                   ),
                 ),
                 Column(
-                    children: ['Home', 'Menu', 'Orders', 'History'].map((e) {
+                    children:
+                        ['Home', 'Orders', 'Messages', 'Account'].map((e) {
                   return ListTile(
                     onTap: () {},
                     leading: const Icon(Icons.home_rounded),
