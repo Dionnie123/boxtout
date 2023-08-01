@@ -1,14 +1,14 @@
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/special/sliver_grid_delegate.dart';
-import 'package:boxtout/ui/views/home/widgets/carousel.dart';
+import 'package:boxtout/ui/views/cart/widgets/cart_breakdown.dart';
+import 'package:boxtout/ui/views/cart/widgets/cart_list.dart';
 import 'package:boxtout/ui/views/home/widgets/title_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
-import 'widgets/checkout.dart';
 import 'widgets/product_card.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -22,17 +22,44 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     return Row(
       children: [
-        Drawer(
-          child: Column(
-              children: ['Home', 'Menu', 'Orders', 'History'].map((e) {
-            return ListTile(
-              onTap: () {},
-              leading: const Icon(Icons.home_rounded),
-              title: Text(e),
-            );
-          }).toList()),
+        SizedBox(
+          child: Drawer(
+            width: 270,
+            child: Column(
+              children: [
+                Padding(
+                  padding: vhpaceRegular,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/splash.png',
+                        width: 50,
+                      ),
+                      hSpaceRegular,
+                      Text(
+                        "COFEECO",
+                        style: const TextStyle(fontSize: 24).copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontFamily: GoogleFonts.nunito().fontFamily,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                    children: ['Home', 'Menu', 'Orders', 'History'].map((e) {
+                  return ListTile(
+                    onTap: () {},
+                    leading: const Icon(Icons.home_rounded),
+                    title: Text(e),
+                  );
+                }).toList()),
+              ],
+            ),
+          ),
         ),
         Expanded(
+          flex: 2,
           child: Scaffold(
             appBar: AppBar(
               //  backgroundColor: kcPrimaryColor.darken(),
@@ -57,7 +84,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    /*        const Padding(
                       padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0),
                       child: Row(
                         children: [
@@ -66,7 +93,7 @@ class HomeView extends StackedView<HomeViewModel> {
                           Expanded(child: Carousel()),
                         ],
                       ),
-                    ),
+                    ), */
                     const TitleDivider("Trendy Products"),
                     Builder(builder: (context) {
                       const double listHeight = 270.0;
@@ -79,7 +106,7 @@ class HomeView extends StackedView<HomeViewModel> {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: List.generate(15, (index) {
-                            return ProductCard(
+                            return ProductItem(
                               index: index,
                               size: const Size(itemWidth, itemHeight),
                             );
@@ -109,7 +136,7 @@ class HomeView extends StackedView<HomeViewModel> {
                               mainAxisSpacing: 8.0,
                             ),
                             itemBuilder: (context, index) {
-                              return ProductCard(
+                              return ProductItem(
                                 index: index,
                                 size: const Size(itemWidth, itemHeight),
                               );
@@ -125,13 +152,11 @@ class HomeView extends StackedView<HomeViewModel> {
           ),
         ),
         const SizedBox(
-          width: 400,
-          child: Drawer(
-            child: Column(children: [
-              Checkout(),
-            ]),
-          ),
-        ),
+            width: 400,
+            child: Scaffold(
+              bottomSheet: CartBreakdown(),
+              body: CartList(),
+            )),
       ],
     );
   }

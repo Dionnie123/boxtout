@@ -5,26 +5,27 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i7;
-import 'package:stacked/stacked.dart' as _i6;
-import 'package:stacked_services/stacked_services.dart' as _i5;
+import 'package:flutter/material.dart' as _i8;
+import 'package:stacked/stacked.dart' as _i7;
+import 'package:stacked_services/stacked_services.dart' as _i6;
 
 import '../ui/views/auth/auth_view.dart' as _i2;
+import '../ui/views/cart/cart_view.dart' as _i5;
 import '../ui/views/foo/foo_view.dart' as _i4;
 import '../ui/views/home/home_view.dart' as _i3;
 import '../ui/views/startup/startup_view.dart' as _i1;
 
 final stackedRouter =
-    StackedRouterWeb(navigatorKey: _i5.StackedService.navigatorKey);
+    StackedRouterWeb(navigatorKey: _i6.StackedService.navigatorKey);
 
-class StackedRouterWeb extends _i6.RootStackRouter {
-  StackedRouterWeb({_i7.GlobalKey<_i7.NavigatorState>? navigatorKey})
+class StackedRouterWeb extends _i7.RootStackRouter {
+  StackedRouterWeb({_i8.GlobalKey<_i8.NavigatorState>? navigatorKey})
       : super(navigatorKey);
 
   @override
-  final Map<String, _i6.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     StartupViewRoute.name: (routeData) {
-      return _i6.CustomPage<dynamic>(
+      return _i7.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i1.StartupView(),
         opaque: true,
@@ -32,7 +33,7 @@ class StackedRouterWeb extends _i6.RootStackRouter {
       );
     },
     AuthViewRoute.name: (routeData) {
-      return _i6.CustomPage<dynamic>(
+      return _i7.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.AuthView(),
         opaque: true,
@@ -40,7 +41,7 @@ class StackedRouterWeb extends _i6.RootStackRouter {
       );
     },
     HomeViewRoute.name: (routeData) {
-      return _i6.CustomPage<dynamic>(
+      return _i7.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i3.HomeView(),
         opaque: true,
@@ -48,43 +49,53 @@ class StackedRouterWeb extends _i6.RootStackRouter {
       );
     },
     FooViewRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.FooView(),
+      );
+    },
+    CartViewRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i5.CartView(),
       );
     },
   };
 
   @override
-  List<_i6.RouteConfig> get routes => [
-        _i6.RouteConfig(
+  List<_i7.RouteConfig> get routes => [
+        _i7.RouteConfig(
           '/#redirect',
           path: '/',
           redirectTo: '',
           fullMatch: true,
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           StartupViewRoute.name,
           path: '',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           AuthViewRoute.name,
           path: '',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           HomeViewRoute.name,
           path: '',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           FooViewRoute.name,
           path: '/foo-view',
+        ),
+        _i7.RouteConfig(
+          CartViewRoute.name,
+          path: '/cart-view',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.StartupView]
-class StartupViewRoute extends _i6.PageRouteInfo<void> {
+class StartupViewRoute extends _i7.PageRouteInfo<void> {
   const StartupViewRoute()
       : super(
           StartupViewRoute.name,
@@ -96,7 +107,7 @@ class StartupViewRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AuthView]
-class AuthViewRoute extends _i6.PageRouteInfo<void> {
+class AuthViewRoute extends _i7.PageRouteInfo<void> {
   const AuthViewRoute()
       : super(
           AuthViewRoute.name,
@@ -108,7 +119,7 @@ class AuthViewRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomeView]
-class HomeViewRoute extends _i6.PageRouteInfo<void> {
+class HomeViewRoute extends _i7.PageRouteInfo<void> {
   const HomeViewRoute()
       : super(
           HomeViewRoute.name,
@@ -120,7 +131,7 @@ class HomeViewRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.FooView]
-class FooViewRoute extends _i6.PageRouteInfo<void> {
+class FooViewRoute extends _i7.PageRouteInfo<void> {
   const FooViewRoute()
       : super(
           FooViewRoute.name,
@@ -130,9 +141,21 @@ class FooViewRoute extends _i6.PageRouteInfo<void> {
   static const String name = 'FooView';
 }
 
-extension RouterStateExtension on _i5.RouterService {
+/// generated route for
+/// [_i5.CartView]
+class CartViewRoute extends _i7.PageRouteInfo<void> {
+  const CartViewRoute()
+      : super(
+          CartViewRoute.name,
+          path: '/cart-view',
+        );
+
+  static const String name = 'CartView';
+}
+
+extension RouterStateExtension on _i6.RouterService {
   Future<dynamic> navigateToStartupView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const StartupViewRoute(),
       onFailure: onFailure,
@@ -140,7 +163,7 @@ extension RouterStateExtension on _i5.RouterService {
   }
 
   Future<dynamic> navigateToAuthView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const AuthViewRoute(),
       onFailure: onFailure,
@@ -148,7 +171,7 @@ extension RouterStateExtension on _i5.RouterService {
   }
 
   Future<dynamic> navigateToHomeView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const HomeViewRoute(),
       onFailure: onFailure,
@@ -156,15 +179,23 @@ extension RouterStateExtension on _i5.RouterService {
   }
 
   Future<dynamic> navigateToFooView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const FooViewRoute(),
       onFailure: onFailure,
     );
   }
 
+  Future<dynamic> navigateToCartView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const CartViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
   Future<dynamic> replaceWithStartupView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const StartupViewRoute(),
       onFailure: onFailure,
@@ -172,7 +203,7 @@ extension RouterStateExtension on _i5.RouterService {
   }
 
   Future<dynamic> replaceWithAuthView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const AuthViewRoute(),
       onFailure: onFailure,
@@ -180,7 +211,7 @@ extension RouterStateExtension on _i5.RouterService {
   }
 
   Future<dynamic> replaceWithHomeView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const HomeViewRoute(),
       onFailure: onFailure,
@@ -188,9 +219,17 @@ extension RouterStateExtension on _i5.RouterService {
   }
 
   Future<dynamic> replaceWithFooView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const FooViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithCartView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const CartViewRoute(),
       onFailure: onFailure,
     );
   }

@@ -11,6 +11,7 @@ class HomeViewModel extends BaseViewModel with WidgetsBindingObserver {
   final _dialogService = locator<DialogService>();
   final _bottomSheetService = locator<BottomSheetService>();
   final _authService = locator<AuthService>();
+  final _navService = locator<RouterService>();
 
   String get counterLabel => 'Counter is: $_counter';
 

@@ -3,10 +3,10 @@ import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductItem extends StatelessWidget {
   final int index;
   final Size size;
-  const ProductCard({super.key, required this.size, required this.index});
+  const ProductItem({super.key, required this.size, required this.index});
 
   @override
   Widget build(BuildContext context) {
