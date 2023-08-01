@@ -9,7 +9,6 @@ import 'package:boxtout/app/app.router.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -49,10 +48,10 @@ class MainApp extends StatelessWidget {
         textButtonTheme: const TextButtonThemeData(
             style: ButtonStyle(
                 foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
-        appBarTheme: const AppBarTheme(
+        /*       appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
-        ),
+        ), */
         colorScheme: ColorScheme.fromSeed(
           seedColor: kcPrimaryColor,
           brightness: Brightness.dark,
@@ -85,7 +84,7 @@ class MainApp extends StatelessWidget {
             : const AuthViewRoute()
       ]),
       routeInformationParser: stackedRouter.defaultRouteParser(),
-      builder: (context, child) {
+      /*    builder: (context, child) {
         if (!kIsWeb) FlutterNativeSplash.remove();
         return Scaffold(
           body: Stack(
@@ -110,17 +109,11 @@ class MainApp extends StatelessWidget {
                   )
                 ],
               ),
-              /*    Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: Image.asset(
-                    "assets/bird.png",
-                    width: 400,
-                  )), */
+      
             ],
           ),
         );
-      },
+      }, */
     );
   }
 }

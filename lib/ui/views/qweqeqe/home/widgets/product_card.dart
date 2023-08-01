@@ -13,9 +13,10 @@ class ProductItem extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        SizedBox(
+        Container(
           width: size.width,
           height: size.height,
+          margin: const EdgeInsets.only(right: 8.0),
           child: Card(
             clipBehavior: Clip.antiAlias,
             child: Column(
