@@ -1,8 +1,8 @@
-import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/special/sliver_grid_delegate.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:boxtout/ui/views/home/widgets/carousel.dart';
+import 'package:boxtout/ui/views/home/widgets/title_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -57,158 +57,58 @@ class HomeView extends StackedView<HomeViewModel> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*     Padding(
-                      padding: vhSpaceSmall,
-                      child: Text(
-                        "Welcome!",
-                        style: const TextStyle(fontSize: 18).copyWith(
-                          fontWeight: FontWeight.w900,
-                          fontFamily: GoogleFonts.nunito().fontFamily,
-                        ),
-                      ),
-                    ), */
-
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0),
                       child: Row(
                         children: [
-                          Expanded(
-                            child: Card(
-                              /*            shape: const RoundedRectangleBorder(
-                                  //  borderRadius: BorderRadius.circular(0),
-                                  ), */
-                              margin: EdgeInsets.zero,
-                              clipBehavior: Clip.antiAlias,
-                              child: Container(
-                                color: kcPrimaryColor,
-                                width: 700,
-                                child: CarouselSlider(
-                                  options: CarouselOptions(
-                                    autoPlay: true,
-                                    aspectRatio: 3 / 0.9,
-                                    viewportFraction: 1,
-
-                                    /* viewportFraction: 0.8,
-                                    enlargeCenterPage: true, */
-                                  ),
-                                  items: [1, 2, 3].map((i) {
-                                    return Builder(
-                                      builder: (BuildContext context) {
-                                        return Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          margin: EdgeInsets.zero,
-                                          /*  margin:
-                                              const EdgeInsets.symmetric(horizontal: 5.0), */
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/sliders/slide$i.png'),
-                                                fit: BoxFit.contain),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: GridView.builder(
-                              padding:
-                                  const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-                              itemCount: 10,
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                                height: 50,
-                                crossAxisCount: 4,
-                                crossAxisSpacing: 8.0,
-                                mainAxisSpacing: 8.0,
-                              ),
-                              itemBuilder: (context, index) {
-                                return const Card(
-                                  child: Icon(Icons.home_rounded),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: vhSpaceSmall,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Trendy Products",
-                            style: const TextStyle(fontSize: 18).copyWith(
-                              fontWeight: FontWeight.w900,
-                              fontFamily: GoogleFonts.nunito().fontFamily,
-                            ),
-                          ),
+                          Expanded(child: Carousel()),
                           hSpaceSmall,
-                          const Expanded(
-                              child: Divider(
-                            height: 1,
-                            thickness: 1,
-                          ))
+                          Expanded(child: Carousel()),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      //  color: Colors.red,
-                      height: 270,
-                      child: ListView(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    const TitleDivider("Trendy Products"),
+                    Builder(builder: (context) {
+                      const double listHeight = 270.0;
+                      const double itemWidth = 165.0;
+                      const double itemHeight = listHeight - 20;
+                      return SizedBox(
+                        height: 270,
+                        child: ListView(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          children: List.generate(15, (index) {
+                            return ProductCard(
+                              index: index,
+                              size: const Size(itemWidth, itemHeight),
+                            );
+                          }),
+                        ),
+                      );
+                    }),
+                    const TitleDivider("Suggested For You"),
+                    Builder(builder: (context) {
+                      const double itemWidth = double.infinity;
+                      const double itemHeight = 250;
+                      return GridView.builder(
+                        padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+                        itemCount: 10,
                         shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        children: List.generate(15, (index) {
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+                          height: itemHeight,
+                          crossAxisCount: 5,
+                          mainAxisSpacing: 8.0,
+                        ),
+                        itemBuilder: (context, index) {
                           return ProductCard(
                             index: index,
-                            size: const Size(165.0, 222.0),
+                            size: const Size(itemWidth, itemHeight),
                           );
-                        }),
-                      ),
-                    ),
-                    Padding(
-                      padding: vhSpaceSmall,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Suggested For You",
-                            style: const TextStyle(fontSize: 18).copyWith(
-                              fontWeight: FontWeight.w900,
-                              fontFamily: GoogleFonts.nunito().fontFamily,
-                            ),
-                          ),
-                          hSpaceSmall,
-                          const Expanded(
-                              child: Divider(
-                            height: 1,
-                            thickness: 1,
-                          ))
-                        ],
-                      ),
-                    ),
-                    GridView.builder(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-                      itemCount: 10,
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                        height: 222,
-                        crossAxisCount: 5,
-                        mainAxisSpacing: 8.0,
-                      ),
-                      itemBuilder: (context, index) {
-                        return ProductCard(
-                          index: index,
-                          size: const Size(double.infinity, 222.0),
-                        );
-                      },
-                    )
+                        },
+                      );
+                    })
                   ],
                 );
               },

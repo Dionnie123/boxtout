@@ -46,36 +46,40 @@ class ProductCard extends StatelessWidget {
                     )
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Espresso Plus Milk",
-                        style: const TextStyle(fontSize: 16).copyWith(
-                          fontWeight: FontWeight.w900,
-                          fontFamily: GoogleFonts.nunito().fontFamily,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Espresso Cappuccino Espresso Cappuccino",
+                          maxLines: 2,
+                          style: const TextStyle(fontSize: 16).copyWith(
+                            fontWeight: FontWeight.w900,
+                            fontFamily: GoogleFonts.nunito().fontFamily,
+                          ),
                         ),
-                      ),
-                      const Opacity(
-                        opacity: 0.6,
-                        child: Text(
-                            "A strong, bold flavor with high-caffein content.",
-                            style: TextStyle(fontSize: 14)),
-                      ),
-                      Text(
-                        "\$19.0",
-                        style: TextStyle(
-                                fontSize: 16,
-                                color: kcPrimaryColor.lighten(0.3))
-                            .copyWith(
-                          fontWeight: FontWeight.w900,
-                          fontFamily: GoogleFonts.nunito().fontFamily,
+                        const Opacity(
+                          opacity: 0.6,
+                          child: Text(
+                              "A classic Italian coffee made with equal parts of espresso, steamed milk, and milk foam. It has a strong coffee taste with a creamy texture.",
+                              maxLines: 2,
+                              style: TextStyle(fontSize: 14)),
                         ),
-                      ),
-                    ],
+                        Text(
+                          "\$19.0",
+                          style: TextStyle(
+                                  fontSize: 16,
+                                  color: kcPrimaryColor.lighten(0.3))
+                              .copyWith(
+                            fontWeight: FontWeight.w900,
+                            fontFamily: GoogleFonts.nunito().fontFamily,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
