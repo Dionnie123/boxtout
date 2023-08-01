@@ -160,6 +160,14 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                 actions: [
                   IconButton(
                       onPressed: () {},
+                      icon: const Icon(
+                        Icons.settings_rounded,
+                      )),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.account_circle_rounded)),
+                  IconButton(
+                      onPressed: () {},
                       icon: const Icon(Icons.shopping_cart_rounded))
                 ],
               ),
