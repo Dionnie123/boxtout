@@ -146,7 +146,8 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
         ),
         Container(
           color: Theme.of(context).scaffoldBackgroundColor,
-          width: 400,
+          width: screenWidth(context) * 0.20,
+          constraints: const BoxConstraints(minWidth: 350),
           child: Card(
             elevation: 1,
             shape: const RoundedRectangleBorder(

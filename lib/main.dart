@@ -17,7 +17,7 @@ Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
-    const ScreenBreakpoints(desktop: 1369, tablet: 768, watch: 200),
+    const ScreenBreakpoints(desktop: 1366, tablet: 768, watch: 200),
   );
   await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
