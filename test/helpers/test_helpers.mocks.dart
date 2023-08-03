@@ -722,6 +722,18 @@ class MockShoppingService extends _i1.Mock implements _i7.ShoppingService {
         returnValueForMissingStub: <_i8.ProductDto>[],
       ) as List<_i8.ProductDto>);
   @override
+  List<_i8.ProductDto> get cart => (super.noSuchMethod(
+        Invocation.getter(#cart),
+        returnValue: <_i8.ProductDto>[],
+        returnValueForMissingStub: <_i8.ProductDto>[],
+      ) as List<_i8.ProductDto>);
+  @override
+  num get cartTotal => (super.noSuchMethod(
+        Invocation.getter(#cartTotal),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as num);
+  @override
   int get listenersCount => (super.noSuchMethod(
         Invocation.getter(#listenersCount),
         returnValue: 0,
@@ -732,6 +744,15 @@ class MockShoppingService extends _i1.Mock implements _i7.ShoppingService {
         Invocation.method(
           #fetchAllProducts,
           [],
+        ),
+        returnValue: _i4.Future<dynamic>.value(),
+        returnValueForMissingStub: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<dynamic> addToCart(_i8.ProductDto? product) => (super.noSuchMethod(
+        Invocation.method(
+          #addToCart,
+          [product],
         ),
         returnValue: _i4.Future<dynamic>.value(),
         returnValueForMissingStub: _i4.Future<dynamic>.value(),

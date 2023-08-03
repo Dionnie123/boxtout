@@ -2,7 +2,7 @@ import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/special/sliver_grid_delegate.dart';
 import 'package:boxtout/ui/views/cart/widgets/cart_breakdown.dart';
-import 'package:boxtout/ui/views/cart/widgets/cart_list.dart';
+import 'package:boxtout/ui/views/cart/widgets/cart_item.dart';
 import 'package:boxtout/ui/views/home/widgets/title_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -137,7 +137,7 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                                 SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
                               height: itemHeight,
                               crossAxisCount: size.maxWidth > 800
-                                  ? 5
+                                  ? 6
                                   : size.maxWidth > 500
                                       ? 3
                                       : 2,
@@ -174,27 +174,46 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
               bottomLeft: Radius.circular(20),
             )),
             child: Scaffold(
-              backgroundColor: Colors.transparent,
-              appBar: AppBar(
                 backgroundColor: Colors.transparent,
-                forceMaterialTransparency: true,
-                actions: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.settings_rounded,
-                      )),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.account_circle_rounded)),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.shopping_cart_rounded))
-                ],
-              ),
-              bottomSheet: const CartBreakdown(),
-              body: CartList(cart: viewModel.cart),
-            ),
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                  forceMaterialTransparency: true,
+                  actions: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.settings_rounded,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.account_circle_rounded)),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.shopping_cart_rounded))
+                  ],
+                ),
+                bottomSheet: CartBreakdown(subTotal: viewModel.cartTotal),
+                body: Padding(
+                  padding: const EdgeInsets.only(bottom: 160),
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(15),
+                    itemCount: viewModel.cart.length,
+                    itemBuilder: (context, index) {
+                      return CartItem(
+                        onAdd: () {
+                          viewModel.addCartItemQuantity(
+                              viewModel.cart[index].id ?? -1);
+                        },
+                        onMinus: () {
+                          viewModel.minusCartItemQuantity(
+                              viewModel.cart[index].id ?? -1);
+                        },
+                        product: viewModel.cart[index],
+                        size: const Size(double.infinity, 100),
+                      );
+                    },
+                  ),
+                )),
           ),
         ),
       ],

@@ -11,8 +11,9 @@ _$_ProductDto _$$_ProductDtoFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
-      stockInQuantity: json['stock_in_quantity'] as int?,
+      price: json['price'] as num?,
+      quantityInStock: json['quantity_in_stock'] as int?,
+      quantityInCart: json['quantity_in_cart'] as int?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$_ProductDtoToJson(_$_ProductDto instance) =>
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,
-      'stock_in_quantity': instance.stockInQuantity,
+      'quantity_in_stock': instance.quantityInStock,
+      'quantity_in_cart': instance.quantityInCart,
       'created_at': instance.createdAt?.toIso8601String(),
     };

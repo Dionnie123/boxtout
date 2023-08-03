@@ -20,6 +20,16 @@ class HomeViewModel extends ReactiveViewModel {
         throwException: true);
   }
 
+  addCartItemQuantity(int id) {
+    _shoppingService.addCartItemQuantity(id);
+  }
+
+  minusCartItemQuantity(int id) {
+    _shoppingService.minusCartItemQuantity(id);
+  }
+
+  num get cartTotal => _shoppingService.cartTotal;
+
   List<ProductDto> get products => _shoppingService.products;
   List<ProductDto> get cart => _shoppingService.cart;
 }

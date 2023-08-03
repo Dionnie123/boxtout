@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CartBreakdown extends StatelessWidget {
-  const CartBreakdown({super.key});
+  final num subTotal;
+  const CartBreakdown({super.key, required this.subTotal});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class CartBreakdown extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "\$99.9",
+                  "\$${subTotal.toStringAsFixed(2)}",
                   style: const TextStyle(fontSize: 16).copyWith(
                     fontWeight: FontWeight.w900,
                     fontFamily: GoogleFonts.nunito().fontFamily,
@@ -48,7 +49,7 @@ class CartBreakdown extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "\$99.9",
+                  "\$${subTotal.toStringAsFixed(2)}",
                   style: TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
                       .copyWith(
                     fontWeight: FontWeight.w900,

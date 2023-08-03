@@ -23,8 +23,9 @@ mixin _$ProductDto {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
-  int? get stockInQuantity => throw _privateConstructorUsedError;
+  num? get price => throw _privateConstructorUsedError;
+  int? get quantityInStock => throw _privateConstructorUsedError;
+  int? get quantityInCart => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,8 +44,9 @@ abstract class $ProductDtoCopyWith<$Res> {
       {int? id,
       String? name,
       String? description,
-      double? price,
-      int? stockInQuantity,
+      num? price,
+      int? quantityInStock,
+      int? quantityInCart,
       DateTime? createdAt});
 }
 
@@ -65,7 +67,8 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
-    Object? stockInQuantity = freezed,
+    Object? quantityInStock = freezed,
+    Object? quantityInCart = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -84,10 +87,14 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
-      stockInQuantity: freezed == stockInQuantity
-          ? _value.stockInQuantity
-          : stockInQuantity // ignore: cast_nullable_to_non_nullable
+              as num?,
+      quantityInStock: freezed == quantityInStock
+          ? _value.quantityInStock
+          : quantityInStock // ignore: cast_nullable_to_non_nullable
+              as int?,
+      quantityInCart: freezed == quantityInCart
+          ? _value.quantityInCart
+          : quantityInCart // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -109,8 +116,9 @@ abstract class _$$_ProductDtoCopyWith<$Res>
       {int? id,
       String? name,
       String? description,
-      double? price,
-      int? stockInQuantity,
+      num? price,
+      int? quantityInStock,
+      int? quantityInCart,
       DateTime? createdAt});
 }
 
@@ -129,7 +137,8 @@ class __$$_ProductDtoCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
-    Object? stockInQuantity = freezed,
+    Object? quantityInStock = freezed,
+    Object? quantityInCart = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_$_ProductDto(
@@ -148,10 +157,14 @@ class __$$_ProductDtoCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
-      stockInQuantity: freezed == stockInQuantity
-          ? _value.stockInQuantity
-          : stockInQuantity // ignore: cast_nullable_to_non_nullable
+              as num?,
+      quantityInStock: freezed == quantityInStock
+          ? _value.quantityInStock
+          : quantityInStock // ignore: cast_nullable_to_non_nullable
+              as int?,
+      quantityInCart: freezed == quantityInCart
+          ? _value.quantityInCart
+          : quantityInCart // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -170,7 +183,8 @@ class _$_ProductDto implements _ProductDto {
       this.name,
       this.description,
       this.price,
-      this.stockInQuantity,
+      this.quantityInStock,
+      this.quantityInCart,
       this.createdAt});
 
   factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
@@ -183,15 +197,17 @@ class _$_ProductDto implements _ProductDto {
   @override
   final String? description;
   @override
-  final double? price;
+  final num? price;
   @override
-  final int? stockInQuantity;
+  final int? quantityInStock;
+  @override
+  final int? quantityInCart;
   @override
   final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, name: $name, description: $description, price: $price, stockInQuantity: $stockInQuantity, createdAt: $createdAt)';
+    return 'ProductDto(id: $id, name: $name, description: $description, price: $price, quantityInStock: $quantityInStock, quantityInCart: $quantityInCart, createdAt: $createdAt)';
   }
 
   @override
@@ -204,16 +220,18 @@ class _$_ProductDto implements _ProductDto {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.stockInQuantity, stockInQuantity) ||
-                other.stockInQuantity == stockInQuantity) &&
+            (identical(other.quantityInStock, quantityInStock) ||
+                other.quantityInStock == quantityInStock) &&
+            (identical(other.quantityInCart, quantityInCart) ||
+                other.quantityInCart == quantityInCart) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, description, price, stockInQuantity, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, name, description, price,
+      quantityInStock, quantityInCart, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -234,8 +252,9 @@ abstract class _ProductDto implements ProductDto {
       {final int? id,
       final String? name,
       final String? description,
-      final double? price,
-      final int? stockInQuantity,
+      final num? price,
+      final int? quantityInStock,
+      final int? quantityInCart,
       final DateTime? createdAt}) = _$_ProductDto;
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
@@ -248,9 +267,11 @@ abstract class _ProductDto implements ProductDto {
   @override
   String? get description;
   @override
-  double? get price;
+  num? get price;
   @override
-  int? get stockInQuantity;
+  int? get quantityInStock;
+  @override
+  int? get quantityInCart;
   @override
   DateTime? get createdAt;
   @override
