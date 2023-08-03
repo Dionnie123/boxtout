@@ -176,6 +176,7 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
             child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
+                  automaticallyImplyLeading: false,
                   backgroundColor: Colors.transparent,
                   forceMaterialTransparency: true,
                   actions: [

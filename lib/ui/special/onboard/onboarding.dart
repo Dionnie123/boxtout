@@ -101,7 +101,7 @@ class _OnboardingState extends State<Onboarding> {
                     SliverFillRemaining(
                       hasScrollBody: false,
                       child: Padding(
-                        padding: const EdgeInsets.all(40.0),
+                        padding: const EdgeInsets.all(30.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,7 +115,7 @@ class _OnboardingState extends State<Onboarding> {
                                   child: Text(
                                     "\"${item.testimonial}.\"",
                                     style: const TextStyle(
-                                      fontSize: 26.0,
+                                      fontSize: 24.0,
                                       color: Colors.white,
                                     ).copyWith(
                                       fontWeight: FontWeight.w900,
@@ -124,11 +124,11 @@ class _OnboardingState extends State<Onboarding> {
                                     ),
                                   ),
                                 ),
-                                vSpaceMedium,
+                                vSpaceRegular,
                                 Text(
                                   item.personName,
                                   style: const TextStyle(
-                                    fontSize: 24.0,
+                                    fontSize: 20.0,
                                     color: Colors.white,
                                   ).copyWith(
                                     fontWeight: FontWeight.w700,
@@ -170,8 +170,8 @@ class _OnboardingState extends State<Onboarding> {
                   count: list.length,
                   effect: const WormEffect(
                     activeDotColor: Colors.white,
-                    dotWidth: 12,
-                    dotHeight: 12,
+                    dotWidth: 10,
+                    dotHeight: 10,
                   ), // your preferred effect
                   onDotClicked: (index) {})),
         )
