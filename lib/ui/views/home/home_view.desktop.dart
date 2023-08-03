@@ -185,7 +185,9 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                           Icons.settings_rounded,
                         )),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await viewModel.signOut();
+                        },
                         icon: const Icon(Icons.account_circle_rounded)),
                     IconButton(
                         onPressed: () {},
