@@ -1,199 +1,236 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// StackedNavigatorGenerator
+// StackedRouterGenerator
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:boxtout/ui/views/home/home_view.dart' as _i2;
-import 'package:boxtout/ui/views/login/login_view.dart' as _i4;
-import 'package:boxtout/ui/views/register/register_view.dart' as _i5;
-import 'package:boxtout/ui/views/startup/startup_view.dart' as _i3;
-import 'package:flutter/material.dart' as _i6;
-import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
+import 'package:stacked/stacked.dart' as _i7;
+import 'package:stacked_services/stacked_services.dart' as _i6;
 
-class Routes {
-  static const homeView = '/home-view';
+import '../ui/views/auth/auth_view.dart' as _i2;
+import '../ui/views/cart/cart_view.dart' as _i4;
+import '../ui/views/foo/foo_view.dart' as _i3;
+import '../ui/views/home/home_view.dart' as _i5;
+import '../ui/views/startup/startup_view.dart' as _i1;
 
-  static const startupView = '/startup-view';
+final stackedRouter =
+    StackedRouterWeb(navigatorKey: _i6.StackedService.navigatorKey);
 
-  static const loginView = '/login-view';
+class StackedRouterWeb extends _i7.RootStackRouter {
+  StackedRouterWeb({_i8.GlobalKey<_i8.NavigatorState>? navigatorKey})
+      : super(navigatorKey);
 
-  static const registerView = '/register-view';
-
-  static const all = <String>{
-    homeView,
-    startupView,
-    loginView,
-    registerView,
-  };
-}
-
-class StackedRouter extends _i1.RouterBase {
-  final _routes = <_i1.RouteDef>[
-    _i1.RouteDef(
-      Routes.homeView,
-      page: _i2.HomeView,
-    ),
-    _i1.RouteDef(
-      Routes.startupView,
-      page: _i3.StartupView,
-    ),
-    _i1.RouteDef(
-      Routes.loginView,
-      page: _i4.LoginView,
-    ),
-    _i1.RouteDef(
-      Routes.registerView,
-      page: _i5.RegisterView,
-    ),
-  ];
-
-  final _pagesMap = <Type, _i1.StackedRouteFactory>{
-    _i2.HomeView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.HomeView(),
-        settings: data,
+  @override
+  final Map<String, _i7.PageFactory> pagesMap = {
+    StartupViewRoute.name: (routeData) {
+      return _i7.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i1.StartupView(),
+        opaque: true,
+        barrierDismissible: false,
       );
     },
-    _i3.StartupView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.StartupView(),
-        settings: data,
+    AuthViewRoute.name: (routeData) {
+      return _i7.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i2.AuthView(),
+        opaque: true,
+        barrierDismissible: false,
       );
     },
-    _i4.LoginView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.LoginView(),
-        settings: data,
+    FooViewRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i3.FooView(),
       );
     },
-    _i5.RegisterView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.RegisterView(),
-        settings: data,
+    CartViewRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i4.CartView(),
+      );
+    },
+    HomeViewRoute.name: (routeData) {
+      return _i7.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i5.HomeView(),
+        opaque: true,
+        barrierDismissible: false,
       );
     },
   };
 
   @override
-  List<_i1.RouteDef> get routes => _routes;
-  @override
-  Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+  List<_i7.RouteConfig> get routes => [
+        _i7.RouteConfig(
+          '/#redirect',
+          path: '/',
+          redirectTo: '',
+          fullMatch: true,
+        ),
+        _i7.RouteConfig(
+          StartupViewRoute.name,
+          path: '',
+        ),
+        _i7.RouteConfig(
+          AuthViewRoute.name,
+          path: '',
+        ),
+        _i7.RouteConfig(
+          FooViewRoute.name,
+          path: '/foo-view',
+        ),
+        _i7.RouteConfig(
+          CartViewRoute.name,
+          path: '/cart-view',
+        ),
+        _i7.RouteConfig(
+          HomeViewRoute.name,
+          path: '/home-view',
+        ),
+      ];
 }
 
-extension NavigatorStateExtension on _i7.NavigationService {
-  Future<dynamic> navigateToHomeView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.homeView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+/// generated route for
+/// [_i1.StartupView]
+class StartupViewRoute extends _i7.PageRouteInfo<void> {
+  const StartupViewRoute()
+      : super(
+          StartupViewRoute.name,
+          path: '',
+        );
+
+  static const String name = 'StartupView';
+}
+
+/// generated route for
+/// [_i2.AuthView]
+class AuthViewRoute extends _i7.PageRouteInfo<void> {
+  const AuthViewRoute()
+      : super(
+          AuthViewRoute.name,
+          path: '',
+        );
+
+  static const String name = 'AuthView';
+}
+
+/// generated route for
+/// [_i3.FooView]
+class FooViewRoute extends _i7.PageRouteInfo<void> {
+  const FooViewRoute()
+      : super(
+          FooViewRoute.name,
+          path: '/foo-view',
+        );
+
+  static const String name = 'FooView';
+}
+
+/// generated route for
+/// [_i4.CartView]
+class CartViewRoute extends _i7.PageRouteInfo<void> {
+  const CartViewRoute()
+      : super(
+          CartViewRoute.name,
+          path: '/cart-view',
+        );
+
+  static const String name = 'CartView';
+}
+
+/// generated route for
+/// [_i5.HomeView]
+class HomeViewRoute extends _i7.PageRouteInfo<void> {
+  const HomeViewRoute()
+      : super(
+          HomeViewRoute.name,
+          path: '/home-view',
+        );
+
+  static const String name = 'HomeView';
+}
+
+extension RouterStateExtension on _i6.RouterService {
+  Future<dynamic> navigateToStartupView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const StartupViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> navigateToStartupView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.startupView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> navigateToAuthView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const AuthViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> navigateToLoginView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.loginView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> navigateToFooView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const FooViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> navigateToRegisterView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.registerView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> navigateToCartView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const CartViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithHomeView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.homeView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> navigateToHomeView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const HomeViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithStartupView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.startupView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> replaceWithStartupView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const StartupViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithLoginView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.loginView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> replaceWithAuthView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const AuthViewRoute(),
+      onFailure: onFailure,
+    );
   }
 
-  Future<dynamic> replaceWithRegisterView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.registerView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
+  Future<dynamic> replaceWithFooView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const FooViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithCartView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const CartViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithHomeView(
+      {void Function(_i7.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const HomeViewRoute(),
+      onFailure: onFailure,
+    );
   }
 }

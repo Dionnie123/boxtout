@@ -1,23 +1,28 @@
-import 'package:box_ui/box_ui.dart';
+import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:boxtout/app/app.bottomsheets.dart';
 import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb) FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
-    const ScreenBreakpoints(desktop: 1369, tablet: 768, watch: 200),
+    const ScreenBreakpoints(desktop: 1366, tablet: 768, watch: 200),
   );
-  await setupLocator();
+  await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
-
+  setPathUrlStrategy();
   runApp(const MainApp());
 }
 
@@ -26,14 +31,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final supabase = Supabase.instance.client;
     final circularBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
     );
 
-    return MaterialApp(
+    return MaterialApp.router(
       scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        cardTheme: const CardTheme(margin: EdgeInsets.all(0)),
         elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
                 minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
@@ -41,15 +48,16 @@ class MainApp extends StatelessWidget {
         textButtonTheme: const TextButtonThemeData(
             style: ButtonStyle(
                 foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
-        appBarTheme: const AppBarTheme(
+        /*       appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
+        ), */
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: kcPrimaryColor,
+          brightness: Brightness.dark,
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: kcPrimaryColor).copyWith(
-            // brightness: Brightness.dark,
-            ),
+        primaryColor: kcPrimaryColor,
         useMaterial3: true,
-        // brightness: Brightness.dark,
         fontFamily: GoogleFonts.nunito().fontFamily,
         inputDecorationTheme: InputDecorationTheme(
           contentPadding:
@@ -57,7 +65,7 @@ class MainApp extends StatelessWidget {
           filled: true,
           //fillColor: kcVeryLightGreyColor,
           border: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcLightGreyColor),
+            borderSide: const BorderSide(color: kcLightGrey),
           ),
           errorBorder: circularBorder.copyWith(
             borderSide: const BorderSide(color: Colors.red),
@@ -66,16 +74,46 @@ class MainApp extends StatelessWidget {
             borderSide: const BorderSide(color: kcPrimaryColor),
           ),
           enabledBorder: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcLightGreyColor),
+            borderSide: const BorderSide(color: kcLightGrey),
           ),
         ),
       ),
-      initialRoute: Routes.startupView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+      routerDelegate: stackedRouter.delegate(initialRoutes: [
+        supabase.auth.currentUser != null
+            ? const HomeViewRoute()
+            : const AuthViewRoute()
+      ]),
+      routeInformationParser: stackedRouter.defaultRouteParser(),
+      /*    builder: (context, child) {
+        if (!kIsWeb) FlutterNativeSplash.remove();
+        return Scaffold(
+          body: Stack(
+            children: [
+              Column(
+                children: [
+                  Expanded(child: child ?? const SizedBox()),
+                  Container(
+                    width: double.infinity,
+                    color: Colors.black,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+      
+            ],
+          ),
+        );
+      }, */
     );
   }
 }

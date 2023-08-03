@@ -38,14 +38,14 @@ class NoticeSheet extends StackedView<NoticeSheetModel> {
             request.title!,
             style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
           ),
-          verticalSpaceTiny,
+          vSpaceTiny,
           Text(
             request.description!,
             style: const TextStyle(fontSize: 14, color: kcMediumGrey),
             maxLines: 3,
             softWrap: true,
           ),
-          verticalSpaceLarge,
+          vSpaceLarge,
         ],
       ),
     );

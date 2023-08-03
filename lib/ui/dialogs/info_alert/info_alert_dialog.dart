@@ -1,6 +1,6 @@
+import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
-import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -45,7 +45,7 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w900),
                       ),
-                      verticalSpaceTiny,
+                      vSpaceTiny,
                       Text(
                         request.description!,
                         style:
@@ -73,7 +73,7 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                 )
               ],
             ),
-            verticalSpaceMedium,
+            vSpaceMedium,
             GestureDetector(
               onTap: () => completer(DialogResponse(
                 confirmed: true,

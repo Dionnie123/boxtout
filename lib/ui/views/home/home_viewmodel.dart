@@ -1,36 +1,35 @@
-import 'package:boxtout/app/app.bottomsheets.dart';
-import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
-import 'package:boxtout/ui/common/app_strings.dart';
+import 'package:boxtout/app/models/product_dto.dart';
+import 'package:boxtout/services/shopping_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
-class HomeViewModel extends BaseViewModel {
-  final _dialogService = locator<DialogService>();
-  final _bottomSheetService = locator<BottomSheetService>();
+class HomeViewModel extends ReactiveViewModel {
+  final _shoppingService = locator<ShoppingService>();
+  @override
+  List<ListenableServiceMixin> get listenableServices => [
+        _shoppingService,
+      ];
 
-  String get counterLabel => 'Counter is: $_counter';
-
-  int _counter = 0;
-
-  void incrementCounter() {
-    _counter++;
-    rebuildUi();
+  Future start() async {
+    await runBusyFuture(_shoppingService.fetchAllProducts(),
+        throwException: true);
   }
 
-  void showDialog() {
-    _dialogService.showCustomDialog(
-      variant: DialogType.infoAlert,
-      title: 'Stacked Rocks!',
-      description: 'Give stacked $_counter stars on Github',
-    );
+  Future addToCart(ProductDto product) async {
+    await runBusyFuture(_shoppingService.addToCart(product),
+        throwException: true);
   }
 
-  void showBottomSheet() {
-    _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
-      title: ksHomeBottomSheetTitle,
-      description: ksHomeBottomSheetDescription,
-    );
+  addCartItemQuantity(int id) {
+    _shoppingService.addCartItemQuantity(id);
   }
+
+  minusCartItemQuantity(int id) {
+    _shoppingService.minusCartItemQuantity(id);
+  }
+
+  num get cartTotal => _shoppingService.cartTotal;
+
+  List<ProductDto> get products => _shoppingService.products;
+  List<ProductDto> get cart => _shoppingService.cart;
 }

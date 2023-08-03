@@ -2,32 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-const double _tinySize = 5.0;
-const double _smallSize = 10.0;
-const double _mediumSize = 25.0;
-const double _largeSize = 50.0;
-const double _massiveSize = 120.0;
-
-const Widget horizontalSpaceTiny = SizedBox(width: _tinySize);
-const Widget horizontalSpaceSmall = SizedBox(width: _smallSize);
-const Widget horizontalSpaceMedium = SizedBox(width: _mediumSize);
-const Widget horizontalSpaceLarge = SizedBox(width: _largeSize);
-
-const Widget verticalSpaceTiny = SizedBox(height: _tinySize);
-const Widget verticalSpaceSmall = SizedBox(height: _smallSize);
-const Widget verticalSpaceMedium = SizedBox(height: _mediumSize);
-const Widget verticalSpaceLarge = SizedBox(height: _largeSize);
-const Widget verticalSpaceMassive = SizedBox(height: _massiveSize);
-
-Widget spacedDivider = const Column(
-  children: <Widget>[
-    verticalSpaceMedium,
-    Divider(color: Colors.blueGrey, height: 5.0),
-    verticalSpaceMedium,
-  ],
-);
-
-Widget verticalSpace(double height) => SizedBox(height: height);
+Widget hSpace(double width) => SizedBox(width: width);
+Widget vSpace(double height) => SizedBox(height: height);
 
 double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
@@ -77,23 +53,33 @@ double getResponsiveFontSize(BuildContext context,
   return responsiveSize;
 }
 
-const EdgeInsets xSpaceTiny = EdgeInsets.all(5);
-const EdgeInsets xSpaceSmall = EdgeInsets.all(10.0);
-const EdgeInsets xSpaceRegular = EdgeInsets.all(15.0);
-const EdgeInsets xSpaceMedium = EdgeInsets.all(25.0);
-const EdgeInsets xSpaceLarge = EdgeInsets.all(50.0);
+const double _tinySize = 4.0;
+const double _smallSize = 8.0;
+const double _regularSize = 18.0;
+const double _largeSize = 24.0;
+const double _xLargeSize = 48.0;
 
-const Widget hSpaceTiny = SizedBox(width: 4.0);
-const Widget hSpaceSmall = SizedBox(width: 8.0);
-const Widget hSpaceRegular = SizedBox(width: 16.0);
-const Widget hSpaceMedium = SizedBox(width: 24.0);
-const Widget hSpaceLarge = SizedBox(width: 48.0);
+const EdgeInsets vhSpaceTiny = EdgeInsets.all(_tinySize);
+const EdgeInsets vhSpaceSmall = EdgeInsets.all(_smallSize);
+const EdgeInsets vhpaceRegular = EdgeInsets.all(_regularSize);
+const EdgeInsets vhpaceMedium = EdgeInsets.all(_largeSize);
+const EdgeInsets vhSpaceLarge = EdgeInsets.all(_xLargeSize);
 
-const Widget vSpaceTiny = SizedBox(height: 4.0);
-const Widget vSpaceSmall = SizedBox(height: 8.0);
-const Widget vSpaceRegular = SizedBox(height: 16.0);
-const Widget vSpaceMedium = SizedBox(height: 24.0);
-const Widget vSpaceLarge = SizedBox(height: 48.0);
+const Widget hSpaceTiny = SizedBox(width: _tinySize);
+const Widget hSpaceSmall = SizedBox(width: _smallSize);
+const Widget hSpaceRegular = SizedBox(width: _regularSize);
+const Widget hSpaceMedium = SizedBox(width: _largeSize);
+const Widget hSpaceLarge = SizedBox(width: _xLargeSize);
+
+const Widget vSpaceTiny = SizedBox(height: _tinySize);
+const Widget vSpaceSmall = SizedBox(height: _smallSize);
+const Widget vSpaceRegular = SizedBox(height: _regularSize);
+
+/// vertical: 18.0
+const Widget vSpaceMedium = SizedBox(height: _xLargeSize);
+
+/// vertical: 48.0
+const Widget vSpaceLarge = SizedBox(height: _xLargeSize);
 
 bool isMobile(BuildContext context) {
   final screenWidth = MediaQuery.of(context).size.width;
@@ -110,5 +96,14 @@ bool isDesktop(BuildContext context) {
   return screenWidth > 1062 ? true : false;
 }
 
-RoundedRectangleBorder dialogShape =
-    RoundedRectangleBorder(borderRadius: BorderRadius.circular(5));
+EdgeInsets scaffoldBodyPadding({
+  required BoxConstraints size,
+  double targetWidth = 800,
+  double hPadding = 0.0,
+  double vPadding = 0.0,
+}) {
+  final width = (size.maxWidth - targetWidth) / 2;
+  return EdgeInsets.symmetric(
+      vertical: vPadding,
+      horizontal: (size.maxWidth >= targetWidth) ? width : hPadding);
+}
