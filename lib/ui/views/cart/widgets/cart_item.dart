@@ -57,10 +57,7 @@ class CartItem extends StatelessWidget {
                         Text(
                           "\$19.0 x 2       ",
                           maxLines: 1,
-                          style: TextStyle(
-                                  fontSize: 14,
-                                  color: kcPrimaryColor.lighten(0.3))
-                              .copyWith(
+                          style: const TextStyle(fontSize: 14).copyWith(
                             fontWeight: FontWeight.w900,
                             fontFamily: GoogleFonts.nunito().fontFamily,
                           ),
@@ -87,7 +84,9 @@ class CartItem extends StatelessWidget {
                         child: const Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 12),
-                          child: Text("999"),
+                          child: Text(
+                            "999",
+                          ),
                         ),
                       ),
                       const Card(

@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
-import 'widgets/product_card.dart';
+import 'widgets/product_item.dart';
 
 class HomeViewTablet extends StackedView<HomeViewModel> {
   const HomeViewTablet({Key? key}) : super(key: key);

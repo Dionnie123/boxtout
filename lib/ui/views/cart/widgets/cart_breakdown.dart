@@ -41,8 +41,7 @@ class CartBreakdown extends StatelessWidget {
               children: [
                 Text(
                   "Total",
-                  style: TextStyle(
-                          fontSize: 18, color: kcPrimaryColor.lighten(0.2))
+                  style: TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
                       .copyWith(
                     fontWeight: FontWeight.w900,
                     fontFamily: GoogleFonts.nunito().fontFamily,
@@ -50,8 +49,7 @@ class CartBreakdown extends StatelessWidget {
                 ),
                 Text(
                   "\$99.9",
-                  style: TextStyle(
-                          fontSize: 18, color: kcPrimaryColor.lighten(0.2))
+                  style: TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
                       .copyWith(
                     fontWeight: FontWeight.w900,
                     fontFamily: GoogleFonts.nunito().fontFamily,

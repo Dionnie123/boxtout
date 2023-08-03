@@ -71,7 +71,7 @@ class ProductItem extends StatelessWidget {
                           "\$19.0",
                           style: TextStyle(
                                   fontSize: 16,
-                                  color: kcPrimaryColor.lighten(0.3))
+                                  color: kcPrimaryColor.darken(0.2))
                               .copyWith(
                             fontWeight: FontWeight.w900,
                             fontFamily: GoogleFonts.nunito().fontFamily,
@@ -87,9 +87,9 @@ class ProductItem extends StatelessWidget {
         ),
         const Positioned(
           right: 20,
-          bottom: 0,
+          bottom: 10,
           child: Card(
-              elevation: 10,
+              elevation: 5,
               color: kcPrimaryColor,
               child: Padding(
                 padding: EdgeInsets.all(8.0),

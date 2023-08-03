@@ -13,9 +13,12 @@ class CartList extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return CartItem(
-            index: index,
-            size: const Size(double.infinity, 100),
+          return Opacity(
+            opacity: index % 2 == 0 ? 0.4 : 1,
+            child: CartItem(
+              index: index,
+              size: const Size(double.infinity, 100),
+            ),
           );
         },
       ),

@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
-import 'widgets/product_card.dart';
+import 'widgets/product_item.dart';
 
 class HomeViewDesktop extends StackedView<HomeViewModel> {
   const HomeViewDesktop({Key? key}) : super(key: key);
@@ -49,7 +49,8 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                   ),
                 ),
                 Column(
-                    children: ['Home', 'Menu', 'Orders', 'History'].map((e) {
+                    children:
+                        ['Home', 'Orders', 'Messages', 'Account'].map((e) {
                   return ListTile(
                     onTap: () {},
                     leading: const Icon(Icons.home_rounded),
@@ -81,6 +82,16 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                         ],
                       ),
                     ), */
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
+                      child: Text(
+                        "WELCOME!",
+                        style: const TextStyle(fontSize: 24).copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontFamily: GoogleFonts.nunito().fontFamily,
+                        ),
+                      ),
+                    ),
                     const TitleDivider("Trendy Products"),
                     Builder(builder: (context) {
                       const double listHeight = 270.0;

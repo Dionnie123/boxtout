@@ -3,6 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:boxtout/services/auth_service.dart';
+import 'package:boxtout/services/shopping_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -13,6 +14,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
 
   MockSpec<AuthService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<ShoppingService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -20,6 +22,7 @@ void registerServices() {
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
   getAndRegisterAuthService();
+  getAndRegisterShoppingService();
 // @stacked-mock-register
 }
 
@@ -77,6 +80,13 @@ MockAuthService getAndRegisterAuthService() {
   _removeRegistrationIfExists<AuthService>();
   final service = MockAuthService();
   locator.registerSingleton<AuthService>(service);
+  return service;
+}
+
+MockShoppingService getAndRegisterShoppingService() {
+  _removeRegistrationIfExists<ShoppingService>();
+  final service = MockShoppingService();
+  locator.registerSingleton<ShoppingService>(service);
   return service;
 }
 // @stacked-mock-create

@@ -8,6 +8,7 @@ import 'package:boxtout/ui/views/auth/auth_view.dart';
 import 'package:boxtout/ui/views/foo/foo_view.dart';
 import 'package:boxtout/ui/views/cart/cart_view.dart';
 import 'package:boxtout/ui/views/home/home_view.dart';
+import 'package:boxtout/services/shopping_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -30,6 +31,7 @@ import 'package:boxtout/ui/views/home/home_view.dart';
     LazySingleton(classType: RouterService),
 
     InitializableSingleton(classType: AuthService),
+    LazySingleton(classType: ShoppingService),
 // @stacked-service
   ],
   bottomsheets: [
