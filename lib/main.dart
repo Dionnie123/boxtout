@@ -54,7 +54,7 @@ class MainApp extends StatelessWidget {
         ), */
         colorScheme: ColorScheme.fromSeed(
           seedColor: kcPrimaryColor,
-          //  brightness: Brightness.dark,
+          brightness: Brightness.dark,
         ),
         primaryColor: kcPrimaryColor,
         useMaterial3: true,

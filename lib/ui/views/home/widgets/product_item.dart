@@ -1,12 +1,19 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
+import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProductItem extends StatelessWidget {
-  final int index;
+  final Function() onAdd;
+  final ProductDto product;
   final Size size;
-  const ProductItem({super.key, required this.size, required this.index});
+  const ProductItem(
+    this.product, {
+    super.key,
+    required this.size,
+    required this.onAdd,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,7 @@ class ProductItem extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   children: [
                     Image.network(
-                      'https://picsum.photos/200/300?random=$index',
+                      'https://picsum.photos/200/300?random=${product.id}',
                       height: 100,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -53,22 +60,21 @@ class ProductItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Espresso Cappuccino Espresso Cappuccino",
+                          product.name.toString(),
                           maxLines: 2,
                           style: const TextStyle(fontSize: 16).copyWith(
                             fontWeight: FontWeight.w900,
                             fontFamily: GoogleFonts.nunito().fontFamily,
                           ),
                         ),
-                        const Opacity(
+                        Opacity(
                           opacity: 0.6,
-                          child: Text(
-                              "A classic Italian coffee made with equal parts of espresso, steamed milk, and milk foam. It has a strong coffee taste with a creamy texture.",
+                          child: Text(product.description.toString(),
                               maxLines: 2,
-                              style: TextStyle(fontSize: 14)),
+                              style: const TextStyle(fontSize: 14)),
                         ),
                         Text(
-                          "\$19.0",
+                          "\$${product.price}",
                           style: TextStyle(
                                   fontSize: 16,
                                   color: kcPrimaryColor.darken(0.2))
@@ -85,16 +91,19 @@ class ProductItem extends StatelessWidget {
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           right: 20,
           bottom: 10,
-          child: Card(
-              elevation: 5,
-              color: kcPrimaryColor,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.add),
-              )),
+          child: InkWell(
+            onTap: () => onAdd(),
+            child: const Card(
+                elevation: 5,
+                color: kcPrimaryColor,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(Icons.add),
+                )),
+          ),
         ),
       ],
     );

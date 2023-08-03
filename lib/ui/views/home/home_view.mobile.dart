@@ -100,9 +100,11 @@ class HomeViewMobile extends StackedView<HomeViewModel> {
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     children: List.generate(15, (index) {
+                      final item = viewModel.products[index];
                       return ProductItem(
-                        index: index,
+                        item,
                         size: const Size(itemWidth, itemHeight),
+                        onAdd: () {},
                       );
                     }),
                   ),
@@ -130,9 +132,11 @@ class HomeViewMobile extends StackedView<HomeViewModel> {
                         mainAxisSpacing: 8.0,
                       ),
                       itemBuilder: (context, index) {
+                        final item = viewModel.products[index];
                         return ProductItem(
-                          index: index,
+                          item,
                           size: const Size(itemWidth, itemHeight),
+                          onAdd: () {},
                         );
                       },
                     ),

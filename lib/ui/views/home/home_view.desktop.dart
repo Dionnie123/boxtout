@@ -99,20 +99,25 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                       const double itemHeight = listHeight - 20;
                       return SizedBox(
                         height: 270,
-                        child: ListView(
+                        child: ListView.builder(
                           primary: false,
                           padding: const EdgeInsets.symmetric(horizontal: 15.0),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          children: List.generate(15, (index) {
+                          itemCount: viewModel.products.length,
+                          itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: ProductItem(
-                                index: index,
+                                viewModel.products[index],
                                 size: const Size(itemWidth, itemHeight),
+                                onAdd: () {
+                                  viewModel
+                                      .addToCart(viewModel.products[index]);
+                                },
                               ),
                             );
-                          }),
+                          },
                         ),
                       );
                     }),
@@ -126,7 +131,7 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                             primary: false,
                             padding:
                                 const EdgeInsets.fromLTRB(15.0, 0, 15.0, 15.0),
-                            itemCount: 15,
+                            itemCount: viewModel.products.length,
                             shrinkWrap: true,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
@@ -140,9 +145,11 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                               mainAxisSpacing: 10.0,
                             ),
                             itemBuilder: (context, index) {
+                              final item = viewModel.products[index];
                               return ProductItem(
-                                index: index,
+                                item,
                                 size: const Size(itemWidth, itemHeight),
+                                onAdd: () {},
                               );
                             },
                           ),
@@ -186,7 +193,7 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
                 ],
               ),
               bottomSheet: const CartBreakdown(),
-              body: const CartList(),
+              body: CartList(cart: viewModel.cart),
             ),
           ),
         ),

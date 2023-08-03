@@ -105,9 +105,11 @@ class HomeViewTablet extends StackedView<HomeViewModel> {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: List.generate(15, (index) {
+                            final item = viewModel.products[index];
                             return ProductItem(
-                              index: index,
+                              item,
                               size: const Size(itemWidth, itemHeight),
+                              onAdd: () {},
                             );
                           }),
                         ),
@@ -123,7 +125,7 @@ class HomeViewTablet extends StackedView<HomeViewModel> {
                             primary: false,
                             padding:
                                 const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-                            itemCount: 10,
+                            itemCount: viewModel.products.length,
                             shrinkWrap: true,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
@@ -136,9 +138,11 @@ class HomeViewTablet extends StackedView<HomeViewModel> {
                               mainAxisSpacing: 8.0,
                             ),
                             itemBuilder: (context, index) {
+                              final item = viewModel.products[index];
                               return ProductItem(
-                                index: index,
+                                item,
                                 size: const Size(itemWidth, itemHeight),
+                                onAdd: () {},
                               );
                             },
                           ),

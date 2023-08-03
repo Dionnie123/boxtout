@@ -1,12 +1,13 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
+import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CartItem extends StatelessWidget {
-  final int index;
+  final ProductDto product;
   final Size size;
-  const CartItem({super.key, required this.index, required this.size});
+  const CartItem({super.key, required this.product, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class CartItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      'https://picsum.photos/200/300?random=$index',
+                      'https://picsum.photos/200/300?random=${product.id}',
                       width: 80,
                       height: double.infinity,
                       fit: BoxFit.cover,
@@ -40,22 +41,21 @@ class CartItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Espresso Plus Milk Espresso Plus Milk Espresso Plus Milk",
+                          product.name.toString(),
                           maxLines: 2,
                           style: const TextStyle(fontSize: 14).copyWith(
                             fontWeight: FontWeight.w900,
                             fontFamily: GoogleFonts.nunito().fontFamily,
                           ),
                         ),
-                        const Opacity(
+                        Opacity(
                           opacity: 0.6,
-                          child: Text(
-                              "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+                          child: Text(product.description.toString(),
                               maxLines: 1,
-                              style: TextStyle(fontSize: 14)),
+                              style: const TextStyle(fontSize: 14)),
                         ),
                         Text(
-                          "\$19.0 x 2       ",
+                          "\$${product.price} x 2       ",
                           maxLines: 1,
                           style: const TextStyle(fontSize: 14).copyWith(
                             fontWeight: FontWeight.w900,

@@ -28,4 +28,10 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  Future<void> onViewModelReady(HomeViewModel viewModel) async {
+    await viewModel.start();
+    super.onViewModelReady(viewModel);
+  }
 }
