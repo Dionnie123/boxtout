@@ -1,7 +1,7 @@
+import 'package:boxtout/ui/views/account/account_viewmodel.dart';
+import 'package:boxtout/ui/widgets/common/dashboard/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import 'account_viewmodel.dart';
 
 class AccountView extends StackedView<AccountViewModel> {
   const AccountView({Key? key}) : super(key: key);
@@ -12,11 +12,16 @@ class AccountView extends StackedView<AccountViewModel> {
     AccountViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+    return const Scaffold(
+      body: Row(
+        children: [
+          DrawerWidget(),
+          Expanded(
+            child: Scaffold(
+              body: Text("ACCOUNT"),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -26,4 +31,12 @@ class AccountView extends StackedView<AccountViewModel> {
     BuildContext context,
   ) =>
       AccountViewModel();
+
+  @override
+  Future<void> onViewModelReady(AccountViewModel viewModel) async {
+    super.onViewModelReady(viewModel);
+  }
+
+  @override
+  bool get fireOnViewModelReadyOnce => true;
 }

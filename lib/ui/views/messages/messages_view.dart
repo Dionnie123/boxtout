@@ -1,7 +1,7 @@
+import 'package:boxtout/ui/views/messages/messages_viewmodel.dart';
+import 'package:boxtout/ui/widgets/common/dashboard/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import 'messages_viewmodel.dart';
 
 class MessagesView extends StackedView<MessagesViewModel> {
   const MessagesView({Key? key}) : super(key: key);
@@ -12,11 +12,16 @@ class MessagesView extends StackedView<MessagesViewModel> {
     MessagesViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+    return const Scaffold(
+      body: Row(
+        children: [
+          DrawerWidget(),
+          Expanded(
+            child: Scaffold(
+              body: Text("MESSAGES"),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -26,4 +31,12 @@ class MessagesView extends StackedView<MessagesViewModel> {
     BuildContext context,
   ) =>
       MessagesViewModel();
+
+  @override
+  Future<void> onViewModelReady(MessagesViewModel viewModel) async {
+    super.onViewModelReady(viewModel);
+  }
+
+  @override
+  bool get fireOnViewModelReadyOnce => true;
 }
