@@ -1,9 +1,9 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'cart_item.button.dart';
 
 class CartItem extends StatelessWidget {
@@ -11,15 +11,19 @@ class CartItem extends StatelessWidget {
   final Function() onAdd;
   final Function() onMinus;
   final Size size;
+
   const CartItem(
-      {super.key,
-      required this.product,
-      required this.size,
-      required this.onAdd,
-      required this.onMinus});
+    this.product, {
+    super.key,
+    required this.onAdd,
+    required this.onMinus,
+    required this.size,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: SizedBox(
@@ -34,8 +38,13 @@ class CartItem extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      'https://picsum.photos/200/300?random=${product.id}',
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          'https://picsum.photos/200/300?random=${product.id}',
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                       width: 80,
                       height: double.infinity,
                       fit: BoxFit.cover,

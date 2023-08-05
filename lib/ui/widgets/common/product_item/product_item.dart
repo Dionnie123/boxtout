@@ -1,6 +1,7 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,8 +32,13 @@ class ProductItem extends StatelessWidget {
                 Stack(
                   clipBehavior: Clip.antiAlias,
                   children: [
-                    Image.network(
-                      'https://picsum.photos/200/300?random=${product.id}',
+                    CachedNetworkImage(
+                      imageUrl:
+                          'https://picsum.photos/200/300?random=${product.id}',
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                       height: 100,
                       width: double.infinity,
                       fit: BoxFit.cover,

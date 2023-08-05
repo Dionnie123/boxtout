@@ -8,7 +8,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends ReactiveViewModel {
   final _authService = locator<AuthService>();
-  final _navService = locator<RouterService>();
+  final navService = locator<RouterService>();
   final _shopService = locator<ShoppingService>();
   @override
   List<ListenableServiceMixin> get listenableServices => [
@@ -33,11 +33,11 @@ class HomeViewModel extends ReactiveViewModel {
 
   signOut() async {
     await _authService.signOut();
-    await _navService.replaceWithAuthView();
+    await navService.replaceWithAuthView();
   }
 
   num get cartTotal => _shopService.cartTotal;
-
+  int get cartItemsQuantity => _shopService.cartItemsQuantity;
   List<ProductDto> get products => _shopService.products;
   List<ProductDto> get cart => _shopService.cart;
 }

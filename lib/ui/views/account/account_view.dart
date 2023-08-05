@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'foo_viewmodel.dart';
+import 'account_viewmodel.dart';
 
-class FooView extends StackedView<FooViewModel> {
-  const FooView({Key? key}) : super(key: key);
+class AccountView extends StackedView<AccountViewModel> {
+  const AccountView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    FooViewModel viewModel,
+    AccountViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
@@ -21,8 +22,8 @@ class FooView extends StackedView<FooViewModel> {
   }
 
   @override
-  FooViewModel viewModelBuilder(
+  AccountViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      FooViewModel();
+      AccountViewModel();
 }

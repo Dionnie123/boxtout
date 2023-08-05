@@ -54,7 +54,7 @@ class AuthViewModel extends BaseViewModel {
             _authService.signInWithEmail(email: email, password: password),
             throwException: true)
         .then((value) {
-      _navService.navigateToHomeView();
+      _navService.replaceWithHomeView();
     });
   }
 

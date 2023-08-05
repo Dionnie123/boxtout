@@ -24,6 +24,14 @@ class ShoppingService with ListenableServiceMixin {
     return temp;
   }
 
+  int get cartItemsQuantity {
+    int temp = 0;
+    for (var element in _cart.value) {
+      temp += element.quantityInCart ?? 0;
+    }
+    return temp;
+  }
+
   addCartItemQuantity(int id) {
     final index = _cart.value.indexWhere((element) => element.id == id);
 

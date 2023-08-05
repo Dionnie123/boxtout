@@ -740,6 +740,22 @@ class MockShoppingService extends _i1.Mock implements _i7.ShoppingService {
         returnValueForMissingStub: 0,
       ) as int);
   @override
+  dynamic addCartItemQuantity(int? id) => super.noSuchMethod(
+        Invocation.method(
+          #addCartItemQuantity,
+          [id],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  dynamic minusCartItemQuantity(int? id) => super.noSuchMethod(
+        Invocation.method(
+          #minusCartItemQuantity,
+          [id],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i4.Future<dynamic> fetchAllProducts() => (super.noSuchMethod(
         Invocation.method(
           #fetchAllProducts,

@@ -41,17 +41,14 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         cardTheme: const CardTheme(margin: EdgeInsets.all(0)),
-        elevatedButtonTheme: const ElevatedButtonThemeData(
+/*         elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
                 minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
         buttonTheme: const ButtonThemeData(),
         textButtonTheme: const TextButtonThemeData(
             style: ButtonStyle(
-                foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))),
-        /*       appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ), */
+                foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))), */
+
         colorScheme: ColorScheme.fromSeed(
           seedColor: kcPrimaryColor,
           brightness: Brightness.dark,
@@ -63,7 +60,6 @@ class MainApp extends StatelessWidget {
           contentPadding:
               const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           filled: true,
-          //fillColor: kcVeryLightGreyColor,
           border: circularBorder.copyWith(
             borderSide: const BorderSide(color: kcLightGrey),
           ),
