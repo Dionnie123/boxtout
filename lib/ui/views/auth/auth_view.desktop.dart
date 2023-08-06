@@ -27,32 +27,46 @@ class AuthViewDesktop extends ViewModelWidget<AuthViewModel> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
+                    flex: 3,
                     child: SizedBox(
                         width: size.maxWidth,
                         height: size.maxHeight,
-                        child: const Onboarding()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: const Onboarding()),
+                        )),
                   ),
                   Expanded(
-                      child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(40.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        (viewModel.authType == AuthType.signIn)
-                            ? ReactiveLoginDtoForm(
-                                key: ObjectKey(viewModel.loginFormModel),
-                                form: viewModel.loginFormModel,
-                                child: const LoginForm(),
-                              )
-                            : ReactiveRegisterDtoForm(
-                                key: ObjectKey(viewModel.registerFormModel),
-                                form: viewModel.registerFormModel,
-                                child: const RegisterForm(),
-                              ),
-                      ],
-                    ),
-                  )),
+                      flex: 2,
+                      child: Center(
+                        child: SizedBox(
+                          width: 600,
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.all(40.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                (viewModel.authType == AuthType.signIn)
+                                    ? ReactiveLoginDtoForm(
+                                        key:
+                                            ObjectKey(viewModel.loginFormModel),
+                                        form: viewModel.loginFormModel,
+                                        child: const LoginForm(),
+                                      )
+                                    : ReactiveRegisterDtoForm(
+                                        key: ObjectKey(
+                                            viewModel.registerFormModel),
+                                        form: viewModel.registerFormModel,
+                                        child: const RegisterForm(),
+                                      ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
                 ],
               ),
             );

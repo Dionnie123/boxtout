@@ -1,7 +1,6 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:boxtout/ui/special/onboard/buildin_transformers.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
-import 'package:boxtout/ui/views/auth/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -77,7 +76,7 @@ class _OnboardingState extends State<Onboarding> {
                   foregroundDecoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.brown,
+                        Colors.black,
                         Colors.transparent,
                       ],
                       begin: Alignment.bottomCenter,
@@ -157,10 +156,10 @@ class _OnboardingState extends State<Onboarding> {
             );
           },
         ),
-        const Padding(
+        /*     const Padding(
           padding: EdgeInsets.all(40.0),
           child: Logo(),
-        ),
+        ), */
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(
