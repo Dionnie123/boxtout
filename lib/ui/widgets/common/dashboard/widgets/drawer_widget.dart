@@ -44,7 +44,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ListTile(
               splashColor: Colors.transparent,
               onTap: () {
-                navService.navigateToHomeView();
+                //   navService.pop();
+                navService.replaceWithHomeView();
               },
               leading: const Icon(Icons.home_rounded),
               title: const Text('Home'),
@@ -52,7 +53,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ListTile(
               splashColor: Colors.transparent,
               onTap: () {
-                navService.navigateToOrdersView();
+                // navService.pop();
+                navService.replaceWithOrdersView();
               },
               leading: const Icon(Icons.menu_book_rounded),
               title: const Text('Orders'),
@@ -60,7 +62,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ListTile(
               splashColor: Colors.transparent,
               onTap: () {
-                navService.navigateToMessagesView();
+                //   navService.pop();
+                //  navService.navigateToMessagesView();
               },
               leading: const Icon(Icons.chat_rounded),
               title: const Text('Messages'),
@@ -68,7 +71,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ListTile(
               splashColor: Colors.transparent,
               onTap: () {
-                navService.navigateToAccountView();
+                // navService.pop();
+                // navService.navigateToAccountView();
               },
               leading: const Icon(Icons.account_circle_rounded),
               title: const Text('Account'),

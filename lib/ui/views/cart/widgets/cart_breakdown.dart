@@ -14,56 +14,61 @@ class CartBreakdown extends StatelessWidget {
     return Card(
       child: Container(
         padding: const EdgeInsets.all(15),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Subtotal",
-                  style: const TextStyle(fontSize: 16).copyWith(
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
+        child: SingleChildScrollView(
+          primary: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Subtotal",
+                    style: const TextStyle(fontSize: 16).copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontFamily: GoogleFonts.nunito().fontFamily,
+                    ),
                   ),
-                ),
-                Text(
-                  "\$${subTotal.toStringAsFixed(2)}",
-                  style: const TextStyle(fontSize: 16).copyWith(
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  Text(
+                    "\$${subTotal.toStringAsFixed(2)}",
+                    style: const TextStyle(fontSize: 16).copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontFamily: GoogleFonts.nunito().fontFamily,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            vSpaceRegular,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Total",
-                  style: TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
-                      .copyWith(
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
+                ],
+              ),
+              vSpaceRegular,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Total",
+                    style:
+                        TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
+                            .copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontFamily: GoogleFonts.nunito().fontFamily,
+                    ),
                   ),
-                ),
-                Text(
-                  "\$${subTotal.toStringAsFixed(2)}",
-                  style: TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
-                      .copyWith(
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
+                  Text(
+                    "\$${subTotal.toStringAsFixed(2)}",
+                    style:
+                        TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
+                            .copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontFamily: GoogleFonts.nunito().fontFamily,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            vSpaceRegular,
-            EzButton.elevated(
-                background: kcPrimaryColor,
-                onTap: () {},
-                title: "Go to Checkout")
-          ],
+                ],
+              ),
+              vSpaceRegular,
+              EzButton.elevated(
+                  background: kcPrimaryColor,
+                  onTap: () {},
+                  title: "Go to Checkout")
+            ],
+          ),
         ),
       ),
     );

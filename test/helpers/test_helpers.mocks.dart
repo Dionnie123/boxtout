@@ -734,6 +734,12 @@ class MockShoppingService extends _i1.Mock implements _i7.ShoppingService {
         returnValueForMissingStub: 0,
       ) as num);
   @override
+  int get cartItemsQuantity => (super.noSuchMethod(
+        Invocation.getter(#cartItemsQuantity),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+  @override
   int get listenersCount => (super.noSuchMethod(
         Invocation.getter(#listenersCount),
         returnValue: 0,

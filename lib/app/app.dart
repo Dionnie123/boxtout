@@ -9,19 +9,25 @@ import 'package:boxtout/ui/views/cart/cart_view.dart';
 import 'package:boxtout/ui/views/home/home_view.dart';
 import 'package:boxtout/services/shopping_service.dart';
 import 'package:boxtout/ui/views/startup/startup_view.dart';
+import 'package:boxtout/ui/views/foo/foo_view.dart';
 import 'package:boxtout/ui/views/orders/orders_view.dart';
-import 'package:boxtout/ui/views/messages/messages_view.dart';
-import 'package:boxtout/ui/views/account/account_view.dart';
 // @stacked-import
 
 @StackedApp(
   logger: StackedLogger(),
   routes: [
-    MaterialRoute(path: '/', page: AuthView, initial: true),
-    MaterialRoute(path: '/', page: CartView),
-    CustomRoute(
+    MaterialRoute(
+      page: AuthView,
       path: '/',
+      initial: true,
+    ),
+    MaterialRoute(
+      page: CartView,
+      path: '/',
+    ),
+    CustomRoute(
       page: HomeView,
+      path: '/',
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute(
@@ -29,21 +35,9 @@ import 'package:boxtout/ui/views/account/account_view.dart';
       page: StartupView,
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
-    CustomRoute(
-      path: '/',
-      page: OrdersView,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      path: '/',
-      page: MessagesView,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      path: '/',
-      page: AccountView,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
+
+    CustomRoute(page: FooView),
+    CustomRoute(page: OrdersView),
 // @stacked-route
   ],
   dependencies: [

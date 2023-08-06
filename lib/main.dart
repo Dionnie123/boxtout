@@ -75,7 +75,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       routerDelegate: stackedRouter.delegate(initialRoutes: [
-        supabase.auth.currentUser != null
+        supabase.auth.currentUser == null
             ? const HomeViewRoute()
             : const AuthViewRoute()
       ]),

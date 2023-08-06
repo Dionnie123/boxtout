@@ -16,11 +16,13 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    return ScreenTypeLayout.builder(
-      mobile: (_) => const HomeViewMobile(),
-      tablet: (_) => const HomeViewTablet(),
-      desktop: (_) => const HomeViewDesktop(),
-    );
+    return viewModel.isBusy
+        ? const SizedBox.shrink()
+        : ScreenTypeLayout.builder(
+            mobile: (_) => const HomeViewMobile(),
+            tablet: (_) => const HomeViewTablet(),
+            desktop: (_) => const HomeViewDesktop(),
+          );
   }
 
   @override
@@ -34,4 +36,7 @@ class HomeView extends StackedView<HomeViewModel> {
     await viewModel.start();
     super.onViewModelReady(viewModel);
   }
+
+  @override
+  bool get fireOnViewModelReadyOnce => false;
 }

@@ -13,73 +13,67 @@ import 'package:stacked/stacked.dart';
 import 'package:badges/badges.dart' as badges;
 import 'home_viewmodel.dart';
 
-class HomeViewDesktop extends StackedView<HomeViewModel> {
-  const HomeViewDesktop({Key? key}) : super(key: key);
+class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
+  const HomeViewDesktop({super.key});
 
   @override
-  Widget builder(
-    BuildContext context,
-    HomeViewModel viewModel,
-    Widget? child,
-  ) {
+  Widget build(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
       body: Row(
         children: [
           const DrawerWidget(),
           Expanded(
-            flex: 2,
-            child: Scaffold(
-              body: ScaffoldBodyWrapper(
-                padding: EdgeInsets.zero,
-                onRefresh: () async {},
-                isFullWidth: true,
-                builder: (context, size) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
-                        child: Text(
-                          "WELCOME!",
-                          style: const TextStyle(fontSize: 24).copyWith(
-                            fontWeight: FontWeight.w900,
-                            fontFamily: GoogleFonts.nunito().fontFamily,
-                          ),
+            child: ScaffoldBodyWrapper(
+              padding: EdgeInsets.zero,
+              onRefresh: () async {},
+              isFullWidth: true,
+              builder: (context, size) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
+                      child: Text(
+                        "WELCOME!",
+                        style: const TextStyle(fontSize: 24).copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontFamily: GoogleFonts.nunito().fontFamily,
                         ),
                       ),
-                      const TitleDivider("Trendy Products"),
-                      TrendyProductListview(
-                        products: viewModel.products,
-                        itemBuilder: (context, i) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: ProductItem(
-                              viewModel.products[i],
-                              size: const Size(165, 250.0),
-                              onAdd: () {
-                                viewModel.addToCart(viewModel.products[i]);
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                      const TitleDivider("Suggested For You"),
-                      SuggestedProductListview(
-                        products: viewModel.products,
-                        itemBuilder: (context, i) {
-                          return ProductItem(
+                    ),
+                    const TitleDivider("Trendy Products"),
+                    TrendyProductListview(
+                      products: viewModel.products,
+                      itemBuilder: (context, i) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: ProductItem(
                             viewModel.products[i],
-                            size: const Size(double.infinity, 250.0),
+                            size: const Size(165, 250.0),
                             onAdd: () {
                               viewModel.addToCart(viewModel.products[i]);
                             },
-                          );
-                        },
-                      ),
-                    ],
-                  );
-                },
-              ),
+                          ),
+                        );
+                      },
+                    ),
+                    const TitleDivider("Suggested For You"),
+                    SuggestedProductListview(
+                      size: Size(size.maxWidth, size.maxHeight),
+                      products: viewModel.products,
+                      itemBuilder: (context, i) {
+                        return ProductItem(
+                          viewModel.products[i],
+                          size: const Size(double.infinity, 250.0),
+                          onAdd: () {
+                            viewModel.addToCart(viewModel.products[i]);
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           Drawer(
@@ -146,19 +140,4 @@ class HomeViewDesktop extends StackedView<HomeViewModel> {
       ),
     );
   }
-
-  @override
-  HomeViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      HomeViewModel();
-
-  @override
-  Future<void> onViewModelReady(HomeViewModel viewModel) async {
-    await viewModel.start();
-    super.onViewModelReady(viewModel);
-  }
-
-  @override
-  bool get fireOnViewModelReadyOnce => true;
 }

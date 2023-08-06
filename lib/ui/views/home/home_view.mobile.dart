@@ -11,14 +11,12 @@ import 'package:stacked/stacked.dart';
 import 'package:badges/badges.dart' as badges;
 import 'home_viewmodel.dart';
 
-class HomeViewMobile extends StackedView<HomeViewModel> {
-  const HomeViewMobile({Key? key}) : super(key: key);
-
+class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
+  const HomeViewMobile({super.key});
   @override
-  Widget builder(
+  Widget build(
     BuildContext context,
     HomeViewModel viewModel,
-    Widget? child,
   ) {
     return Scaffold(
       drawer: const DrawerWidget(),
@@ -82,6 +80,7 @@ class HomeViewMobile extends StackedView<HomeViewModel> {
               ),
               const TitleDivider("Suggested For You"),
               SuggestedProductListview(
+                size: Size(size.maxWidth, size.maxHeight),
                 products: viewModel.products,
                 itemBuilder: (context, i) {
                   return ProductItem(
@@ -99,19 +98,4 @@ class HomeViewMobile extends StackedView<HomeViewModel> {
       ),
     );
   }
-
-  @override
-  HomeViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      HomeViewModel();
-
-  @override
-  Future<void> onViewModelReady(HomeViewModel viewModel) async {
-    await viewModel.start();
-    super.onViewModelReady(viewModel);
-  }
-
-  @override
-  bool get fireOnViewModelReadyOnce => true;
 }
