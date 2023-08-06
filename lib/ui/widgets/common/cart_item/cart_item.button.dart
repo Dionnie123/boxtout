@@ -1,5 +1,6 @@
 import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// A round button with an icon that can be tapped or held
 /// Tapping the button once simply calls [onUpdate], holding
@@ -55,7 +56,7 @@ class _CartItemButtonState extends State<CartItemButton> {
             padding: const EdgeInsets.all(4.0),
             child: Icon(
               widget.icon,
-              size: 20,
+              size: 20.sp,
             ),
           ),
         ));

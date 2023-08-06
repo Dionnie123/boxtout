@@ -87,7 +87,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
             ),
           ),
           Drawer(
-            width: 380.sp,
+            width: 0.25.sw,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
@@ -140,7 +140,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                           viewModel.minusCartItemQuantity(
                               viewModel.cart[index].id ?? -1);
                         },
-                        size: const Size(double.infinity, 110),
+                        size: Size(double.infinity, 95.h),
                       );
                     },
                   ),

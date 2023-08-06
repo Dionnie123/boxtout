@@ -3,7 +3,7 @@ import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/ez_button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartBreakdown extends StatelessWidget {
   final num subTotal;
@@ -24,16 +24,14 @@ class CartBreakdown extends StatelessWidget {
                 children: [
                   Text(
                     "Subtotal",
-                    style: const TextStyle(fontSize: 16).copyWith(
+                    style: TextStyle(fontSize: 16.sp).copyWith(
                       fontWeight: FontWeight.w900,
-                      fontFamily: GoogleFonts.nunito().fontFamily,
                     ),
                   ),
                   Text(
                     "\$${subTotal.toStringAsFixed(2)}",
-                    style: const TextStyle(fontSize: 16).copyWith(
+                    style: TextStyle(fontSize: 16.sp).copyWith(
                       fontWeight: FontWeight.w900,
-                      fontFamily: GoogleFonts.nunito().fontFamily,
                     ),
                   ),
                 ],
@@ -44,20 +42,18 @@ class CartBreakdown extends StatelessWidget {
                 children: [
                   Text(
                     "Total",
-                    style:
-                        TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
-                            .copyWith(
+                    style: TextStyle(
+                            fontSize: 18.sp, color: kcPrimaryColor.darken())
+                        .copyWith(
                       fontWeight: FontWeight.w900,
-                      fontFamily: GoogleFonts.nunito().fontFamily,
                     ),
                   ),
                   Text(
                     "\$${subTotal.toStringAsFixed(2)}",
-                    style:
-                        TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
-                            .copyWith(
+                    style: TextStyle(
+                            fontSize: 18.sp, color: kcPrimaryColor.darken())
+                        .copyWith(
                       fontWeight: FontWeight.w900,
-                      fontFamily: GoogleFonts.nunito().fontFamily,
                     ),
                   ),
                 ],
