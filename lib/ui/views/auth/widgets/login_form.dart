@@ -50,17 +50,15 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           ReactiveLoginDtoFormConsumer(builder: (context, formModel, child) {
-            return EzButton.elevated(
+            return EzButton(
               busy: viewModel.isBusy,
               title: 'SIGN IN',
               disabled: formModel.form.hasErrors ? true : false,
-              onTap: formModel.form.hasErrors
-                  ? null
-                  : () async {
-                      await viewModel.signIn(
-                          email: formModel.emailControl?.value,
-                          password: formModel.passwordControl?.value);
-                    },
+              onPressed: () async {
+                await viewModel.signIn(
+                    email: formModel.emailControl?.value,
+                    password: formModel.passwordControl?.value);
+              },
             );
           }),
           const SizedBox(height: 18.0),

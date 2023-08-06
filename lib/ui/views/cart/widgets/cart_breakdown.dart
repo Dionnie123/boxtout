@@ -63,10 +63,7 @@ class CartBreakdown extends StatelessWidget {
                 ],
               ),
               vSpaceRegular,
-              EzButton.elevated(
-                  background: kcPrimaryColor,
-                  onTap: () {},
-                  title: "Go to Checkout")
+              EzButton(onPressed: () {}, title: "Go to Checkout")
             ],
           ),
         ),

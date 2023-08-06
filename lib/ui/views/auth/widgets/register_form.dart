@@ -108,18 +108,16 @@ class RegisterForm extends StatelessWidget {
           const SizedBox(height: 24.0),
           ReactiveRegisterDtoFormConsumer(
             builder: (context, formModel, child) {
-              return EzButton.elevated(
+              return EzButton(
                 busy: viewModel.isBusy,
                 title: 'SIGN UP',
                 disabled: formModel.form.hasErrors ? true : false,
-                onTap: formModel.form.hasErrors
-                    ? null
-                    : () async {
-                        removeFocus();
-                        await viewModel.signUp(
-                            email: formModel.emailControl?.value,
-                            password: formModel.passwordControl?.value);
-                      },
+                onPressed: () async {
+                  removeFocus();
+                  await viewModel.signUp(
+                      email: formModel.emailControl?.value,
+                      password: formModel.passwordControl?.value);
+                },
               );
             },
           ),

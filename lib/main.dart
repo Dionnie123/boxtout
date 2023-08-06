@@ -1,4 +1,3 @@
-import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +7,11 @@ import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
+
+import 'color_schemes.g.dart';
 
 Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -32,50 +32,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final supabase = Supabase.instance.client;
-    final circularBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-    );
 
     return MaterialApp.router(
       scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        cardTheme: const CardTheme(margin: EdgeInsets.all(0)),
-/*         elevatedButtonTheme: const ElevatedButtonThemeData(
-            style: ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(Size(200, 50)))),
-        buttonTheme: const ButtonThemeData(),
-        textButtonTheme: const TextButtonThemeData(
-            style: ButtonStyle(
-                foregroundColor: MaterialStatePropertyAll(kcPrimaryColor))), */
-
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: kcPrimaryColor,
-          brightness: Brightness.dark,
-        ),
-        primaryColor: kcPrimaryColor,
-        useMaterial3: true,
-        fontFamily: GoogleFonts.nunito().fontFamily,
-        inputDecorationTheme: InputDecorationTheme(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-          filled: true,
-          border: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcLightGrey),
-          ),
-          errorBorder: circularBorder.copyWith(
-            borderSide: const BorderSide(color: Colors.red),
-          ),
-          focusedBorder: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcPrimaryColor),
-          ),
-          enabledBorder: circularBorder.copyWith(
-            borderSide: const BorderSide(color: kcLightGrey),
-          ),
-        ),
-      ),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routerDelegate: stackedRouter.delegate(initialRoutes: [
-        supabase.auth.currentUser == null
+        supabase.auth.currentUser != null
             ? const HomeViewRoute()
             : const AuthViewRoute()
       ]),
