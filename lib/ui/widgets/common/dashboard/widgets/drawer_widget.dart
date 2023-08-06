@@ -21,10 +21,13 @@ class _DrawerWidgetState extends State<DrawerWidget> {
       width: 250.sp,
       child: Column(
         children: [
+          const SizedBox(
+            height: 56,
+          ),
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 16.0.sp, right: 8.0.sp),
+                padding: EdgeInsets.only(left: 16.0.sp, right: 16.0.sp),
                 child: Image.asset(
                   'assets/splash.png',
                   width: 40.sp,
@@ -39,6 +42,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 ),
               ),
             ],
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Column(children: [
             ListTile(
