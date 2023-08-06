@@ -1,9 +1,10 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
-import 'package:boxtout/ui/special/onboard/buildin_transformers.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'buildin_transformers.dart';
 
 class OnboaringItem {
   final String testimonial;
@@ -67,92 +68,99 @@ class _OnboardingState extends State<Onboarding> {
           itemCount: list.length,
           pageController: controller,
           loop: true,
-          transformer: ThreeDTransformer(),
+          viewportFraction: 0.8,
+          transformer: ScaleAndFadeTransformer(),
           itemBuilder: (BuildContext context, int index) {
             final item = list[index];
-            return Stack(
-              children: [
-                Container(
-                  foregroundDecoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black,
-                        Colors.transparent,
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      stops: [0, 0.8],
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Stack(
+                clipBehavior: Clip.antiAlias,
+                children: [
+                  Container(
+                    foregroundDecoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.black,
+                          Colors.transparent,
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        stops: [0, 0.8],
+                      ),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              /*     colorFilter: ColorFilter.mode(
+                                item.color.withOpacity(0.4),
+                                BlendMode.srcOver,
+                              ), */
+                              image: AssetImage(item.image),
+                              fit: BoxFit.cover)),
                     ),
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            /*     colorFilter: ColorFilter.mode(
-                              item.color.withOpacity(0.4),
-                              BlendMode.srcOver,
-                            ), */
-                            image: AssetImage(item.image),
-                            fit: BoxFit.cover)),
-                  ),
-                ),
-                CustomScrollView(
-                  slivers: [
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const SizedBox(height: 80),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 800,
-                                  child: Text(
-                                    "\"${item.testimonial}.\"",
+                  CustomScrollView(
+                    slivers: [
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Padding(
+                          padding: const EdgeInsets.all(30.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 80),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 800,
+                                    child: Text(
+                                      "\"${item.testimonial}.\"",
+                                      style: const TextStyle(
+                                        fontSize: 24.0,
+                                        color: Colors.white,
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w900,
+                                        fontFamily:
+                                            GoogleFonts.nunito().fontFamily,
+                                      ),
+                                    ),
+                                  ),
+                                  vSpaceRegular,
+                                  Text(
+                                    item.personName,
                                     style: const TextStyle(
-                                      fontSize: 24.0,
+                                      fontSize: 20.0,
                                       color: Colors.white,
                                     ).copyWith(
-                                      fontWeight: FontWeight.w900,
+                                      fontWeight: FontWeight.w700,
                                       fontFamily:
                                           GoogleFonts.nunito().fontFamily,
                                     ),
                                   ),
-                                ),
-                                vSpaceRegular,
-                                Text(
-                                  item.personName,
-                                  style: const TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.white,
-                                  ).copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: GoogleFonts.nunito().fontFamily,
+                                  Text(
+                                    item.personTitle,
+                                    style: const TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                    ).copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily:
+                                          GoogleFonts.nunito().fontFamily,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  item.personTitle,
-                                  style: const TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.white,
-                                  ).copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: GoogleFonts.nunito().fontFamily,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             );
           },
         ),
