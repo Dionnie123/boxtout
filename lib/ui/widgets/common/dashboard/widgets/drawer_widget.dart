@@ -43,18 +43,19 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           Column(children: [
             ListTile(
               splashColor: Colors.transparent,
-              onTap: () {
-                //   navService.pop();
-                navService.replaceWithHomeView();
+              onTap: () async {
+                await navService.pop();
+                await navService.replaceWithHomeView();
               },
               leading: const Icon(Icons.home_rounded),
               title: const Text('Home'),
             ),
             ListTile(
               splashColor: Colors.transparent,
-              onTap: () {
+              onTap: () async {
                 // navService.pop();
-                navService.replaceWithOrdersView();
+                await navService.pop();
+                await navService.replaceWithOrdersView();
               },
               leading: const Icon(Icons.menu_book_rounded),
               title: const Text('Orders'),

@@ -59,6 +59,7 @@ class StackedRouterWeb extends _i8.RootStackRouter {
       return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i5.FooView(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
@@ -67,6 +68,7 @@ class StackedRouterWeb extends _i8.RootStackRouter {
       return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i6.OrdersView(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
@@ -93,11 +95,11 @@ class StackedRouterWeb extends _i8.RootStackRouter {
         ),
         _i8.RouteConfig(
           FooViewRoute.name,
-          path: '/foo-view',
+          path: '/',
         ),
         _i8.RouteConfig(
           OrdersViewRoute.name,
-          path: '/orders-view',
+          path: '/',
         ),
       ];
 }
@@ -156,7 +158,7 @@ class FooViewRoute extends _i8.PageRouteInfo<void> {
   const FooViewRoute()
       : super(
           FooViewRoute.name,
-          path: '/foo-view',
+          path: '/',
         );
 
   static const String name = 'FooView';
@@ -168,7 +170,7 @@ class OrdersViewRoute extends _i8.PageRouteInfo<void> {
   const OrdersViewRoute()
       : super(
           OrdersViewRoute.name,
-          path: '/orders-view',
+          path: '/',
         );
 
   static const String name = 'OrdersView';

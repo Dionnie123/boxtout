@@ -35,9 +35,16 @@ import 'package:boxtout/ui/views/orders/orders_view.dart';
       page: StartupView,
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
-
-    CustomRoute(page: FooView),
-    CustomRoute(page: OrdersView),
+    CustomRoute(
+      path: '/',
+      page: FooView,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute(
+      path: '/',
+      page: OrdersView,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
 // @stacked-route
   ],
   dependencies: [
