@@ -60,7 +60,15 @@ class AuthViewModel extends BaseViewModel {
 
   Future signUp({required email, required password}) async {
     await runBusyFuture(
-        _authService.signUpWithEmail(email: email, password: password),
-        throwException: true);
+            _authService.signUpWithEmail(email: email, password: password),
+            throwException: true)
+        .then((value) {
+      if (value != null) {
+        _dialogService.showDialog(
+            title: "Notice",
+            description: value.toString(),
+            dialogPlatform: DialogPlatform.Custom);
+      }
+    });
   }
 }
