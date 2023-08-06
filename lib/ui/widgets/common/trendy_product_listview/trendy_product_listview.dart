@@ -1,24 +1,30 @@
 import 'package:boxtout/app/models/product_dto.dart';
+import 'package:boxtout/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrendyProductListview extends StatelessWidget {
+  final Size size;
   final List<ProductDto> products;
   final Widget? Function(BuildContext, int) itemBuilder;
   const TrendyProductListview(
-      {super.key, required this.products, required this.itemBuilder});
+      {super.key,
+      required this.products,
+      required this.itemBuilder,
+      required this.size});
 
   @override
   Widget build(
     BuildContext context,
   ) {
     return Builder(builder: (context) {
-      const double listHeight = 270.0;
-
-      return SizedBox(
-        height: listHeight,
+      return Container(
+        width: size.width,
+        color: kcPrimaryColor,
+        height: size.height,
         child: ListView.builder(
             primary: false,
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: EdgeInsets.all(8.0.sp),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: products.length,

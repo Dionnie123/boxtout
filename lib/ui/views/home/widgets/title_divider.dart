@@ -1,6 +1,6 @@
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleDivider extends StatelessWidget {
   final String title;
@@ -9,14 +9,13 @@ class TitleDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(horizontal: 8.0.sp, vertical: 4.0.sp),
       child: Row(
         children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 18).copyWith(
+            style: TextStyle(fontSize: 18.sp).copyWith(
               fontWeight: FontWeight.w900,
-              fontFamily: GoogleFonts.nunito().fontFamily,
             ),
           ),
           hSpaceSmall,

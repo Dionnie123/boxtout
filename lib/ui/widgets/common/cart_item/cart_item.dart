@@ -63,7 +63,6 @@ class CartItem extends StatelessWidget {
                           maxLines: 2,
                           style: const TextStyle(fontSize: 14).copyWith(
                             fontWeight: FontWeight.w900,
-                            fontFamily: GoogleFonts.nunito().fontFamily,
                           ),
                         ),
                         Opacity(

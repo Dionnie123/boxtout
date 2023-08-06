@@ -6,6 +6,7 @@ import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -32,49 +33,63 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final supabase = Supabase.instance.client;
+    FlutterNativeSplash.remove();
+    return ScreenUtilInit(
+        designSize: const Size(360, 662),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp.router(
+            scrollBehavior: AppScrollBehavior(),
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme)
+                .copyWith(
+                    cardTheme:
+                        const CardTheme(margin: EdgeInsetsDirectional.zero)),
+            darkTheme: ThemeData(
+                    useMaterial3: true, colorScheme: darkColorScheme)
+                .copyWith(
+                    cardTheme:
+                        const CardTheme(margin: EdgeInsetsDirectional.zero)),
+            routerDelegate: stackedRouter.delegate(initialRoutes: [
+              supabase.auth.currentUser != null
+                  ? const HomeViewRoute()
+                  : const AuthViewRoute()
+            ]),
+            routeInformationParser: stackedRouter.defaultRouteParser(),
 
-    return MaterialApp.router(
-      scrollBehavior: AppScrollBehavior(),
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-      routerDelegate: stackedRouter.delegate(initialRoutes: [
-        supabase.auth.currentUser != null
-            ? const HomeViewRoute()
-            : const AuthViewRoute()
-      ]),
-      routeInformationParser: stackedRouter.defaultRouteParser(),
-      /*    builder: (context, child) {
-        if (!kIsWeb) FlutterNativeSplash.remove();
-        return Scaffold(
-          body: Stack(
-            children: [
-              Column(
+            /*    builder: (context, child) {
+            if (!kIsWeb) FlutterNativeSplash.remove();
+            return Scaffold(
+              body: Stack(
                 children: [
-                  Expanded(child: child ?? const SizedBox()),
-                  Container(
-                    width: double.infinity,
-                    color: Colors.black,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ),
-                  )
+                  Column(
+                    children: [
+                      Expanded(child: child ?? const SizedBox()),
+                      Container(
+                        width: double.infinity,
+                        color: Colors.black,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style:
+                                const TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+          
                 ],
               ),
-      
-            ],
-          ),
-        );
-      }, */
-    );
+            );
+          }, */
+          );
+        });
   }
 }
 

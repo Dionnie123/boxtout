@@ -6,7 +6,7 @@ import 'package:boxtout/ui/widgets/common/product_item/product_item.dart';
 import 'package:boxtout/ui/widgets/common/suggested_product_listview/suggested_product_listview.dart';
 import 'package:boxtout/ui/widgets/common/trendy_product_listview/trendy_product_listview.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:badges/badges.dart' as badges;
 import 'home_viewmodel.dart';
@@ -44,57 +44,63 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
           )
         ],
       ),
-      body: ScaffoldBodyWrapper(
-        padding: EdgeInsets.zero,
-        onRefresh: () async {},
-        isFullWidth: true,
-        builder: (context, size) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                child: Text(
-                  "WELCOME!",
-                  style: const TextStyle(fontSize: 24).copyWith(
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
+      body: SafeArea(
+        child: ScaffoldBodyWrapper(
+          padding: EdgeInsets.zero,
+          onRefresh: () async {},
+          isFullWidth: true,
+          builder: (context, size) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 15.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                  child: Text(
+                    "WELCOME!",
+                    style: TextStyle(fontSize: 24.sp).copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-              ),
-              const TitleDivider("Trendy Products"),
-              TrendyProductListview(
-                products: viewModel.products,
-                itemBuilder: (context, i) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: ProductItem(
+                SizedBox(height: 8.h),
+                const TitleDivider("Trendy Products"),
+                SizedBox(height: 8.h),
+                TrendyProductListview(
+                  size: Size(double.infinity, 282.0.h),
+                  products: viewModel.products,
+                  itemBuilder: (context, i) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: ProductItem(
+                        viewModel.products[i],
+                        size: Size(165.w, 266.0.h),
+                        onAdd: () {
+                          viewModel.addToCart(viewModel.products[i]);
+                        },
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(height: 8.h),
+                const TitleDivider("Suggested For You"),
+                SuggestedProductListview(
+                  size: Size(size.maxWidth, 266.0.h),
+                  products: viewModel.products,
+                  itemBuilder: (context, i) {
+                    return ProductItem(
                       viewModel.products[i],
-                      size: const Size(165, 250.0),
+                      size: Size(double.infinity, 266.0.h),
                       onAdd: () {
                         viewModel.addToCart(viewModel.products[i]);
                       },
-                    ),
-                  );
-                },
-              ),
-              const TitleDivider("Suggested For You"),
-              SuggestedProductListview(
-                size: Size(size.maxWidth, size.maxHeight),
-                products: viewModel.products,
-                itemBuilder: (context, i) {
-                  return ProductItem(
-                    viewModel.products[i],
-                    size: const Size(double.infinity, 250.0),
-                    onAdd: () {
-                      viewModel.addToCart(viewModel.products[i]);
-                    },
-                  );
-                },
-              ),
-            ],
-          );
-        },
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

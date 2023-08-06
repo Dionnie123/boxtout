@@ -1,7 +1,6 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'buildin_transformers.dart';
@@ -123,8 +122,6 @@ class _OnboardingState extends State<Onboarding> {
                                         color: Colors.white,
                                       ).copyWith(
                                         fontWeight: FontWeight.w900,
-                                        fontFamily:
-                                            GoogleFonts.nunito().fontFamily,
                                       ),
                                     ),
                                   ),
@@ -136,8 +133,6 @@ class _OnboardingState extends State<Onboarding> {
                                       color: Colors.white,
                                     ).copyWith(
                                       fontWeight: FontWeight.w700,
-                                      fontFamily:
-                                          GoogleFonts.nunito().fontFamily,
                                     ),
                                   ),
                                   Text(
@@ -147,8 +142,6 @@ class _OnboardingState extends State<Onboarding> {
                                       color: Colors.white,
                                     ).copyWith(
                                       fontWeight: FontWeight.w500,
-                                      fontFamily:
-                                          GoogleFonts.nunito().fontFamily,
                                     ),
                                   ),
                                 ],

@@ -1,7 +1,7 @@
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
-import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -18,33 +18,34 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 270,
+      width: 250.sp,
       child: Column(
         children: [
-          Padding(
-            padding: vhpaceRegular,
-            child: Row(
-              children: [
-                Image.asset(
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.sp, right: 8.0.sp),
+                child: Image.asset(
                   'assets/splash.png',
-                  width: 50,
+                  width: 40.sp,
+                  height: 40.sp,
                 ),
-                hSpaceRegular,
-                Text(
-                  "COFEECO",
-                  style: const TextStyle(fontSize: 24).copyWith(
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
-                  ),
+              ),
+              Text(
+                "COFEECO",
+                style: TextStyle(fontSize: 24.sp).copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontFamily: GoogleFonts.nunito().fontFamily,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Column(children: [
             ListTile(
               splashColor: Colors.transparent,
               onTap: () async {
                 await navService.pop();
+                await Future.delayed(const Duration(milliseconds: 230));
                 await navService.replaceWithHomeView();
               },
               leading: const Icon(Icons.home_rounded),
@@ -53,8 +54,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ListTile(
               splashColor: Colors.transparent,
               onTap: () async {
-                // navService.pop();
                 await navService.pop();
+                await Future.delayed(const Duration(milliseconds: 230));
                 await navService.replaceWithOrdersView();
               },
               leading: const Icon(Icons.menu_book_rounded),
