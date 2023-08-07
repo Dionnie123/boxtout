@@ -1,7 +1,7 @@
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -18,25 +18,25 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 250.sp,
+      width: 250,
       child: Column(
         children: [
           const SizedBox(
-            height: 56,
+            height: 20,
           ),
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 16.0.sp, right: 16.0.sp),
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                 child: Image.asset(
                   'assets/splash.png',
-                  width: 40.sp,
-                  height: 40.sp,
+                  width: 40,
+                  height: 40,
                 ),
               ),
               Text(
                 "COFEECO",
-                style: TextStyle(fontSize: 24.sp).copyWith(
+                style: const TextStyle(fontSize: 24).copyWith(
                   fontWeight: FontWeight.w900,
                   fontFamily: GoogleFonts.nunito().fontFamily,
                 ),
@@ -55,9 +55,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 await navService.replaceWithHomeView();
               },
               leading: const Icon(Icons.home_rounded),
-              title: Text(
+              title: const Text(
                 'Home',
-                style: TextStyle(fontSize: 16.sp),
+                style: TextStyle(fontSize: 16),
               ),
             ),
             ListTile(
@@ -68,9 +68,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 await navService.replaceWithOrdersView();
               },
               leading: const Icon(Icons.menu_book_rounded),
-              title: Text(
+              title: const Text(
                 'Orders',
-                style: TextStyle(fontSize: 16.sp),
+                style: TextStyle(fontSize: 16),
               ),
             ),
             ListTile(
@@ -79,11 +79,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 //   navService.pop();
                 //  navService.navigateToMessagesView();
               },
-              leading: Icon(
+              leading: const Icon(
                 Icons.chat_rounded,
-                size: 20.sp,
               ),
-              title: Text('Messages', style: TextStyle(fontSize: 16.sp)),
+              title: const Text('Messages', style: TextStyle(fontSize: 16)),
             ),
             ListTile(
               splashColor: Colors.transparent,
@@ -91,11 +90,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 // navService.pop();
                 // navService.navigateToAccountView();
               },
-              leading: Icon(
+              leading: const Icon(
                 Icons.account_circle_rounded,
-                size: 20.sp,
               ),
-              title: Text('Account', style: TextStyle(fontSize: 16.sp)),
+              title: const Text('Account', style: TextStyle(fontSize: 16)),
             )
           ]),
         ],

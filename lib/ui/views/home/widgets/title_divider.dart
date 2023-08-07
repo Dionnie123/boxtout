@@ -14,7 +14,7 @@ class TitleDivider extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 18.sp).copyWith(
+            style: const TextStyle(fontSize: 18).copyWith(
               fontWeight: FontWeight.w900,
             ),
           ),

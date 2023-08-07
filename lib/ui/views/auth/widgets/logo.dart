@@ -1,4 +1,4 @@
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

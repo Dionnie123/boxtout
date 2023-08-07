@@ -1,9 +1,8 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/ez_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartBreakdown extends StatelessWidget {
   final num subTotal;
@@ -23,14 +22,14 @@ class CartBreakdown extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Subtotal",
-                    style: TextStyle(fontSize: 16.sp).copyWith(
+                    "SUBTOTAL",
+                    style: const TextStyle(fontSize: 16).copyWith(
                       fontWeight: FontWeight.w900,
                     ),
                   ),
                   Text(
                     "\$${subTotal.toStringAsFixed(2)}",
-                    style: TextStyle(fontSize: 16.sp).copyWith(
+                    style: const TextStyle(fontSize: 16).copyWith(
                       fontWeight: FontWeight.w900,
                     ),
                   ),
@@ -41,18 +40,18 @@ class CartBreakdown extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Total",
-                    style: TextStyle(
-                            fontSize: 18.sp, color: kcPrimaryColor.darken())
-                        .copyWith(
+                    "TOTAL",
+                    style:
+                        TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
+                            .copyWith(
                       fontWeight: FontWeight.w900,
                     ),
                   ),
                   Text(
                     "\$${subTotal.toStringAsFixed(2)}",
-                    style: TextStyle(
-                            fontSize: 18.sp, color: kcPrimaryColor.darken())
-                        .copyWith(
+                    style:
+                        TextStyle(fontSize: 18, color: kcPrimaryColor.darken())
+                            .copyWith(
                       fontWeight: FontWeight.w900,
                     ),
                   ),

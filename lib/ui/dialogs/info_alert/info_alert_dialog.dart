@@ -1,6 +1,6 @@
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 

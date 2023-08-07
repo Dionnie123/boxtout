@@ -1,5 +1,5 @@
 import 'package:boxtout/app/models/register_dto.dart';
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:boxtout/ui/special/ez_button.dart';
 import 'package:boxtout/ui/special/ez_text.dart';
 import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';

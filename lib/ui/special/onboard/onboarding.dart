@@ -1,6 +1,7 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'buildin_transformers.dart';
@@ -117,31 +118,31 @@ class _OnboardingState extends State<Onboarding> {
                                     width: 800,
                                     child: Text(
                                       "\"${item.testimonial}.\"",
-                                      style: const TextStyle(
-                                        fontSize: 24.0,
+                                      style: TextStyle(
+                                        fontSize: 24.0.sp,
                                         color: Colors.white,
                                       ).copyWith(
-                                        fontWeight: FontWeight.w900,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                   vSpaceRegular,
                                   Text(
                                     item.personName,
-                                    style: const TextStyle(
-                                      fontSize: 20.0,
+                                    style: TextStyle(
+                                      fontSize: 20.0.sp,
                                       color: Colors.white,
                                     ).copyWith(
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
                                     item.personTitle,
-                                    style: const TextStyle(
-                                      fontSize: 20.0,
+                                    style: TextStyle(
+                                      fontSize: 20.0.sp,
                                       color: Colors.white,
                                     ).copyWith(
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ],

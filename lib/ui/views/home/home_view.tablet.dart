@@ -38,10 +38,10 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
                     children: [
                       SizedBox(height: 15.h),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                        padding: EdgeInsets.symmetric(horizontal: 8.0.sp),
                         child: Text(
                           "WELCOME!",
-                          style: TextStyle(fontSize: 24.sp).copyWith(
+                          style: const TextStyle(fontSize: 24).copyWith(
                             fontWeight: FontWeight.w900,
                           ),
                         ),
@@ -50,14 +50,14 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
                       const TitleDivider("Trendy Products"),
                       SizedBox(height: 8.h),
                       TrendyProductListview(
-                        size: Size(double.infinity, 282.0.h),
+                        size: const Size(double.infinity, 271.0),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return Padding(
                             padding: const EdgeInsets.only(right: 8.0),
                             child: ProductItem(
                               viewModel.products[i],
-                              size: Size(165.w, 266.0.h),
+                              size: const Size(165, 266.0),
                               onAdd: () {
                                 viewModel.addToCart(viewModel.products[i]);
                               },
@@ -68,12 +68,12 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
                       SizedBox(height: 8.h),
                       const TitleDivider("Suggested For You"),
                       SuggestedProductListview(
-                        size: Size(size.maxWidth, 266.0.h),
+                        size: Size(size.maxWidth, 250.0),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return ProductItem(
                             viewModel.products[i],
-                            size: Size(double.infinity, 266.0.h),
+                            size: const Size(double.infinity, 250.0),
                             onAdd: () {
                               viewModel.addToCart(viewModel.products[i]);
                             },
@@ -87,7 +87,7 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
             ),
           ),
           Drawer(
-            width: 380,
+            width: 400,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),

@@ -1,9 +1,8 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/app/models/product_dto.dart';
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItem extends StatelessWidget {
   final Function() onAdd;
@@ -40,7 +39,7 @@ class ProductItem extends StatelessWidget {
                             const CircularProgressIndicator(),
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
-                        height: 120.h,
+                        height: 120,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -49,20 +48,20 @@ class ProductItem extends StatelessWidget {
                         top: 0,
                         child: Container(
                             color: Colors.red,
-                            child: Padding(
+                            child: const Padding(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 8.0.sp, vertical: 4.0.sp),
+                                    horizontal: 8.0, vertical: 4.0),
                                 child: Text(
                                   "NEW!",
                                   style: TextStyle(
-                                      fontSize: 14.sp, color: Colors.white),
+                                      fontSize: 14, color: Colors.white),
                                 ))),
                       )
                     ],
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(8.0.sp),
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,29 +69,29 @@ class ProductItem extends StatelessWidget {
                           Text(
                             product.name.toString(),
                             maxLines: 2,
-                            style: TextStyle(fontSize: 16.sp).copyWith(
+                            style: const TextStyle(fontSize: 16).copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: 4.0.h,
+                              const SizedBox(
+                                height: 4.0,
                               ),
                               Opacity(
                                 opacity: 0.6,
                                 child: Text(product.description.toString(),
                                     maxLines: 2,
-                                    style: TextStyle(fontSize: 12.sp)),
+                                    style: const TextStyle(fontSize: 12)),
                               ),
-                              SizedBox(
-                                height: 4.0.h,
+                              const SizedBox(
+                                height: 4.0,
                               ),
                               Text(
                                 "\$${product.price}",
                                 style: TextStyle(
-                                        fontSize: 16.sp,
+                                        fontSize: 16,
                                         color: kcPrimaryColor.darken(0.2))
                                     .copyWith(
                                   fontWeight: FontWeight.w900,

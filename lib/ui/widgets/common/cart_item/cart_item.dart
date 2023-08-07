@@ -1,9 +1,8 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/app/models/product_dto.dart';
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'cart_item.button.dart';
@@ -40,17 +39,17 @@ class CartItem extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(8.0.sp),
+                      padding: const EdgeInsets.all(8.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: CachedNetworkImage(
                           imageUrl:
-                              'https://picsum.photos/200/300?random=${product.id}',
+                              'https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1637&q=80',
                           placeholder: (context, url) =>
                               const CircularProgressIndicator(),
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
-                          width: 80.sp,
+                          width: 80,
                           height: double.infinity,
                           fit: BoxFit.cover,
                         ),
@@ -61,12 +60,12 @@ class CartItem extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
                               product.name.toString(),
                               maxLines: 2,
-                              style: TextStyle(fontSize: 14.sp).copyWith(
+                              style: const TextStyle(fontSize: 15).copyWith(
                                 fontWeight: FontWeight.w900,
                               ),
                             ),
@@ -74,12 +73,12 @@ class CartItem extends StatelessWidget {
                               opacity: 0.6,
                               child: Text(product.description.toString(),
                                   maxLines: 1,
-                                  style: TextStyle(fontSize: 12.sp)),
+                                  style: const TextStyle(fontSize: 13)),
                             ),
                             Text(
                               "\$${product.price} x ${product.quantityInCart}",
                               maxLines: 1,
-                              style: TextStyle(fontSize: 14.sp).copyWith(
+                              style: const TextStyle(fontSize: 14).copyWith(
                                 fontWeight: FontWeight.w900,
                                 fontFamily: GoogleFonts.nunito().fontFamily,
                               ),
@@ -101,14 +100,14 @@ class CartItem extends StatelessWidget {
                   Card(
                     color: kcPrimaryColor.darken(),
                     child: SizedBox(
-                      width: 40.r,
-                      height: 40.r,
+                      width: 40,
+                      height: 40,
                       child: Center(
                         child: Text(
                           "${product.quantityInCart}",
                           maxLines: 1,
                           overflow: TextOverflow.fade,
-                          style: TextStyle(fontSize: 14.sp),
+                          style: const TextStyle(fontSize: 15),
                         ),
                       ),
                     ),

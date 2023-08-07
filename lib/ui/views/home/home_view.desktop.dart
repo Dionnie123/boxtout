@@ -41,7 +41,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                         padding: EdgeInsets.symmetric(horizontal: 8.0.sp),
                         child: Text(
                           "WELCOME!",
-                          style: TextStyle(fontSize: 24.sp).copyWith(
+                          style: const TextStyle(fontSize: 24).copyWith(
                             fontWeight: FontWeight.w900,
                           ),
                         ),
@@ -50,14 +50,14 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                       const TitleDivider("Trendy Products"),
                       SizedBox(height: 8.h),
                       TrendyProductListview(
-                        size: Size(double.infinity, 266.0.h),
+                        size: const Size(double.infinity, 271.0),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return Padding(
                             padding: const EdgeInsets.only(right: 8.0),
                             child: ProductItem(
                               viewModel.products[i],
-                              size: Size(165.sp, 266.0.h),
+                              size: const Size(165, 266.0),
                               onAdd: () {
                                 viewModel.addToCart(viewModel.products[i]);
                               },
@@ -68,12 +68,12 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                       SizedBox(height: 8.h),
                       const TitleDivider("Suggested For You"),
                       SuggestedProductListview(
-                        size: Size(size.maxWidth, 250.0.h),
+                        size: Size(size.maxWidth, 250.0),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return ProductItem(
                             viewModel.products[i],
-                            size: Size(double.infinity, 250.0.h),
+                            size: const Size(double.infinity, 250.0),
                             onAdd: () {
                               viewModel.addToCart(viewModel.products[i]);
                             },
@@ -87,7 +87,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
             ),
           ),
           Drawer(
-            width: 0.25.sw,
+            width: 400,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
@@ -140,7 +140,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                           viewModel.minusCartItemQuantity(
                               viewModel.cart[index].id ?? -1);
                         },
-                        size: Size(double.infinity, 95.h),
+                        size: const Size(double.infinity, 100),
                       );
                     },
                   ),

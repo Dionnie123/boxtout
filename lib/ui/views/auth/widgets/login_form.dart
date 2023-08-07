@@ -1,6 +1,6 @@
 import 'package:boxtout/app/models/login_dto.dart';
+import 'package:boxtout/ui/common/my_texts.dart';
 import 'package:boxtout/ui/special/ez_button.dart';
-import 'package:boxtout/ui/special/ez_text.dart';
 import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -17,7 +17,7 @@ class LoginForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const EzText.headline('SIGN IN'),
+          const MyText.headingOne("SIGN-IN"),
           const SizedBox(height: 24.0),
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
@@ -68,10 +68,7 @@ class LoginForm extends StatelessWidget {
 
                 viewModel.authType = AuthType.signUp;
               },
-              child: const Text(
-                "Don't have an account? Sign up",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )),
+              child: const MyText.caption("Don't have an account? Sign up")),
         ],
       );
     });

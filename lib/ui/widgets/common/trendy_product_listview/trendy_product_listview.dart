@@ -1,5 +1,5 @@
 import 'package:boxtout/app/models/product_dto.dart';
-import 'package:boxtout/ui/common/app_colors.dart';
+import 'package:boxtout/ui/common/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +20,7 @@ class TrendyProductListview extends StatelessWidget {
     return Builder(builder: (context) {
       return Container(
         width: size.width,
-        color: kcPrimaryColor,
+        color: kcPrimaryColorDark,
         height: size.height,
         child: ListView.builder(
             primary: false,

@@ -1,4 +1,3 @@
-import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-import 'color_schemes.g.dart';
+import 'ui/common/color_schemes.g.dart';
 
 Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -36,9 +35,7 @@ class MainApp extends StatelessWidget {
     final supabase = Supabase.instance.client;
     FlutterNativeSplash.remove();
     return ScreenUtilInit(
-        designSize: screenWidth(context) > 1366
-            ? const Size(1366, 768)
-            : const Size(360, 662),
+        designSize: const Size(360, 662),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
@@ -46,58 +43,30 @@ class MainApp extends StatelessWidget {
             scrollBehavior: AppScrollBehavior(),
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.dark,
-            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme)
-                .copyWith(
-                    inputDecorationTheme: InputDecorationTheme(
-                        hintStyle: TextStyle(fontSize: 14.sp),
-                        labelStyle: TextStyle(fontSize: 14.sp)),
-                    cardTheme:
-                        const CardTheme(margin: EdgeInsetsDirectional.zero)),
+            theme: ThemeData(
+              useMaterial3: true,
+              brightness: Brightness.light,
+              cardTheme: const CardTheme(
+                margin: EdgeInsetsDirectional.zero,
+              ),
+            ).copyWith(
+              colorScheme: lightColorScheme,
+            ),
             darkTheme: ThemeData(
-                    useMaterial3: true, colorScheme: darkColorScheme)
-                .copyWith(
-                    inputDecorationTheme: InputDecorationTheme(
-                        hintStyle: TextStyle(fontSize: 14.sp),
-                        labelStyle: TextStyle(fontSize: 14.sp)),
-                    cardTheme:
-                        const CardTheme(margin: EdgeInsetsDirectional.zero)),
+              useMaterial3: true,
+              brightness: Brightness.dark,
+              cardTheme: const CardTheme(
+                margin: EdgeInsetsDirectional.zero,
+              ),
+            ).copyWith(
+              colorScheme: darkColorScheme,
+            ),
             routerDelegate: stackedRouter.delegate(initialRoutes: [
               supabase.auth.currentUser != null
                   ? const HomeViewRoute()
                   : const AuthViewRoute()
             ]),
             routeInformationParser: stackedRouter.defaultRouteParser(),
-
-            /*    builder: (context, child) {
-            if (!kIsWeb) FlutterNativeSplash.remove();
-            return Scaffold(
-              body: Stack(
-                children: [
-                  Column(
-                    children: [
-                      Expanded(child: child ?? const SizedBox()),
-                      Container(
-                        width: double.infinity,
-                        color: Colors.black,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Made with 💖 by Mark Dionnie Bulingit ${DateFormat.y().format(DateTime.now())}",
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style:
-                                const TextStyle(color: Colors.white, fontSize: 12),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-          
-                ],
-              ),
-            );
-          }, */
           );
         });
   }
