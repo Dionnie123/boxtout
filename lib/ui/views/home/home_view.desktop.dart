@@ -50,7 +50,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                       const TitleDivider("Trendy Products"),
                       SizedBox(height: 8.h),
                       TrendyProductListview(
-                        size: Size(double.infinity, 282.0.h),
+                        size: Size(double.infinity, 266.0.h),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return Padding(
@@ -68,12 +68,12 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                       SizedBox(height: 8.h),
                       const TitleDivider("Suggested For You"),
                       SuggestedProductListview(
-                        size: Size(size.maxWidth, 266.0.h),
+                        size: Size(size.maxWidth, 250.0.h),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return ProductItem(
                             viewModel.products[i],
-                            size: Size(double.infinity, 266.0.h),
+                            size: Size(double.infinity, 250.0.h),
                             onAdd: () {
                               viewModel.addToCart(viewModel.products[i]);
                             },

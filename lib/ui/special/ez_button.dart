@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EzButton extends StatelessWidget {
   final String title;
@@ -18,13 +19,13 @@ class EzButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget loading() {
-      return const Center(
+      return Center(
         child: SizedBox(
-          width: 30,
-          height: 30,
+          width: 30.w,
+          height: 30.h,
           child: CircularProgressIndicator(
-            strokeWidth: 5,
-            valueColor: AlwaysStoppedAnimation(Colors.white),
+            strokeWidth: 5.spMin,
+            valueColor: const AlwaysStoppedAnimation(Colors.white),
           ),
         ),
       );
@@ -32,7 +33,7 @@ class EzButton extends StatelessWidget {
 
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: 50.h,
       child: ElevatedButton(
         onPressed: disabled
             ? null
@@ -41,7 +42,12 @@ class EzButton extends StatelessWidget {
                 : () => onPressed(),
         child: AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
-            child: busy ? loading() : Text(title)),
+            child: busy
+                ? loading()
+                : Text(
+                    title,
+                    style: TextStyle(fontSize: 14.sp),
+                  )),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/views/auth/widgets/login_form.dart';
 import 'package:boxtout/ui/views/auth/widgets/register_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
 import 'auth_viewmodel.dart';
@@ -42,7 +43,7 @@ class AuthViewDesktop extends ViewModelWidget<AuthViewModel> {
                       flex: 2,
                       child: Center(
                         child: SizedBox(
-                          width: 600,
+                          width: 600.w,
                           child: SingleChildScrollView(
                             padding: const EdgeInsets.all(40.0),
                             child: Column(

@@ -4,6 +4,7 @@ import 'package:boxtout/ui/special/ez_button.dart';
 import 'package:boxtout/ui/special/ez_text.dart';
 import 'package:boxtout/ui/views/auth/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:stacked/stacked.dart';
 
@@ -33,13 +34,14 @@ class RegisterForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const EzText.headline('SIGN UP'),
-          const SizedBox(height: 24.0),
+          SizedBox(height: 24.0.h),
           ReactiveTextField<String>(
             formControl: formModel.fullNameControl,
             validationMessages: {
               ValidationMessage.required: (_) => 'Required',
             },
             textInputAction: TextInputAction.next,
+            style: TextStyle(fontSize: 14.sp),
             decoration: const InputDecoration(
               labelText: "Fullname",
               helperText: '',
@@ -47,7 +49,7 @@ class RegisterForm extends StatelessWidget {
               errorStyle: TextStyle(height: 0.8),
             ),
           ),
-          const SizedBox(height: 8.0),
+          SizedBox(height: 8.0.h),
           ReactiveTextField<String>(
             formControl: formModel.emailControl,
             validationMessages: {
@@ -55,6 +57,7 @@ class RegisterForm extends StatelessWidget {
               ValidationMessage.email: (_) => 'Invalid email'
             },
             textInputAction: TextInputAction.next,
+            style: TextStyle(fontSize: 14.sp),
             decoration: const InputDecoration(
               labelText: 'Email',
               helperText: '',
@@ -62,12 +65,13 @@ class RegisterForm extends StatelessWidget {
               errorStyle: TextStyle(height: 0.8),
             ),
           ),
-          const SizedBox(height: 8.0),
+          SizedBox(height: 8.0.h),
           ReactiveTextField<String>(
             formControl: formModel.passwordControl,
             obscureText: true,
             validationMessages: {ValidationMessage.required: (_) => 'Required'},
             textInputAction: TextInputAction.next,
+            style: TextStyle(fontSize: 14.sp),
             decoration: const InputDecoration(
               labelText: "Password",
               helperText: '',
@@ -75,7 +79,7 @@ class RegisterForm extends StatelessWidget {
               errorStyle: TextStyle(height: 0.8),
             ),
           ),
-          const SizedBox(height: 8.0),
+          SizedBox(height: 8.0.h),
           ReactiveTextField<String>(
             formControl: formModel.passwordConfirmationControl,
             obscureText: true,
@@ -84,6 +88,7 @@ class RegisterForm extends StatelessWidget {
               ValidationMessage.mustMatch: (_) => "Password do not match",
             },
             textInputAction: TextInputAction.next,
+            style: TextStyle(fontSize: 14.sp),
             decoration: const InputDecoration(
               labelText: "Confirm Password",
               helperText: '',
@@ -93,16 +98,23 @@ class RegisterForm extends StatelessWidget {
           ),
           Row(
             children: [
-              ReactiveCheckbox(
-                  onChanged: (control) {},
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
-                  formControl: formModel.acceptLicenseControl,
-                  fillColor: const MaterialStatePropertyAll(
-                    kcPrimaryColor,
-                  )),
-              const Expanded(
-                  child: Text("I accept terms and conditions & privacy policy"))
+              Transform.scale(
+                scale: 1.sp,
+                child: ReactiveCheckbox(
+                    onChanged: (control) {},
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.r)),
+                    formControl: formModel.acceptLicenseControl,
+                    fillColor: const MaterialStatePropertyAll(
+                      kcPrimaryColor,
+                    )),
+              ),
+              SizedBox(width: 8.sp),
+              Expanded(
+                  child: Text(
+                "I accept terms and conditions & privacy policy",
+                style: TextStyle(fontSize: 14.sp),
+              ))
             ],
           ),
           const SizedBox(height: 24.0),
@@ -128,9 +140,9 @@ class RegisterForm extends StatelessWidget {
 
                 viewModel.authType = AuthType.signIn;
               },
-              child: const Text(
+              child: Text(
                 "Already have an account? Sign in",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
               )),
         ],
       );

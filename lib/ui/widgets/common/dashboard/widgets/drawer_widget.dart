@@ -55,7 +55,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 await navService.replaceWithHomeView();
               },
               leading: const Icon(Icons.home_rounded),
-              title: const Text('Home'),
+              title: Text(
+                'Home',
+                style: TextStyle(fontSize: 16.sp),
+              ),
             ),
             ListTile(
               splashColor: Colors.transparent,
@@ -65,7 +68,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 await navService.replaceWithOrdersView();
               },
               leading: const Icon(Icons.menu_book_rounded),
-              title: const Text('Orders'),
+              title: Text(
+                'Orders',
+                style: TextStyle(fontSize: 16.sp),
+              ),
             ),
             ListTile(
               splashColor: Colors.transparent,
@@ -73,8 +79,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 //   navService.pop();
                 //  navService.navigateToMessagesView();
               },
-              leading: const Icon(Icons.chat_rounded),
-              title: const Text('Messages'),
+              leading: Icon(
+                Icons.chat_rounded,
+                size: 20.sp,
+              ),
+              title: Text('Messages', style: TextStyle(fontSize: 16.sp)),
             ),
             ListTile(
               splashColor: Colors.transparent,
@@ -82,8 +91,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 // navService.pop();
                 // navService.navigateToAccountView();
               },
-              leading: const Icon(Icons.account_circle_rounded),
-              title: const Text('Account'),
+              leading: Icon(
+                Icons.account_circle_rounded,
+                size: 20.sp,
+              ),
+              title: Text('Account', style: TextStyle(fontSize: 16.sp)),
             )
           ]),
         ],

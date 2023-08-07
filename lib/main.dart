@@ -1,3 +1,4 @@
+import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -35,20 +36,29 @@ class MainApp extends StatelessWidget {
     final supabase = Supabase.instance.client;
     FlutterNativeSplash.remove();
     return ScreenUtilInit(
-        designSize: const Size(360, 662),
+        designSize: screenWidth(context) > 1366
+            ? const Size(1366, 768)
+            : const Size(360, 662),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
           return MaterialApp.router(
             scrollBehavior: AppScrollBehavior(),
             debugShowCheckedModeBanner: false,
+            themeMode: ThemeMode.dark,
             theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme)
                 .copyWith(
+                    inputDecorationTheme: InputDecorationTheme(
+                        hintStyle: TextStyle(fontSize: 14.sp),
+                        labelStyle: TextStyle(fontSize: 14.sp)),
                     cardTheme:
                         const CardTheme(margin: EdgeInsetsDirectional.zero)),
             darkTheme: ThemeData(
                     useMaterial3: true, colorScheme: darkColorScheme)
                 .copyWith(
+                    inputDecorationTheme: InputDecorationTheme(
+                        hintStyle: TextStyle(fontSize: 14.sp),
+                        labelStyle: TextStyle(fontSize: 14.sp)),
                     cardTheme:
                         const CardTheme(margin: EdgeInsetsDirectional.zero)),
             routerDelegate: stackedRouter.delegate(initialRoutes: [
