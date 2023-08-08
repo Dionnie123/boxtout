@@ -16,11 +16,8 @@ class SuggestedProductListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        primary: false,
-        padding: EdgeInsets.all(8.0.sp),
+    return SliverGrid.builder(
         itemCount: products.length,
-        shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
           height: size.height,
           crossAxisCount: isMobile(context) ? 2 : 5,

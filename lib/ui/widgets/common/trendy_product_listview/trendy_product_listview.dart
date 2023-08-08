@@ -18,17 +18,19 @@ class TrendyProductListview extends StatelessWidget {
     BuildContext context,
   ) {
     return Builder(builder: (context) {
-      return Container(
-        width: size.width,
-        color: kcPrimaryColorDark,
-        height: size.height,
-        child: ListView.builder(
-            primary: false,
-            padding: EdgeInsets.all(8.0.sp),
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: products.length,
-            itemBuilder: (context, index) => itemBuilder(context, index)),
+      return SliverToBoxAdapter(
+        child: Container(
+          width: size.width,
+          color: kcPrimaryColorDark,
+          height: size.height,
+          child: ListView.builder(
+              primary: false,
+              padding: EdgeInsets.all(8.0.sp),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: products.length,
+              itemBuilder: (context, index) => itemBuilder(context, index)),
+        ),
       );
     });
   }
