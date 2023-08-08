@@ -20,7 +20,7 @@ class SuggestedProductListview extends StatelessWidget {
         itemCount: products.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
           height: size.height,
-          crossAxisCount: isMobile(context) ? 2 : 5,
+          crossAxisCount: isMobile(context) ? 2 : 9,
           crossAxisSpacing: 8.0.sp,
           mainAxisSpacing: 8.0.sp,
         ),

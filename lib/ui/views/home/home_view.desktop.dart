@@ -8,6 +8,7 @@ import 'package:boxtout/ui/widgets/common/side_cart/side_cart.dart';
 import 'package:boxtout/ui/widgets/common/suggested_product_listview/suggested_product_listview.dart';
 import 'package:boxtout/ui/widgets/common/trendy_product_listview/trendy_product_listview.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
 import 'package:badges/badges.dart' as badges;
@@ -48,10 +49,16 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
               Expanded(
                 child: CustomScrollView(slivers: [
                   SliverAppBar(
-                    pinned: false,
-                    flexibleSpace: const FlexibleSpaceBar(
-                      title: Text('CustomScrollView'),
-                      centerTitle: true,
+                    toolbarHeight: 78,
+                    // backgroundColor: Colors.transparent,
+                    //  forceMaterialTransparency: true,
+                    pinned: true,
+                    title: Text(
+                      "WELCOME",
+                      style: const TextStyle(fontSize: 24).copyWith(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.nunito().fontFamily,
+                      ),
                     ),
                     actions: [
                       IconButton(
