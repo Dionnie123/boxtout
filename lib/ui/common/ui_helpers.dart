@@ -7,6 +7,8 @@ const double _regularSize = 12.0;
 const double _mediumSize = 24.0;
 const double _largeSize = 48.0;
 
+const double widgetSpacing = 8.0;
+
 const Widget hSpaceTiny = SizedBox(width: _tinySize);
 const Widget hSpaceSmall = SizedBox(width: _smallSize);
 const Widget hSpaceRegular = SizedBox(width: _regularSize);

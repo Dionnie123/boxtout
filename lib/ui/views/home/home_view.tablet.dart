@@ -1,17 +1,18 @@
 import 'package:badges/badges.dart';
 import 'package:boxtout/app/app.router.dart';
+import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
-import 'package:boxtout/ui/views/cart/widgets/cart_breakdown.dart';
 import 'package:boxtout/ui/views/home/widgets/title_divider.dart';
 import 'package:boxtout/ui/widgets/common/cart_item/cart_item.dart';
+import 'package:boxtout/ui/widgets/common/cart_listview/cart_breakdown.dart';
 import 'package:boxtout/ui/widgets/common/dashboard/widgets/drawer_widget.dart';
 import 'package:boxtout/ui/widgets/common/product_item/product_item.dart';
+import 'package:boxtout/ui/widgets/common/side_cart/side_cart.dart';
 import 'package:boxtout/ui/widgets/common/suggested_product_listview/suggested_product_listview.dart';
 import 'package:boxtout/ui/widgets/common/trendy_product_listview/trendy_product_listview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stacked/stacked.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
 
 class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
@@ -22,13 +23,18 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
     BuildContext context,
     HomeViewModel viewModel,
   ) {
-    return Scaffold(
-      body: Row(
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Row(
         children: [
           Expanded(
             child: Scaffold(
               drawer: const DrawerWidget(),
               appBar: AppBar(),
+              floatingActionButton: FloatingActionButton(
+                child: const Icon(Icons.add_rounded),
+                onPressed: () {},
+              ),
               body: ScaffoldBodyWrapper(
                 padding: EdgeInsets.zero,
                 onRefresh: () async {},
@@ -37,9 +43,9 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 15.h),
+                      vSpaceRegular,
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0.sp),
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
                           "WELCOME!",
                           style: const TextStyle(fontSize: 24).copyWith(
@@ -47,9 +53,9 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 8.h),
+                      vSpaceSmall,
                       const TitleDivider("Trendy Products"),
-                      SizedBox(height: 8.h),
+                      vSpaceSmall,
                       TrendyProductListview(
                         size: const Size(double.infinity, 271.0),
                         products: viewModel.products,
@@ -69,16 +75,14 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
                           );
                         },
                       ),
-                      SizedBox(height: 8.h),
+                      vSpaceSmall,
                       const TitleDivider("Suggested For You"),
                       SuggestedProductListview(
                         size: Size(size.maxWidth, 250.0),
                         products: viewModel.products,
                         itemBuilder: (context, i) {
                           return ProductItem(
-                            onTap: () {
-                              viewModel.navService.navigateToFooView();
-                            },
+                            onTap: () {},
                             viewModel.products[i],
                             size: const Size(double.infinity, 250.0),
                             onAdd: () {
@@ -93,66 +97,45 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
               ),
             ),
           ),
-          Drawer(
-            width: 400,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-            )),
-            child: Scaffold(
-                backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  automaticallyImplyLeading: false,
-                  backgroundColor: Colors.transparent,
-                  forceMaterialTransparency: true,
-                  actions: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.settings_rounded,
-                        )),
-                    IconButton(
-                        onPressed: () async {
-                          await viewModel.signOut();
-                        },
-                        icon: const Icon(Icons.account_circle_rounded)),
-                    badges.Badge(
-                      badgeAnimation: const BadgeAnimation.scale(),
-                      badgeContent:
-                          Text(viewModel.cartItemsQuantity.toString()),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.shopping_cart_rounded)),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    )
-                  ],
+          SideCart(
+            itemCount: viewModel.cart.length,
+            actionButtons: [
+              IconButton(
+                icon: const Icon(
+                  Icons.settings_rounded,
                 ),
-                bottomSheet: CartBreakdown(subTotal: viewModel.cartTotal),
-                body: Padding(
-                  padding: const EdgeInsets.only(bottom: 160),
-                  child: ListView.builder(
-                    padding: const EdgeInsets.all(15),
-                    itemCount: viewModel.cart.length,
-                    itemBuilder: (context, index) {
-                      return CartItem(
-                        viewModel.cart[index],
-                        onAdd: () {
-                          viewModel.addCartItemQuantity(
-                              viewModel.cart[index].id ?? -1);
-                        },
-                        onMinus: () {
-                          viewModel.minusCartItemQuantity(
-                              viewModel.cart[index].id ?? -1);
-                        },
-                        size: const Size(double.infinity, 100),
-                      );
-                    },
-                  ),
-                )),
-          ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.account_circle_rounded),
+                onPressed: () async {
+                  await viewModel.signOut();
+                },
+              ),
+              badges.Badge(
+                badgeAnimation: const BadgeAnimation.scale(),
+                badgeContent: Text(viewModel.cartItemsQuantity.toString()),
+                child: IconButton(
+                  icon: const Icon(Icons.shopping_cart_rounded),
+                  onPressed: () {},
+                ),
+              ),
+            ],
+            cartBreakdown: CartBreakdown(subTotal: viewModel.cartTotal),
+            itemBuilder: (context, index) {
+              return CartItem(
+                viewModel.cart[index],
+                onAdd: () {
+                  viewModel.addCartItemQuantity(viewModel.cart[index].id ?? -1);
+                },
+                onMinus: () {
+                  viewModel
+                      .minusCartItemQuantity(viewModel.cart[index].id ?? -1);
+                },
+                size: const Size(double.infinity, 100),
+              );
+            },
+          )
         ],
       ),
     );
