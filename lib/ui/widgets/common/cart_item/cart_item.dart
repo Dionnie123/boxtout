@@ -65,8 +65,9 @@ class CartItem extends StatelessWidget {
                             Text(
                               product.name.toString(),
                               maxLines: 2,
-                              style: const TextStyle(fontSize: 15).copyWith(
-                                fontWeight: FontWeight.w900,
+                              style: const TextStyle(fontSize: 16).copyWith(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.nunito().fontFamily,
                               ),
                             ),
                             Opacity(
@@ -79,7 +80,7 @@ class CartItem extends StatelessWidget {
                               "\$${product.price} x ${product.quantityInCart}",
                               maxLines: 1,
                               style: const TextStyle(fontSize: 14).copyWith(
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.bold,
                                 fontFamily: GoogleFonts.nunito().fontFamily,
                               ),
                             ),

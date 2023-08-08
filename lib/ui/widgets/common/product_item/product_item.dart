@@ -3,6 +3,7 @@ import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductItem extends StatelessWidget {
   final Function() onTap;
@@ -36,19 +37,16 @@ class ProductItem extends StatelessWidget {
                     Stack(
                       clipBehavior: Clip.antiAlias,
                       children: [
-                        Hero(
-                          tag: product.id.toString(),
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                'https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1637&q=80',
-                            placeholder: (context, url) =>
-                                const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                            height: 120,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
+                        CachedNetworkImage(
+                          imageUrl:
+                              'https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1637&q=80',
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                          height: 120,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
                         ),
                         Positioned(
                           right: 0,
@@ -78,6 +76,7 @@ class ProductItem extends StatelessWidget {
                               maxLines: 2,
                               style: const TextStyle(fontSize: 16).copyWith(
                                 fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.nunito().fontFamily,
                               ),
                             ),
                             Column(
@@ -102,6 +101,7 @@ class ProductItem extends StatelessWidget {
                                           color: kcPrimaryColor.darken(0.2))
                                       .copyWith(
                                     fontWeight: FontWeight.w900,
+                                    fontFamily: GoogleFonts.nunito().fontFamily,
                                   ),
                                 ),
                               ],

@@ -7,6 +7,7 @@ import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -44,6 +45,7 @@ class MainApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.dark,
             theme: ThemeData(
+              fontFamily: GoogleFonts.nunito().fontFamily,
               useMaterial3: true,
               brightness: Brightness.light,
               cardTheme: const CardTheme(
@@ -53,6 +55,7 @@ class MainApp extends StatelessWidget {
               colorScheme: lightColorScheme,
             ),
             darkTheme: ThemeData(
+              fontFamily: GoogleFonts.nunito().fontFamily,
               useMaterial3: true,
               brightness: Brightness.dark,
               cardTheme: const CardTheme(

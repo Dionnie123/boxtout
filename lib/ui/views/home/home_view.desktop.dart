@@ -46,6 +46,15 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                 },
               ),
               appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                forceMaterialTransparency: true,
+                toolbarHeight: 80,
+                title: Text(
+                  "WELCOME!",
+                  style: const TextStyle(fontSize: 24).copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
                 automaticallyImplyLeading: false,
                 actions: [
                   IconButton(
@@ -87,16 +96,6 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      vSpaceRegular,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          "WELCOME!",
-                          style: const TextStyle(fontSize: 24).copyWith(
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
                       vSpaceSmall,
                       const TitleDivider("Trendy Products"),
                       vSpaceSmall,

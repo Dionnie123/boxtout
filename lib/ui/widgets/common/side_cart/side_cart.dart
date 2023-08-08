@@ -16,14 +16,14 @@ class SideCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 400,
+      width: 500,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20),
         bottomLeft: Radius.circular(20),
       )),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
+          //  backgroundColor: Colors.transparent,
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,

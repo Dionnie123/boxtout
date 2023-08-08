@@ -45,7 +45,7 @@ class EzButton extends StatelessWidget {
                 ? loading()
                 : Text(
                     title,
-                    style: const TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 15),
                   )),
       ),
     );
