@@ -1,9 +1,9 @@
 import 'package:badges/badges.dart';
+import 'package:boxtout/app/app.router.dart';
 import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
 import 'package:boxtout/ui/views/home/widgets/title_divider.dart';
 import 'package:boxtout/ui/widgets/common/dashboard/widgets/drawer_widget.dart';
 import 'package:boxtout/ui/widgets/common/product_item/product_item.dart';
-import 'package:boxtout/ui/widgets/common/suggested_product_listview/suggested_product_listview.dart';
 import 'package:boxtout/ui/widgets/common/trendy_product_listview/trendy_product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -73,6 +73,9 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: ProductItem(
+                        onTap: () {
+                          viewModel.navService.navigateToFooView();
+                        },
                         viewModel.products[i],
                         size: const Size(165, 266.0),
                         onAdd: () {
@@ -84,11 +87,14 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
                 ),
                 SizedBox(height: 8.h),
                 const TitleDivider("Suggested For You"),
-                SuggestedProductListview(
+                /*    SuggestedProductListview(
                   size: Size(size.maxWidth, 250.0),
                   products: viewModel.products,
                   itemBuilder: (context, i) {
                     return ProductItem(
+                      onTap: () {
+                        viewModel.navService.navigateToFooView();
+                      },
                       viewModel.products[i],
                       size: const Size(double.infinity, 250.0),
                       onAdd: () {
@@ -96,7 +102,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
                       },
                     );
                   },
-                ),
+                ), */
               ],
             );
           },
