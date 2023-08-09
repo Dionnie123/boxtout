@@ -13,6 +13,8 @@ import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
 import 'package:badges/badges.dart' as badges;
 
+import 'widgets/title_divider.dart';
+
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
   const HomeViewDesktop({super.key});
 
@@ -89,6 +91,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                       hSpaceMedium,
                     ],
                   ),
+                  const TitleDivider("Trendy Products"),
                   TrendyProductListview(
                     size: const Size(double.infinity, 271.0),
                     products: viewModel.products,
@@ -108,6 +111,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                       );
                     },
                   ),
+                  const TitleDivider("Suggested for you"),
                   SliverPadding(
                     padding: const EdgeInsets.all(15),
                     sliver: SuggestedProductListview(
