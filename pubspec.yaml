@@ -13,8 +13,6 @@ dependencies:
   faker: ^2.1.0
   url_strategy: ^0.2.0
   badges: ^3.1.1
-  flutter_screenutil: ^5.8.4
-  auto_size_text: ^3.0.0
   another_transformer_page_view: ^2.0.1
   smooth_page_indicator: ^1.1.0
   #firebase_core: ^2.15.0

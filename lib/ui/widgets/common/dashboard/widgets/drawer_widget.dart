@@ -145,6 +145,7 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
+      elevation: 3.0,
       onDestinationSelected: (selectedIndex) {
         setState(() {
           navDrawerIndex = selectedIndex;
@@ -159,9 +160,13 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/splash.png',
+              SizedBox(
                 width: 50,
+                height: 50,
+                child: Image.asset(
+                  'assets/splash.png',
+                  width: 50,
+                ),
               ),
               hSpaceRegular,
               Text(

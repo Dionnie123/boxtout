@@ -6,7 +6,6 @@ import 'package:boxtout/app/app.dialogs.dart';
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:responsive_builder/responsive_builder.dart';
@@ -35,43 +34,37 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final supabase = Supabase.instance.client;
     FlutterNativeSplash.remove();
-    return ScreenUtilInit(
-        designSize: const Size(360, 662),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp.router(
-            scrollBehavior: AppScrollBehavior(),
-            debugShowCheckedModeBanner: false,
-            themeMode: ThemeMode.dark,
-            theme: ThemeData(
-              fontFamily: GoogleFonts.nunito().fontFamily,
-              useMaterial3: true,
-              brightness: Brightness.light,
-              cardTheme: const CardTheme(
-                margin: EdgeInsetsDirectional.zero,
-              ),
-            ).copyWith(
-              colorScheme: lightColorScheme,
-            ),
-            darkTheme: ThemeData(
-              fontFamily: GoogleFonts.nunito().fontFamily,
-              useMaterial3: true,
-              brightness: Brightness.dark,
-              cardTheme: const CardTheme(
-                margin: EdgeInsetsDirectional.zero,
-              ),
-            ).copyWith(
-              colorScheme: darkColorScheme,
-            ),
-            routerDelegate: stackedRouter.delegate(initialRoutes: [
-              supabase.auth.currentUser != null
-                  ? const HomeViewRoute()
-                  : const AuthViewRoute()
-            ]),
-            routeInformationParser: stackedRouter.defaultRouteParser(),
-          );
-        });
+    return MaterialApp.router(
+      scrollBehavior: AppScrollBehavior(),
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.dark,
+      theme: ThemeData(
+        fontFamily: GoogleFonts.nunito().fontFamily,
+        useMaterial3: true,
+        brightness: Brightness.light,
+        cardTheme: const CardTheme(
+          margin: EdgeInsetsDirectional.zero,
+        ),
+      ).copyWith(
+        colorScheme: lightColorScheme,
+      ),
+      darkTheme: ThemeData(
+        fontFamily: GoogleFonts.nunito().fontFamily,
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        cardTheme: const CardTheme(
+          margin: EdgeInsetsDirectional.zero,
+        ),
+      ).copyWith(
+        colorScheme: darkColorScheme,
+      ),
+      routerDelegate: stackedRouter.delegate(initialRoutes: [
+        supabase.auth.currentUser != null
+            ? const HomeViewRoute()
+            : const AuthViewRoute()
+      ]),
+      routeInformationParser: stackedRouter.defaultRouteParser(),
+    );
   }
 }
 

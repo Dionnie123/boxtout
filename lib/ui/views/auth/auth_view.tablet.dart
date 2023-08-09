@@ -1,3 +1,9 @@
+import 'package:boxtout/app/models/login_dto.dart';
+import 'package:boxtout/app/models/register_dto.dart';
+import 'package:boxtout/ui/special/onboard/onboarding.dart';
+import 'package:boxtout/ui/special/scaffold_body_wrapper.dart';
+import 'package:boxtout/ui/views/auth/widgets/login_form.dart';
+import 'package:boxtout/ui/views/auth/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -8,16 +14,59 @@ class AuthViewTablet extends ViewModelWidget<AuthViewModel> {
 
   @override
   Widget build(BuildContext context, AuthViewModel viewModel) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Hello, TABLET UI!',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      ),
-    );
+    return Scaffold(body: LayoutBuilder(builder: (context, size) {
+      return ScaffoldBodyWrapper(
+          isFullWidth: true,
+          padding: EdgeInsets.zero,
+          builder: (context, size) {
+            return SizedBox(
+              height: size.maxHeight,
+              width: size.maxWidth,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                        width: size.maxWidth,
+                        height: size.maxHeight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: const Onboarding()),
+                        )),
+                  ),
+                  Expanded(
+                      child: Center(
+                    child: SizedBox(
+                      width: 600,
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            (viewModel.authType == AuthType.signIn)
+                                ? ReactiveLoginDtoForm(
+                                    key: ObjectKey(viewModel.loginFormModel),
+                                    form: viewModel.loginFormModel,
+                                    child: const LoginForm(),
+                                  )
+                                : ReactiveRegisterDtoForm(
+                                    key: ObjectKey(viewModel.registerFormModel),
+                                    form: viewModel.registerFormModel,
+                                    child: const RegisterForm(),
+                                  ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+            );
+          });
+    }));
   }
 }

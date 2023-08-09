@@ -2,7 +2,6 @@ import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:boxtout/ui/special/sliver_grid_delegate.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SuggestedProductListview extends StatelessWidget {
   final Size size;
@@ -16,14 +15,21 @@ class SuggestedProductListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid.builder(
-        itemCount: products.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-          height: size.height,
-          crossAxisCount: isMobile(context) ? 2 : 9,
-          crossAxisSpacing: 8.0.sp,
-          mainAxisSpacing: 8.0.sp,
-        ),
-        itemBuilder: (context, index) => itemBuilder(context, index));
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      sliver: SliverGrid.builder(
+          itemCount: products.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+            height: size.height,
+            crossAxisCount: isMobile(context)
+                ? 2
+                : isTablet(context)
+                    ? 3
+                    : 5,
+            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 8.0,
+          ),
+          itemBuilder: (context, index) => itemBuilder(context, index)),
+    );
   }
 }

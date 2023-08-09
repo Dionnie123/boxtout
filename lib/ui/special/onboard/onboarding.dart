@@ -1,7 +1,7 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:boxtout/ui/common/ui_helpers.dart';
+import 'package:boxtout/ui/views/auth/widgets/logo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'buildin_transformers.dart';
@@ -118,8 +118,8 @@ class _OnboardingState extends State<Onboarding> {
                                     width: 800,
                                     child: Text(
                                       "\"${item.testimonial}.\"",
-                                      style: TextStyle(
-                                        fontSize: 24.0.sp,
+                                      style: const TextStyle(
+                                        fontSize: 24.0,
                                         color: Colors.white,
                                       ).copyWith(
                                         fontWeight: FontWeight.bold,
@@ -129,8 +129,8 @@ class _OnboardingState extends State<Onboarding> {
                                   vSpaceRegular,
                                   Text(
                                     item.personName,
-                                    style: TextStyle(
-                                      fontSize: 20.0.sp,
+                                    style: const TextStyle(
+                                      fontSize: 20.0,
                                       color: Colors.white,
                                     ).copyWith(
                                       fontWeight: FontWeight.bold,
@@ -138,8 +138,8 @@ class _OnboardingState extends State<Onboarding> {
                                   ),
                                   Text(
                                     item.personTitle,
-                                    style: TextStyle(
-                                      fontSize: 20.0.sp,
+                                    style: const TextStyle(
+                                      fontSize: 20.0,
                                       color: Colors.white,
                                     ).copyWith(
                                       fontWeight: FontWeight.bold,
@@ -158,10 +158,13 @@ class _OnboardingState extends State<Onboarding> {
             );
           },
         ),
-        /*     const Padding(
-          padding: EdgeInsets.all(40.0),
-          child: Logo(),
-        ), */
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            padding: const EdgeInsets.all(40.0),
+            child: const Logo(),
+          ),
+        ),
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(

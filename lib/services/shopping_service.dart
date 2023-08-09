@@ -73,7 +73,7 @@ class ShoppingService with ListenableServiceMixin {
             30,
             (index) => ProductDto(
                   id: index,
-                  name: faker.food.dish(),
+                  name: "${faker.food.dish()} ${faker.food.dish()}",
                   description: faker.lorem.sentences(5).join(),
                   price: faker.randomGenerator.integer(1000),
                   quantityInCart: faker.randomGenerator.integer(100, min: 10),

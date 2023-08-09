@@ -1,7 +1,6 @@
 import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrendyProductListview extends StatelessWidget {
   final Size size;
@@ -25,7 +24,7 @@ class TrendyProductListview extends StatelessWidget {
           height: size.height,
           child: ListView.builder(
               primary: false,
-              padding: EdgeInsets.all(8.0.sp),
+              padding: const EdgeInsets.all(16.0),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemCount: products.length,

@@ -68,7 +68,10 @@ class LoginForm extends StatelessWidget {
 
                 viewModel.authType = AuthType.signUp;
               },
-              child: const MyText.caption("Don't have an account? Sign up")),
+              child: const Text(
+                "Still not a member? Sign up",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              )),
         ],
       );
     });
