@@ -92,7 +92,7 @@ class ProductItem extends StatelessWidget {
                                       style: const TextStyle(fontSize: 12)),
                                 ),
                                 const SizedBox(
-                                  height: 4.0,
+                                  height: 8.0,
                                 ),
                                 Text(
                                   "\$${product.price}",

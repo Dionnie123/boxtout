@@ -69,7 +69,7 @@ class ShoppingService with ListenableServiceMixin {
 
       if (data is List && data.isNotEmpty) {
         _products.value = data.map((e) => ProductDto.fromJson(e)).toList();
-        _products.value = List.generate(
+        /*     _products.value = List.generate(
             30,
             (index) => ProductDto(
                   id: index,
@@ -79,7 +79,7 @@ class ShoppingService with ListenableServiceMixin {
                   quantityInCart: faker.randomGenerator.integer(100, min: 10),
                   quantityInStock: faker.randomGenerator.integer(100, min: 10),
                   createdAt: faker.date.dateTime(),
-                )).toList();
+                )).toList(); */
       }
     } catch (e) {
       return Future.error(errorDefinition(e.toString()));

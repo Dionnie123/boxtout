@@ -63,7 +63,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
             onMinus: () {
               viewModel.minusCartItemQuantity(viewModel.cart[index].id ?? -1);
             },
-            size: const Size(double.infinity, 100),
+            size: const Size(double.infinity, 150),
           );
         },
       ),
@@ -71,43 +71,57 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
         child: const Icon(Icons.add_rounded),
         onPressed: () {},
       ),
-      body: CustomScrollView(slivers: [
-        const TitleDivider("Trendy Products"),
-        TrendyProductListview(
-          size: const Size(double.infinity, 280.0),
-          products: viewModel.products,
-          itemBuilder: (context, i) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: ProductItem(
-                onTap: () {
-                  viewModel.navService.navigateToFooView();
-                },
-                viewModel.products[i],
-                size: const Size(165, 276.0),
-                onAdd: () {
-                  viewModel.addToCart(viewModel.products[i]);
-                },
-              ),
-            );
-          },
-        ),
-        const TitleDivider("Suggested for you"),
-        SuggestedProductListview(
-          size: const Size(double.infinity, 250.0),
-          products: viewModel.products,
-          itemBuilder: (context, i) {
-            return ProductItem(
-              onTap: () {},
-              viewModel.products[i],
-              size: const Size(double.infinity, 250.0),
-              onAdd: () {
-                viewModel.addToCart(viewModel.products[i]);
-              },
-            );
-          },
-        ),
-      ]),
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          await viewModel.start(false);
+        },
+        child: CustomScrollView(
+            slivers: viewModel.isBusy
+                ? [
+                    const SliverFillRemaining(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  ]
+                : [
+                    const TitleDivider("Trendy Products"),
+                    TrendyProductListview(
+                      size: const Size(double.infinity, 290.0),
+                      products: viewModel.products,
+                      itemBuilder: (context, i) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: ProductItem(
+                            onTap: () {
+                              viewModel.navService.navigateToFooView();
+                            },
+                            viewModel.products[i],
+                            size: const Size(165, 290.0),
+                            onAdd: () {
+                              viewModel.addToCart(viewModel.products[i]);
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                    const TitleDivider("Suggested for you"),
+                    SuggestedProductListview(
+                      size: const Size(double.infinity, 252.0),
+                      products: viewModel.products,
+                      itemBuilder: (context, i) {
+                        return ProductItem(
+                          onTap: () {},
+                          viewModel.products[i],
+                          size: const Size(double.infinity, 252.0),
+                          onAdd: () {
+                            viewModel.addToCart(viewModel.products[i]);
+                          },
+                        );
+                      },
+                    ),
+                  ]),
+      ),
     );
   }
 }

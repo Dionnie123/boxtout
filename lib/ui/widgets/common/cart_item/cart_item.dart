@@ -72,8 +72,8 @@ class CartItem extends StatelessWidget {
                             Opacity(
                               opacity: 0.6,
                               child: Text(product.description.toString(),
-                                  maxLines: 1,
-                                  style: const TextStyle(fontSize: 13)),
+                                  maxLines: 2,
+                                  style: const TextStyle(fontSize: 14)),
                             ),
                             Text(
                               "\$${product.price} x ${product.quantityInCart}",

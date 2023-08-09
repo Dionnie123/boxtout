@@ -6,6 +6,8 @@ import 'package:boxtout/services/shopping_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+const String fuck = 'xxx';
+
 class HomeViewModel extends ReactiveViewModel {
   final _authService = locator<AuthService>();
   final navService = locator<RouterService>();
@@ -15,8 +17,16 @@ class HomeViewModel extends ReactiveViewModel {
         _shopService,
       ];
 
-  Future start() async {
-    await runBusyFuture(_shopService.fetchAllProducts(), throwException: true);
+  Future start(bool showLoading) async {
+    if (showLoading) {
+      await runBusyFuture(_shopService.fetchAllProducts(),
+          throwException: true);
+    } else {
+      await Future.value([
+        _shopService.fetchAllProducts(),
+        Future.delayed(const Duration(milliseconds: 500))
+      ]);
+    }
   }
 
   Future addToCart(ProductDto product) async {

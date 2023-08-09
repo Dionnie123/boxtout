@@ -15,37 +15,39 @@ class AuthViewMobile extends ViewModelWidget<AuthViewModel> {
   @override
   Widget build(BuildContext context, AuthViewModel viewModel) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Logo(),
-                  vSpaceMedium,
-                  (viewModel.authType == AuthType.signIn)
-                      ? ReactiveLoginDtoForm(
-                          key: ObjectKey(viewModel.loginFormModel),
-                          form: viewModel.loginFormModel,
-                          child: const LoginForm(),
-                        )
-                      : ReactiveRegisterDtoForm(
-                          key: ObjectKey(viewModel.registerFormModel),
-                          form: viewModel.registerFormModel,
-                          child: const RegisterForm(),
-                        ),
-                  Container(
-                    height: 60,
-                  ),
-                ],
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Logo(),
+                    vSpaceMedium,
+                    (viewModel.authType == AuthType.signIn)
+                        ? ReactiveLoginDtoForm(
+                            key: ObjectKey(viewModel.loginFormModel),
+                            form: viewModel.loginFormModel,
+                            child: const LoginForm(),
+                          )
+                        : ReactiveRegisterDtoForm(
+                            key: ObjectKey(viewModel.registerFormModel),
+                            form: viewModel.registerFormModel,
+                            child: const RegisterForm(),
+                          ),
+                    Container(
+                      height: 60,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
