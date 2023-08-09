@@ -23,6 +23,49 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Scaffold(
+          appBar: AppBar(
+            leading: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 0.0),
+              child: Image.asset(
+                'assets/splash.png',
+              ),
+            ),
+            title: Text(
+              "COFFEECO",
+              style: const TextStyle(fontSize: 24).copyWith(
+                fontWeight: FontWeight.w900,
+                fontFamily: GoogleFonts.nunito().fontFamily,
+              ),
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.settings_rounded,
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.account_circle_rounded),
+                onPressed: () async {
+                  await viewModel.signOut();
+                },
+              ),
+              badges.Badge(
+                badgeAnimation: const badges.BadgeAnimation.scale(),
+                badgeContent: Text(viewModel.cartItemsQuantity.toString()),
+                child: Builder(builder: (context) {
+                  return IconButton(
+                    icon: const Icon(Icons.shopping_cart_rounded),
+                    onPressed: () {
+                      Scaffold.of(context).openEndDrawer();
+                    },
+                  );
+                }),
+              ),
+              hSpaceMedium,
+            ],
+          ),
           endDrawer: SideCart(
             itemCount: viewModel.cart.length,
             actionButtons: const [],
