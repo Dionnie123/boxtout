@@ -1,6 +1,7 @@
 import 'package:boxtout/app/extensions/color_extension.dart';
 import 'package:boxtout/app/models/product_dto.dart';
 import 'package:boxtout/ui/common/colors.dart';
+import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,11 +37,11 @@ class CartItem extends StatelessWidget {
             Card(
                 clipBehavior: Clip.antiAlias,
                 elevation: 2,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: CachedNetworkImage(
                           imageUrl:
@@ -54,10 +55,8 @@ class CartItem extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      hSpaceSmall,
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,35 +86,36 @@ class CartItem extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                    /*   */
-                  ],
+                      hSpaceSmall,
+                      CartItemButton(
+                          icon: Icons.remove_rounded,
+                          onUpdate: () => onMinus()),
+                      Card(
+                        color: kcPrimaryColor.darken(),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: Center(
+                            child: Text(
+                              "${product.quantityInCart}",
+                              maxLines: 1,
+                              overflow: TextOverflow.fade,
+                              style: const TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        ),
+                      ),
+                      CartItemButton(
+                          icon: Icons.add_rounded, onUpdate: () => onAdd()),
+                    ],
+                  ),
                 )),
-            Positioned(
+            const Positioned(
+              top: 0,
               bottom: 0,
               right: 0,
               child: Row(
-                children: [
-                  CartItemButton(
-                      icon: Icons.remove_rounded, onUpdate: () => onMinus()),
-                  Card(
-                    color: kcPrimaryColor.darken(),
-                    child: SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: Center(
-                        child: Text(
-                          "${product.quantityInCart}",
-                          maxLines: 1,
-                          overflow: TextOverflow.fade,
-                          style: const TextStyle(fontSize: 15),
-                        ),
-                      ),
-                    ),
-                  ),
-                  CartItemButton(
-                      icon: Icons.add_rounded, onUpdate: () => onAdd()),
-                ],
+                children: [],
               ),
             ),
           ],

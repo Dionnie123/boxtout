@@ -1,5 +1,6 @@
 import 'package:boxtout/app/app.locator.dart';
 import 'package:boxtout/app/app.router.dart';
+import 'package:boxtout/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -151,7 +152,29 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
       },
       selectedIndex: navDrawerIndex,
       children: <Widget>[
-        const SizedBox(height: 420, child: NavigationRailSection()),
+        // const SizedBox(height: 420, child: NavigationRailSection()),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/splash.png',
+                width: 50,
+              ),
+              hSpaceRegular,
+              Text(
+                "COFFEECO",
+                style: const TextStyle(fontSize: 24).copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontFamily: GoogleFonts.nunito().fontFamily,
+                ),
+              ),
+            ],
+          ),
+        ),
+
         Padding(
           padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
           child: Text(

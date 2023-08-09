@@ -8,7 +8,7 @@ class TitleDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       sliver: SliverToBoxAdapter(
         child: Row(
           children: [

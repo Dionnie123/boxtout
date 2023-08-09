@@ -23,19 +23,29 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Scaffold(
-          appBar: AppBar(
-            leading: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 0.0),
-              child: Image.asset(
-                'assets/splash.png',
-              ),
-            ),
-            title: Text(
-              "COFFEECO",
-              style: const TextStyle(fontSize: 24).copyWith(
-                fontWeight: FontWeight.w900,
-                fontFamily: GoogleFonts.nunito().fontFamily,
+          /* appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 76,
+            flexibleSpace: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              height: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/splash.png',
+                    width: 50,
+                  ),
+                  hSpaceSmall,
+                  Text(
+                    "COFFEECO",
+                    style: const TextStyle(fontSize: 24).copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontFamily: GoogleFonts.nunito().fontFamily,
+                    ),
+                  ),
+                ],
               ),
             ),
             actions: [
@@ -65,7 +75,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
               ),
               hSpaceMedium,
             ],
-          ),
+          ), */
           endDrawer: SideCart(
             itemCount: viewModel.cart.length,
             actionButtons: const [],
@@ -94,10 +104,11 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
               Expanded(
                 child: CustomScrollView(slivers: [
                   SliverAppBar(
-                    toolbarHeight: 78,
+                    toolbarHeight: 90,
                     // backgroundColor: Colors.transparent,
                     //  forceMaterialTransparency: true,
                     pinned: true,
+
                     title: Text(
                       "WELCOME",
                       style: const TextStyle(fontSize: 24).copyWith(
@@ -155,22 +166,19 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                     },
                   ),
                   const TitleDivider("Suggested for you"),
-                  SliverPadding(
-                    padding: const EdgeInsets.all(15),
-                    sliver: SuggestedProductListview(
-                      size: const Size(double.infinity, 250.0),
-                      products: viewModel.products,
-                      itemBuilder: (context, i) {
-                        return ProductItem(
-                          onTap: () {},
-                          viewModel.products[i],
-                          size: const Size(double.infinity, 250.0),
-                          onAdd: () {
-                            viewModel.addToCart(viewModel.products[i]);
-                          },
-                        );
-                      },
-                    ),
+                  SuggestedProductListview(
+                    size: const Size(double.infinity, 250.0),
+                    products: viewModel.products,
+                    itemBuilder: (context, i) {
+                      return ProductItem(
+                        onTap: () {},
+                        viewModel.products[i],
+                        size: const Size(double.infinity, 250.0),
+                        onAdd: () {
+                          viewModel.addToCart(viewModel.products[i]);
+                        },
+                      );
+                    },
                   ),
                 ]),
               ),
