@@ -36,6 +36,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
             },
           ),
           badges.Badge(
+            position: badges.BadgePosition.topEnd(top: -5, end: -5),
             badgeAnimation: const badges.BadgeAnimation.scale(),
             badgeContent: Text(viewModel.cartItemsQuantity.toString()),
             child: Builder(builder: (context) {
